@@ -19,19 +19,19 @@ from opentuner import Result
 
 BLOCO_PARAMETROS = [
 	('kernel', 0, 0), 
-	('gx', 1, 2147483647),
-	('gy', 1, 65535),
-	('gz', 1, 65535),
+	('gx', 1, 1024),
+	('gy', 1, 1024),
+	('gz', 1, 1024),
 	('bx', 1, 1024),
 	('by', 1, 1024),
 	('bz', 1, 64),
-	('n', 1, 45000000),
-	('funcId', 0, 9),
+	('n', 1024, 1024),
+	('funcId', 0, 8),
 	('gpuId', 0, 0)  
 ]
 
+
 class SumVectorTuner(MeasurementInterface):
-	
 
 	def manipulator(self):
 		"""Define the search space by creating a
@@ -40,13 +40,8 @@ class SumVectorTuner(MeasurementInterface):
 		manipulator = ConfigurationManipulator()
 		print "Executing manipulator"
 		for param, mini, maxi in BLOCO_PARAMETROS:
-			print "param: ", param, " mini: ", mini, " maxi: ", maxi, " iterations: ", iterations
-			dimensions = {'bx', 'by', 'bz', 'gx', 'gy', 'gz'}
-			if param in dimensions:
-				value = min(iterations, maxi)
-			else:
-				value = maxi
-			manipulator.add_parameter(IntegerParameter(param, mini, value))
+			#print "param: ", param, " mini: ", mini, " maxi: ", maxi
+			manipulator.add_parameter(IntegerParameter(param, mini, maxi))
 		return manipulator
 
 	def run(self, desired_result, input, limit):
@@ -54,8 +49,23 @@ class SumVectorTuner(MeasurementInterface):
 		Compile and run a given configuration then
 		return performance
 		"""
-		cfg = desired_result.configuration.data
-		print "CFG: ", cfg
+		# cfg = desired_result.configuration.data
+
+		while True:
+			cfg = desired_result.configuration.data
+			print "CFG: ", cfg
+			confBlock = cfg['bx'] * cfg['by'] * cfg['bz']
+			confGrid =  cfg['gx'] * cfg['gy'] * cfg['gz']
+			config = confBlock * confGrid
+			print "ConfBlock "+ str(confBlock)
+			print "ConfGrid " + str(confGrid)
+			if((confBlock <= 1024) and (confBlock % 32 == 0) and (config == n)):
+				break
+			else:
+				return Result(time=FAIL_PENALTY)
+
+		# print "desired: " + str(desired_result.configuration.data)
+		# print "CFG: ", cfg
 		print "compiled: ", 'true' if compiled else 'false'
 		if not compiled:
 			print "Compiling the program..."
@@ -66,21 +76,19 @@ class SumVectorTuner(MeasurementInterface):
 			global compiled
 			compiled = not compiled
 		run_cmd = 'nvprof --metrics achieved_occupancy ./sumvector-cuda'
-		for param, min, max in BLOCO_PARAMETROS:
-			print "Param: ", param, " ", cfg[param]
-			run_cmd += ' {1}'.format(param, cfg[param])
-		print "Generated command line: ", run_cmd
+
+		#print "TESTE:" + " " + str(cfg['gx']) + " " + str(cfg['gy']) + " " + str(cfg['gz']) + str(cfg['bx']) + " " + str(cfg['by']) + " " + str(cfg['bz'])
 		confBlock = cfg['bx'] * cfg['by'] * cfg['bz']
 		confGrid =  cfg['gx'] * cfg['gy'] * cfg['gz']
 		config = confBlock * confGrid
 		print "confBlock: ", confBlock
 		print "confGrid: ", confGrid
-		print "config: ", config
-		print "iterations: ", iterations
+		#print "config: ", config
 
 		# Evict kernel divergence, blocks with multiply warp size.
-		print "Test: ", "True" if((confBlock <= 1024) and (config == iterations) and (confBlock % 32 == 0)) else "False"
-		if((confBlock <= 1024) and (config == iterations) and (confBlock % 32 == 0)):
+		#print "Test: ", "True" if((confBlock <= 1024) and (confBlock % 32 == 0)) else "False"
+		print "Antes do IF"
+		if((confBlock <= 1024) and (confBlock % 32 == 0) and (config == n)):
 			dimBlock = 0
 			dimGrid = 0
 			# Test of quantity of block dimensions are used.
@@ -97,8 +105,28 @@ class SumVectorTuner(MeasurementInterface):
 			dimGrid += 1 if(cfg['gz'] > 1) else 0
 			if(dimGrid == 0):
 				dimGrid = 1
-			countConfig += 1
-			print "Running command line: ", run_cmd
+			
+			if(dimGrid == 1):
+				cfg['funcId'] =  dimGrid + dimBlock - 2
+			if(dimGrid == 2):
+				cfg['funcId'] =  dimGrid + dimBlock + 0
+			if(dimGrid == 3):
+				cfg['funcId'] =  dimGrid + dimBlock + 2
+			
+			run_cmd += ' {1}'.format(param, cfg['kernel'])
+			run_cmd += ' {1}'.format(param, cfg['gx'])
+			run_cmd += ' {1}'.format(param, cfg['gy'])
+			run_cmd += ' {1}'.format(param, cfg['gz'])
+			run_cmd += ' {1}'.format(param, cfg['bx'])
+			run_cmd += ' {1}'.format(param, cfg['by'])
+			run_cmd += ' {1}'.format(param, cfg['bz'])
+			run_cmd += ' {1}'.format(param, cfg['n'])
+			run_cmd += ' {1}'.format(param, cfg['funcId'])
+			run_cmd += ' {1}'.format(param, cfg['gpuId'])
+
+			#print "Running command line: ", run_cmd
+			#print "CFG->funcId: " +  str(cfg['funcId'])
+
 			run_result = self.call_program(run_cmd)
 			if run_result['returncode'] != 0:
 				return Result(time=FAIL_PENALTY)
@@ -107,21 +135,16 @@ class SumVectorTuner(MeasurementInterface):
 				return Result(time=val)
 		else:
 			print "Invalid configuration, return penalty."
+			# FAIL_PENALTY = FAIL_PENALTY - 1
 			return Result(time=FAIL_PENALTY)
 
 	def get_metric_from_app_output(self, app_output):
 		"""Returns the metric value from output benchmark"""
 		metric_value = 0.0
-		#buf = StringIO.StringIO(app_output)
-		#lines = buf.readlines()
 		lines = app_output.split("\n")
 		for current_line in lines:
-			# print "Bla: ", current_line
 			strg = "" + current_line
-			# print strg
 			if strg.find("Occupancy") > -1:
-				# print "contains"
-				# print "Bla: ", strg
 				idx = strg.index("Occupancy")
 				subsrtg = strg[idx:].split("    ")
 				print "substrg: ", subsrtg
@@ -133,10 +156,12 @@ class SumVectorTuner(MeasurementInterface):
 		"""called at the end of tuning"""
 		print "Optimal block size written to sumvectorcuda_final_config.json:", configuration.data
 		self.manipulator().save_to_file(configuration.data, 'sumvectorcuda_final_config.json')
+		
+
 
 if __name__ == '__main__':
 	FAIL_PENALTY = 9999999999
 	compiled = False
-	iterations = 1 * 357 * 357
+	n = 1024
 	argparser = opentuner.default_argparser()
 	SumVectorTuner.main(argparser.parse_args())

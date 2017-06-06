@@ -37,7 +37,7 @@ class ComposableEvolutionaryTechnique(SequentialSearchTechnique):
   # min_parent - minimum number of parents returned. Limits which operators can be used
   def __init__(self,
                operator_map = {},
-               population_size = 50,
+               population_size = 200,
                initial_configs = None,
                *pargs,
                **kwargs):
