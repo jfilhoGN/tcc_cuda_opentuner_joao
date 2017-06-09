@@ -1,0 +1,19 @@
+eth0      Link encap:Ethernet  Endereço de HW 40:8d:5c:ba:79:79  
+          inet end.: 172.16.255.70  Bcast:172.16.255.127  Masc:255.255.255.192
+          endereço inet6: fe80::428d:5cff:feba:7979/64 Escopo:Link
+          UP BROADCASTRUNNING MULTICAST  MTU:1500  Métrica:1
+          RX packets:63511 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:62336 errors:0 dropped:0 overruns:0 carrier:0
+          colisões:0 txqueuelen:1000 
+          RX bytes:76487521 (72.9 MiB)  TX bytes:4868008 (4.6 MiB)
+          IRQ:20 Memória:f7800000-f7820000 
+
+lo        Link encap:Loopback Local  
+          inet end.: 127.0.0.1  Masc:255.0.0.0
+          endereço inet6: ::1/128 Escopo:Máquina
+          UP LOOPBACKRUNNING  MTU:65536  Métrica:1
+          RX packets:105 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:105 errors:0 dropped:0 overruns:0 carrier:0
+          colisões:0 txqueuelen:0 
+          RX bytes:16006 (15.6 KiB)  TX bytes:16006 (15.6 KiB)
+
