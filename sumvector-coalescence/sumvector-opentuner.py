@@ -6,6 +6,7 @@
 #
 import adddeps  # fix sys.path
 import math
+import re
 
 import opentuner
 from opentuner import ConfigurationManipulator
@@ -19,16 +20,18 @@ from opentuner import Result
 
 BLOCO_PARAMETROS = [
 	('kernel', 0, 0), 
-	('gx', 1, 1024),
-	('gy', 1, 1024),
-	('gz', 1, 1024),
-	('bx', 1, 1024),
-	('by', 1, 1024),
-	('bz', 1, 64),
-	('n', 1024, 1024),
+#	('gx', 1, 1024),
+#	('gy', 1, 1024),
+#	('gz', 1, 1024),
+#	('bx', 1, 1024),
+#	('by', 1, 1024),
+#	('bz', 1, 64),
+#	('n', 1024, 1024),
 	('funcId', 0, 8),
 	('gpuId', 0, 0)  
 ]
+
+BLOCO_PARAMETROS_CONFIGS = [ 'config' ]
 
 
 class SumVectorTuner(MeasurementInterface):
@@ -42,6 +45,11 @@ class SumVectorTuner(MeasurementInterface):
 		for param, mini, maxi in BLOCO_PARAMETROS:
 			#print "param: ", param, " mini: ", mini, " maxi: ", maxi
 			manipulator.add_parameter(IntegerParameter(param, mini, maxi))
+
+		for param in BLOCO_PARAMETROS_CONFIGS:
+			# 	E preciso gerar as configuracoes validas com o run.c.
+			manipulator.add_parameter(EnumParameter(param, [ 'gx:1024, gy:1, gz:1, bx:1, by:1, bz:1, ', 'gx:32, gy:32, gz:1, bx:1, by:1, bz:1, ' ]))
+
 		return manipulator
 
 	def run(self, desired_result, input, limit):
@@ -52,10 +60,13 @@ class SumVectorTuner(MeasurementInterface):
 		# cfg = desired_result.configuration.data
 
 		while True:
-			cfg = desired_result.configuration.data
+			# Configuration:  {'kernel': 0, 'gpuId': 0, 'config': 'gx:1024, gy:1, gz:1, bx:1, by:1, bz:1, ', 'funcId': 7}
+			configuration = desired_result.configuration.data
+			print "Configuration: ", configuration
+			cfg = { match.group(1):match.group(2) for match in re.finditer(r"([^:]+):(\S+)\s*,[' ]", configuration['config'])}
 			print "CFG: ", cfg
-			confBlock = cfg['bx'] * cfg['by'] * cfg['bz']
-			confGrid =  cfg['gx'] * cfg['gy'] * cfg['gz']
+			confBlock = int(cfg['bx']) * int(cfg['by']) * int(cfg['bz'])
+			confGrid =  int(cfg['gx']) * int(cfg['gy']) * int(cfg['gz'])
 			config = confBlock * confGrid
 			print "ConfBlock "+ str(confBlock)
 			print "ConfGrid " + str(confGrid)
@@ -78,11 +89,11 @@ class SumVectorTuner(MeasurementInterface):
 		run_cmd = 'nvprof --metrics achieved_occupancy ./sumvector-cuda'
 
 		#print "TESTE:" + " " + str(cfg['gx']) + " " + str(cfg['gy']) + " " + str(cfg['gz']) + str(cfg['bx']) + " " + str(cfg['by']) + " " + str(cfg['bz'])
-		confBlock = cfg['bx'] * cfg['by'] * cfg['bz']
-		confGrid =  cfg['gx'] * cfg['gy'] * cfg['gz']
-		config = confBlock * confGrid
-		print "confBlock: ", confBlock
-		print "confGrid: ", confGrid
+		# confBlock = cfg['bx'] * cfg['by'] * cfg['bz']
+		# confGrid =  cfg['gx'] * cfg['gy'] * cfg['gz']
+		# config = confBlock * confGrid
+		# print "confBlock: ", confBlock
+		# print "confGrid: ", confGrid
 		#print "config: ", config
 
 		# Evict kernel divergence, blocks with multiply warp size.
@@ -93,27 +104,27 @@ class SumVectorTuner(MeasurementInterface):
 			dimGrid = 0
 			# Test of quantity of block dimensions are used.
 			# a if test else b
-			dimBlock += 1 if(cfg['bx'] > 1) else 0
-			dimBlock += 1 if(cfg['by'] > 1) else 0
-			dimBlock += 1 if(cfg['bz'] > 1) else 0
+			dimBlock += 1 if(int(cfg['bx']) > 1) else 0
+			dimBlock += 1 if(int(cfg['by']) > 1) else 0
+			dimBlock += 1 if(int(cfg['bz']) > 1) else 0
 			if(dimBlock == 0):
 				dimBlock = 1
 
 			# Test of quantity of grid dimensions are used.
-			dimGrid += 1 if(cfg['gx'] > 1) else 0
-			dimGrid += 1 if(cfg['gy'] > 1) else 0
-			dimGrid += 1 if(cfg['gz'] > 1) else 0
+			dimGrid += 1 if(int(cfg['gx']) > 1) else 0
+			dimGrid += 1 if(int(cfg['gy']) > 1) else 0
+			dimGrid += 1 if(int(cfg['gz']) > 1) else 0
 			if(dimGrid == 0):
 				dimGrid = 1
 			
 			if(dimGrid == 1):
-				cfg['funcId'] =  dimGrid + dimBlock - 2
+				configuration['funcId'] =  dimGrid + dimBlock - 2
 			if(dimGrid == 2):
-				cfg['funcId'] =  dimGrid + dimBlock + 0
+				configuration['funcId'] =  dimGrid + dimBlock + 0
 			if(dimGrid == 3):
-				cfg['funcId'] =  dimGrid + dimBlock + 2
+				configuration['funcId'] =  dimGrid + dimBlock + 2
 			
-			run_cmd += ' {1}'.format(param, cfg['kernel'])
+			run_cmd += ' {1}'.format(param, configuration['kernel'])
 			run_cmd += ' {1}'.format(param, cfg['gx'])
 			run_cmd += ' {1}'.format(param, cfg['gy'])
 			run_cmd += ' {1}'.format(param, cfg['gz'])
@@ -121,8 +132,8 @@ class SumVectorTuner(MeasurementInterface):
 			run_cmd += ' {1}'.format(param, cfg['by'])
 			run_cmd += ' {1}'.format(param, cfg['bz'])
 			run_cmd += ' {1}'.format(param, cfg['n'])
-			run_cmd += ' {1}'.format(param, cfg['funcId'])
-			run_cmd += ' {1}'.format(param, cfg['gpuId'])
+			run_cmd += ' {1}'.format(param, configuration['funcId'])
+			run_cmd += ' {1}'.format(param, configuration['gpuId'])
 
 			#print "Running command line: ", run_cmd
 			#print "CFG->funcId: " +  str(cfg['funcId'])
