@@ -29,7 +29,7 @@ int main(int argc, char const *argv[]){
 							confGrid = gx * gy * gz;
 							config = confBlock * confGrid;
 							if((confBlock <= 1024) && (config == iteracoes) && (confBlock% 32 ==0)){
-								//printf("(%4d,%4d,%4d,%4d,%4d,%4d ) \n", gx, gy, gz, bx, by,bz);
+								printf("(%4d,%4d,%4d,%4d,%4d,%4d ) \n", gx, gy, gz, bx, by,bz);
 								contConfig++;
 							}
 
