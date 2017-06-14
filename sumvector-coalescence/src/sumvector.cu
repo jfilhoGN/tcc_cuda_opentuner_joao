@@ -110,7 +110,7 @@ void init_arrays(DATA_TYPE* a, DATA_TYPE* b, int n){
 __global__ void vecAdd(DATA_TYPE *a, DATA_TYPE *b, DATA_TYPE *c, int n, int funcId){
     //Thread ID
     int id = getGlobalIdFunc[funcId]();
- 
+    printf("id: %d\n", id);
     if (id < n)
         c[id] = a[id] + b[id];
 }

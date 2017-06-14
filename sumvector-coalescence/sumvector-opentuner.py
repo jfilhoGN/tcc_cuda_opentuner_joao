@@ -173,6 +173,6 @@ class SumVectorTuner(MeasurementInterface):
 if __name__ == '__main__':
 	FAIL_PENALTY = 9999999999
 	compiled = False
-	n = 1024
+	n = 131072
 	argparser = opentuner.default_argparser()
 	SumVectorTuner.main(argparser.parse_args())
