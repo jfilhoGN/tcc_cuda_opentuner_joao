@@ -377,6 +377,9 @@ int main(int argc, char **argv) {
       printf("Executing sincos_kernel_%d.\n", kernel);
       sincos_kernel_3<<<grid, block>>>(d_x, d_y, d_xy, nx, ny, nz);
       break;
+    case 4:
+      printf("Executing sincos_kernel_%d_unroll_8.\n", kernel);
+      sincos_kernel_1_unroll_8<<<grid, block>>>(d_x, d_y, d_xy, nx, ny, nz, funcId);
     default :
       printf("Invalid kernel number.\n");
   }
