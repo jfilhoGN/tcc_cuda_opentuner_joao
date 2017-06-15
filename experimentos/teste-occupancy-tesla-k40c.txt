@@ -1,0 +1,168 @@
+GPU,arch,benchmark,kernel,num_loops,command,achieved_occupancy
+Tesla k40c,Kepler,sincos,kernel 3,3,nvprof --metrics achieved_occupancy ./sincosc-cuda 3 1 1 1 1 1 1 960 960 960 0 0,<OVERFLOW>
+Tesla k40c,Kepler,sincos,kernel 2,2,nvprof --metrics achieved_occupancy ./sincosc-cuda 2 1 1 1 32 18 1 576 576 576 1 0,<OVERFLOW>
+Tesla k40c,Kepler,sincos,kernel 1,1,nvprof --metrics achieved_occupancy ./sincosc-cuda 1 30 32 1 30 32 1 960 960 960 4 0,<OVERFLOW>
+Tesla k40c,Kepler,sincos,kernel 0,0,nvprof --metrics achieved_occupancy ./sincosc-cuda 0 960 32 30 32 30 1 960 960 960 8 0,0.841474
+
+
+rogerio@ragserver:~/tcc_cuda_opentuner_joao/sincoscuda-opentuner$ nvprof --metrics achieved_occupancy --print-gpu-trace ./sincosc-cuda 3 1 1 1 1 1 1 960 960 960 0 0
+#argumentos (argc): 13
+ argv[0]: ./sincosc-cuda
+ argv[1]: 3
+ argv[2]: 1
+ argv[3]: 1
+ argv[4]: 1
+ argv[5]: 1
+ argv[6]: 1
+ argv[7]: 1
+ argv[8]: 960
+ argv[9]: 960
+ argv[10]: 960
+ argv[11]: 0
+ argv[12]: 0
+Executando: ./sincosc-cuda sincos_kernel_3 grid(1, 1, 1) block(1, 1, 1) 960 960 960
+./sincosc-cuda Starting...
+==1687== NVPROF is profiling process 1687, command: ./sincosc-cuda 3 1 1 1 1 1 1 960 960 960 0 0
+Existem 1 dispositivos com suporte a CUDA.
+ sizeof(DATA_TYPE): 4
+ Qtd bytes por estrutura: 3538944000 total: 10616832000
+Allocate memory for each vector on host.
+Allocate memory for each vector on GPU.
+Copy host vectors to device.
+Execute the kernel.
+Executing sincos_kernel_3.
+Time Kernel Execution: 973.912354 s
+Time Kernel Execution: 973912.375000 ms
+Copy array back to host.
+sum: 33554432.000000  min: 0.540314  max: 1.841470
+Liberando as estruturas alocadas na Memória da GPU.
+Liberando as estruturas alocadas na Memória do host.
+Reset no dispositivo.
+Done.
+==1687== Profiling application: ./sincosc-cuda 3 1 1 1 1 1 1 960 960 960 0 0
+==1687== Profiling result:
+         Device          Context           Stream                Kernel  Achieved Occupancy
+                                                                                           
+ Tesla K40c (0)                1                7  sincos_kernel_3(floa          <OVERFLOW>
+
+rogerio@ragserver:~/tcc_cuda_opentuner_joao/sincoscuda-opentuner$ nvprof --metrics achieved_occupancy --print-gpu-trace ./sincosc-cuda 2 1 1 1 32 18 1 576 576 576 1 0
+#argumentos (argc): 13
+ argv[0]: ./sincosc-cuda
+ argv[1]: 2
+ argv[2]: 1
+ argv[3]: 1
+ argv[4]: 1
+ argv[5]: 32
+ argv[6]: 18
+ argv[7]: 1
+ argv[8]: 576
+ argv[9]: 576
+ argv[10]: 576
+ argv[11]: 1
+ argv[12]: 0
+Executando: ./sincosc-cuda sincos_kernel_2 grid(1, 1, 1) block(32, 18, 1) 576 576 576
+./sincosc-cuda Starting...
+==1774== NVPROF is profiling process 1774, command: ./sincosc-cuda 2 1 1 1 32 18 1 576 576 576 1 0
+Existem 1 dispositivos com suporte a CUDA.
+ sizeof(DATA_TYPE): 4
+ Qtd bytes por estrutura: 764411904 total: 2293235712
+Allocate memory for each vector on host.
+Allocate memory for each vector on GPU.
+Copy host vectors to device.
+Execute the kernel.
+Executing sincos_kernel_2.
+Time Kernel Execution: 5.709169 s
+Time Kernel Execution: 5709.169434 ms
+Copy array back to host.
+sum: 33554432.000000  min: 0.540354  max: 1.841468
+Liberando as estruturas alocadas na Memória da GPU.
+Liberando as estruturas alocadas na Memória do host.
+Reset no dispositivo.
+Done.
+==1774== Profiling application: ./sincosc-cuda 2 1 1 1 32 18 1 576 576 576 1 0
+==1774== Profiling result:
+         Device          Context           Stream                Kernel  Achieved Occupancy
+                                                                                           
+ Tesla K40c (0)                1                7  sincos_kernel_2(floa          <OVERFLOW>
+
+rogerio@ragserver:~/tcc_cuda_opentuner_joao/sincoscuda-opentuner$ nvprof --metrics achieved_occupancy --print-gpu-trace ./sincosc-cuda 1 30 32 1 30 32 1 960 960 960 4 0
+#argumentos (argc): 13
+ argv[0]: ./sincosc-cuda
+ argv[1]: 1
+ argv[2]: 30
+ argv[3]: 32
+ argv[4]: 1
+ argv[5]: 30
+ argv[6]: 32
+ argv[7]: 1
+ argv[8]: 960
+ argv[9]: 960
+ argv[10]: 960
+ argv[11]: 4
+ argv[12]: 0
+Executando: ./sincosc-cuda sincos_kernel_1 grid(30, 32, 1) block(30, 32, 1) 960 960 960
+./sincosc-cuda Starting...
+==1813== NVPROF is profiling process 1813, command: ./sincosc-cuda 1 30 32 1 30 32 1 960 960 960 4 0
+Existem 1 dispositivos com suporte a CUDA.
+ sizeof(DATA_TYPE): 4
+ Qtd bytes por estrutura: 3538944000 total: 10616832000
+Allocate memory for each vector on host.
+Allocate memory for each vector on GPU.
+Copy host vectors to device.
+Execute the kernel.
+Executing sincos_kernel_1.
+Time Kernel Execution: 2.462525 s
+Time Kernel Execution: 2462.525391 ms
+Copy array back to host.
+sum: 33554432.000000  min: 0.540314  max: 1.841470
+Liberando as estruturas alocadas na Memória da GPU.
+Liberando as estruturas alocadas na Memória do host.
+Reset no dispositivo.
+Done.
+==1813== Profiling application: ./sincosc-cuda 1 30 32 1 30 32 1 960 960 960 4 0
+==1813== Profiling result:
+         Device          Context           Stream                Kernel  Achieved Occupancy
+                                                                                           
+ Tesla K40c (0)                1                7  sincos_kernel_1(floa          <OVERFLOW>
+rogerio@ragserver:~/tcc_cuda_opentuner_joao/sincoscuda-opentuner$
+
+rogerio@ragserver:~/tcc_cuda_opentuner_joao/sincoscuda-opentuner$ nvprof --metrics achieved_occupancy --print-gpu-trace ./sincosc-cuda 0 960 32 30 32 30 1 960 960 960 8 0
+#argumentos (argc): 13
+ argv[0]: ./sincosc-cuda
+ argv[1]: 0
+ argv[2]: 960
+ argv[3]: 32
+ argv[4]: 30
+ argv[5]: 32
+ argv[6]: 30
+ argv[7]: 1
+ argv[8]: 960
+ argv[9]: 960
+ argv[10]: 960
+ argv[11]: 8
+ argv[12]: 0
+Executando: ./sincosc-cuda sincos_kernel_0 grid(960, 32, 30) block(32, 30, 1) 960 960 960
+./sincosc-cuda Starting...
+==1823== NVPROF is profiling process 1823, command: ./sincosc-cuda 0 960 32 30 32 30 1 960 960 960 8 0
+Existem 1 dispositivos com suporte a CUDA.
+ sizeof(DATA_TYPE): 4
+ Qtd bytes por estrutura: 3538944000 total: 10616832000
+Allocate memory for each vector on host.
+Allocate memory for each vector on GPU.
+Copy host vectors to device.
+Execute the kernel.
+Executing sincos_kernel_0.
+Time Kernel Execution: 0.101606 s
+Time Kernel Execution: 101.605858 ms
+Copy array back to host.
+sum: 33554432.000000  min: 0.540314  max: 1.841470
+Liberando as estruturas alocadas na Memória da GPU.
+Liberando as estruturas alocadas na Memória do host.
+Reset no dispositivo.
+Done.
+==1823== Profiling application: ./sincosc-cuda 0 960 32 30 32 30 1 960 960 960 8 0
+==1823== Profiling result:
+         Device          Context           Stream                Kernel  Achieved Occupancy
+                                                                                           
+ Tesla K40c (0)                1                7  sincos_kernel_0(floa            0.841474
+rogerio@ragserver:~/tcc_cuda_opentuner_joao/sincoscuda-opentuner$
