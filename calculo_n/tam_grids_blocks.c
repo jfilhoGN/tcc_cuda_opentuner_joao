@@ -40,6 +40,5 @@ int main(int argc, char const *argv[]){
 		}
 		
 	}
-	printf("iteracoes: %d, count: %lld\n", iteracoes, contConfig);
 	return(0);
 }
