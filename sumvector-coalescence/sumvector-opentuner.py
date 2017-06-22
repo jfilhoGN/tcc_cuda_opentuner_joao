@@ -132,7 +132,7 @@ class SumVectorTuner(MeasurementInterface):
 			run_cmd += ' {0}'.format(cfg['by'])
 			run_cmd += ' {0}'.format(cfg['bz'])
 			run_cmd += ' {0}'.format(configuration['n'])
-			run_cmd += ' {0}'.format(configuration['funcId'])
+			run_cmd += ' {0}'.format(cfg['funcId'])
 			run_cmd += ' {0}'.format(configuration['gpuId'])
 
 			#print "Running command line: ", run_cmd

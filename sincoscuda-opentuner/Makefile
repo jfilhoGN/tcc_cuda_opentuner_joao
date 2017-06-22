@@ -1,9 +1,9 @@
 # CUDA Paths.
-CUDA_HOME=/home/goncalv/cuda
+CUDA_HOME=/usr/local/cuda
 
 # Compilador.
-CC=gcc-4.8
-CXX=g++-4.8
+CC=gcc-4.9
+CXX=g++-4.9
 NVCC=$(CUDA_HOME)/bin/nvcc
 
 # Flags.

@@ -99,7 +99,7 @@ void calcDimensions(unsigned long long int iterations){
 									funcId = 8;
 
 
-								printf("'gx:%d, gy:%d, gz:%d, bx:%d, by:%d, bz:%d, funcId:%d ', ", gx, gy, gz, bx, by, bz, funcId);
+								printf("'gx:%d, gy:%d, gz:%d, bx:%d, by:%d, bz:%d, funcId:%d', ", gx, gy, gz, bx, by, bz, funcId);
 													
 								countConfig++;								
 							}
