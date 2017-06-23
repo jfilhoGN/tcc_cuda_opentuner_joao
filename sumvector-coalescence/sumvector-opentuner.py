@@ -63,7 +63,7 @@ class SumVectorTuner(MeasurementInterface):
 			# Configuration:  {'kernel': 0, 'gpuId': 0, 'config': 'gx:1024, gy:1, gz:1, bx:1, by:1, bz:1, ', 'funcId': 7}
 			configuration = desired_result.configuration.data
 			print "Configuration: ", configuration
-			cfg = { match.group(1):match.group(2) for match in re.finditer(r"([^:]+):(\S+)\s*,[' ]", configuration['config'])}
+			cfg = { match.group(1):match.group(2) for match in re.finditer(r"([^:]+):(\S+)\s*,[ ']", configuration['config'])}
 			print "CFG: ", cfg
 			confBlock = int(cfg['bx']) * int(cfg['by']) * int(cfg['bz'])
 			confGrid =  int(cfg['gx']) * int(cfg['gy']) * int(cfg['gz'])
@@ -118,11 +118,11 @@ class SumVectorTuner(MeasurementInterface):
 				dimGrid = 1
 			
 			if(dimGrid == 1):
-				configuration['funcId'] =  dimGrid + dimBlock - 2
+				cfg['funcId'] =  dimGrid + dimBlock - 2
 			if(dimGrid == 2):
-				configuration['funcId'] =  dimGrid + dimBlock + 0
+				cfg['funcId'] =  dimGrid + dimBlock + 0
 			if(dimGrid == 3):
-				configuration['funcId'] =  dimGrid + dimBlock + 2
+				cfg['funcId'] =  dimGrid + dimBlock + 2
 			
 			run_cmd += ' {0}'.format(configuration['kernel'])
 			run_cmd += ' {0}'.format(cfg['gx'])
@@ -135,7 +135,7 @@ class SumVectorTuner(MeasurementInterface):
 			run_cmd += ' {0}'.format(cfg['funcId'])
 			run_cmd += ' {0}'.format(configuration['gpuId'])
 
-			#print "Running command line: ", run_cmd
+			print "Running command line: ", run_cmd
 			#print "CFG->funcId: " +  str(cfg['funcId'])
 
 			run_result = self.call_program(run_cmd)

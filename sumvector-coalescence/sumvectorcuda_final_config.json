@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-{"kernel": 0, "gpuId": 0, "n": 131072, "config": "gx:1, gy:1, gz:1024, bx:1, by:32, bz:4, ", "funcId": 4}
-=======
-{"kernel": 0, "gpuId": 0, "funcId": 3, "config": "gx:1, gy:512, gz:1, bx:1, by:64, bz:4, ", "n": 131072}
->>>>>>> 9f5f27b708a45e5e8ed1e035b8114872c9e3534b
+{"kernel": 0, "config": "gx:64, gy:16, gz:1, bx:8, by:4, bz:4, funcId:5", "gpuId": 0, "n": 131072}
