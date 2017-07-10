@@ -92,7 +92,7 @@ int main(int argc, char **argv){
  	int blockSize, gridSize;
  	//Tamanho do block size será passado pelo opentuner
     // Numero de threads por block
-    blockSize = atoi(argv[1]);
+    blockSize = 1;
 
     // Host entrada vetor
     int *h_a;
