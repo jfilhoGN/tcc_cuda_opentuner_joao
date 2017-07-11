@@ -3,12 +3,6 @@
 /* Tipo para o ponteiro de função. */
 typedef int (*op_func) (void);
 
-/* Tabela de funções para chamada parametrizada. */
-__device__ op_func getGlobalIdFunc[9] = { getGlobalIdx_1D_1D, getGlobalIdx_1D_2D, getGlobalIdx_1D_3D, 
-                      getGlobalIdx_2D_1D, getGlobalIdx_2D_2D, getGlobalIdx_2D_3D,
-                      getGlobalIdx_3D_1D, getGlobalIdx_3D_2D, getGlobalIdx_3D_3D};
-
-
 __device__ int getGlobalIdx_1D_1D_x() {
     // Operações -> multiply: 1 add: 1 (2 FLOPs).
     // printf("getGlobalIdx_1D_1D.\n");
@@ -55,6 +49,7 @@ __device__ int getGlobalIdx_1D_3D() {
             + threadIdx.z * blockDim.y * blockDim.x + threadIdx.y * blockDim.x
             + threadIdx.x;
 }
+
 __device__ int getGlobalIdx_2D_1D() {
     // Operações -> multiply: 2 add: 2 (4 FLOPs).
     // printf("getGlobalIdx_2D_1D.\n");
@@ -62,6 +57,7 @@ __device__ int getGlobalIdx_2D_1D() {
     int threadId = blockId * blockDim.x + threadIdx.x;
     return threadId;
 }
+
 __device__ int getGlobalIdx_2D_2D() {
     // Operações -> multiply: 4 add: 3 (7 FLOPs).
     // printf("getGlobalIdx_2D_2D.\n");
@@ -70,6 +66,7 @@ __device__ int getGlobalIdx_2D_2D() {
             + (threadIdx.y * blockDim.x) + threadIdx.x;
     return threadId;
 }
+
 __device__ int getGlobalIdx_2D_3D() {
     // Operações -> multiply: 7 add: 4 (11 FLOPs).
     // printf("getGlobalIdx_2D_3D.\n");
@@ -79,6 +76,7 @@ __device__ int getGlobalIdx_2D_3D() {
             + threadIdx.x;
     return threadId;
 }
+
 __device__ int getGlobalIdx_3D_1D() {
     // Operações -> multiply: 4 add: 3 (7 FLOPs).
     // printf("getGlobalIdx_3D_1D.\n");
@@ -87,6 +85,7 @@ __device__ int getGlobalIdx_3D_1D() {
     int threadId = blockId * blockDim.x + threadIdx.x;
     return threadId;
 }
+
 __device__ int getGlobalIdx_3D_2D() {
     // Operações -> multiply: 6 add: 4 (10 FLOPs).
     // printf("getGlobalIdx_3D_2D.\n");
@@ -96,6 +95,7 @@ __device__ int getGlobalIdx_3D_2D() {
             + (threadIdx.y * blockDim.x) + threadIdx.x;
     return threadId;
 }
+
 __device__ int getGlobalIdx_3D_3D() {
     // Operações -> multiply: 9 add: 5 (14 FLOPs).
     // printf("getGlobalIdx_3D_3D.\n");
@@ -106,3 +106,8 @@ __device__ int getGlobalIdx_3D_3D() {
             + (threadIdx.y * blockDim.x) + threadIdx.x;
     return threadId;
 }
+
+/* Tabela de funções para chamada parametrizada. */
+__device__ op_func getGlobalIdFunc[9] = { getGlobalIdx_1D_1D, getGlobalIdx_1D_2D, getGlobalIdx_1D_3D, 
+                      getGlobalIdx_2D_1D, getGlobalIdx_2D_2D, getGlobalIdx_2D_3D,
+                      getGlobalIdx_3D_1D, getGlobalIdx_3D_2D, getGlobalIdx_3D_3D};
