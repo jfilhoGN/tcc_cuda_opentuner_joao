@@ -3,6 +3,273 @@
 /* Tipo para o ponteiro de função. */
 typedef int (*op_func) (void);
 
+//---------------------------------------
+// 1D_ (grid)
+//---------------------------------------
+// gx > 1 -> (32,1,1)(1,1,1)
+__device__ int getGlobalIdx_grid_1D_x() {
+    return blockIdx.x;
+}
+
+// gy > 1 -> (1,32,1)(1,1,1)
+__device__ int getGlobalIdx_grid_1D_y() {
+    return blockIdx.y;
+}
+
+// gz > 1 -> (1,1,32)(1,1,1)
+__device__ int getGlobalIdx_grid_1D_z() {
+    return blockIdx.z;
+}
+
+//---------------------------------------
+// _1D (block)
+//---------------------------------------
+// bx > 1 -> (1,1,1)(32,1,1)
+__device__ int getGlobalIdx_block_1D_x() {
+    return threadIdx.x;
+}
+
+// by > 1 -> (1,1,1)(1,32,1)
+__device__ int getGlobalIdx_block_1D_y() {
+    return threadIdx.y;
+}
+
+// bz > 1 -> (1,1,1)(1,1,32)
+__device__ int getGlobalIdx_block_1D_z() {
+    return threadIdx.z;
+}
+
+//---------------------------------------
+// 1D_1D (grid and block)
+//---------------------------------------
+// gx e bx > 1 -> (32,1,1)(32,1,1)
+__device__ int getGlobalIdx_grid_1D_x_block_1D_x() {
+    // TODO.
+    return 0;
+}
+
+// gx e by > 1 -> (32,1,1)(1,32,1)
+__device__ int getGlobalIdx_grid_1D_x_block_1D_y() {
+    // TODO.
+    return 0;
+}
+
+// gx e bz > 1 -> (32,1,1)(1,1,32)
+__device__ int getGlobalIdx_grid_1D_x_block_1D_z() {
+    // TODO.
+    return 0;
+}
+
+// gy e bx > 1 -> (1,32,1)(32,1,1)
+__device__ int getGlobalIdx_grid_1D_y_block_1D_x() {
+    // TODO.
+    return 0;
+}
+
+// gy e by > 1 -> (1,32,1)(1,32,1)
+__device__ int getGlobalIdx_grid_1D_y_block_1D_y() {
+    // TODO.
+    return 0;
+}
+
+// gy e bz > 1 -> (1,32,1)(1,1,32)
+__device__ int getGlobalIdx_grid_1D_y_block_1D_z() {
+    // TODO.
+    return 0;
+}
+
+// gz e bx > 1 -> (1,1,32)(32,1,1)
+__device__ int getGlobalIdx_grid_1D_z_block_1D_x() {
+    // TODO.
+    return 0;
+}
+
+// gz e by > 1 -> (1,1,32)(1,32,1)
+__device__ int getGlobalIdx_grid_1D_z_block_1D_y() {
+    // TODO.
+    return 0;
+}
+
+// gz e bz > 1 -> (1,1,32)(1,1,32)
+__device__ int getGlobalIdx_grid_1D_z_block_1D_z() {
+    // TODO.
+    return 0;
+}
+
+//---------------------------------------
+// 1D_2D
+//---------------------------------------
+// gx e bx,by > 1 -> (32,1,1)(32,32,1)
+__device__ int getGlobalIdx_grid_1D_x_block_2D_xy() {
+    // TODO.
+    return 0;
+}
+
+// gx e bx,bz > 1 -> (32,1,1)(32,1,32)
+__device__ int getGlobalIdx_grid_1D_x_block_2D_yz() {
+    // TODO.
+    return 0;
+}
+
+// gx e by,bz > 1 -> (32,1,1)(1,32,32)
+__device__ int getGlobalIdx_grid_1D_x_block_2D_yz() {
+    // TODO.
+    return 0;
+}
+
+// gy e bx,by > 1 -> (1,32,1)(32,32,1)
+__device__ int getGlobalIdx_grid_1D_y_block_2D_xy() {
+    // TODO.
+    return 0;
+}
+
+// gy e bx,bz > 1 -> (1,32,1)(32,1,32)
+__device__ int getGlobalIdx_grid_1D_y_block_2D_yz() {
+    // TODO.
+    return 0;
+}
+
+// gy e by,bz > 1 -> (1,32,1)(1,32,32)
+__device__ int getGlobalIdx_grid_1D_y_block_2D_yz() {
+    // TODO.
+    return 0;
+}
+
+// gz e bx,by > 1 -> (1,1,32)(32,32,1)
+__device__ int getGlobalIdx_grid_1D_z_block_2D_xy() {
+    // TODO.
+    return 0;
+}
+
+// gz e bx,bz > 1 -> (1,1,32)(32,1,32)
+__device__ int getGlobalIdx_grid_1D_z_block_2D_yz() {
+    // TODO.
+    return 0;
+}
+
+// gz e by,bz > 1 -> (1,1,32)(1,32,32)
+__device__ int getGlobalIdx_grid_1D_z_block_2D_yz() {
+    // TODO.
+    return 0;
+}
+
+//---------------------------------------
+// 1D_3D
+//---------------------------------------
+// gx e bx,by,bz > 1 -> (32,1,1)(16,32,2)
+__device__ int getGlobalIdx_grid_1D_x_block_3D_xyz() {
+    // TODO.
+    return 0;
+}
+
+// gy e bx,by,bz > 1 -> (1,32,1)(16,32,2)
+__device__ int getGlobalIdx_grid_1D_y_block_3D_xyz() {
+    // TODO.
+    return 0;
+}
+
+// gz e bx,by,bz > 1 -> (1,1,32)(16,32,2)
+__device__ int getGlobalIdx_grid_1D_z_block_3D_xyz() {
+    // TODO.
+    return 0;
+}
+
+//---------------------------------------
+// 2D_1D
+//---------------------------------------
+
+
+//---------------------------------------
+// 2D_2D
+//---------------------------------------
+// gx,gy e bx,by > 1 -> (32,32,1)(32,32,1)
+__device__ int getGlobalIdx_grid_2D_xy_block_3D_xyz() {
+    // TODO.
+    return 0;
+}
+
+
+
+//---------------------------------------
+// 2D_3D
+//---------------------------------------
+// gx,gy e bx,by,bz > 1 -> (32,32,1)(32,32,32)
+__device__ int getGlobalIdx_grid_2D_xy_block_3D_xyz() {
+    // TODO.
+    return 0;
+}
+
+// gx,gz e bx,by,bz > 1 -> (32,1,32)(32,32,32)
+__device__ int getGlobalIdx_grid_2D_xz_block_3D_xyz() {
+    // TODO.
+    return 0;
+}
+
+// gy,gz e bx,by,bz > 1 -> (1,32,32)(32,32,32)
+__device__ int getGlobalIdx_grid_2D_yz_block_3D_xyz() {
+    // TODO.
+    return 0;
+}
+
+//---------------------------------------
+// 3D_1D
+//---------------------------------------
+// gx,gy,gz e bx > 1 -> (32,32,32)(32,1,1)
+__device__ int getGlobalIdx_grid_3D_xyz_block_1D_x() {
+    // TODO.
+    return 0;
+}
+
+// gx,gy,gz e by > 1 -> (32,32,32)(1,32,1)
+__device__ int getGlobalIdx_grid_3D_xyz_block_1D_y() {
+    // TODO.
+    return 0;
+}
+
+// gx,gy,gz e bz > 1 -> (32,32,32)(1,1,32)
+__device__ int getGlobalIdx_grid_3D_xyz_block_1D_z() {
+    // TODO.
+    return 0;
+}
+
+//---------------------------------------
+// 3D_2D
+//---------------------------------------
+// gx,gy,gz e bx,by > 1 -> (32,32,32)(16,32,1)
+__device__ int getGlobalIdx_grid_3D_xyz_block_2D_xy() {
+    // TODO.
+    return 0;
+}
+
+// gx,gy,gz e bx,bz > 1 -> (32,32,32)(16,1,32)
+__device__ int getGlobalIdx_grid_3D_xyz_block_2D_xz() {
+    // TODO.
+    return 0;
+}
+
+// gx,gy,gz e by,bz > 1 -> (32,32,32)(1,16,32)
+__device__ int getGlobalIdx_grid_3D_xyz_block_2D_yz() {
+    // TODO.
+    return 0;
+}
+
+//---------------------------------------
+// 3D_3D
+//---------------------------------------
+__device__ int getGlobalIdx_grid_3D_xyz_block_3D_xyz() {
+    // Operações -> multiply: 9 add: 5 (14 FLOPs).
+    // printf("getGlobalIdx_3D_3D.\n");
+    int blockId = blockIdx.x + blockIdx.y * gridDim.x
+            + gridDim.x * gridDim.y * blockIdx.z;
+    int threadId = blockId * (blockDim.x * blockDim.y * blockDim.z)
+            + (threadIdx.z * (blockDim.x * blockDim.y))
+            + (threadIdx.y * blockDim.x) + threadIdx.x;
+    return threadId;
+}
+
+
+// Fontes.
+
 __device__ int getGlobalIdx_1D_1D_x() {
     // Operações -> multiply: 1 add: 1 (2 FLOPs).
     // printf("getGlobalIdx_1D_1D.\n");
