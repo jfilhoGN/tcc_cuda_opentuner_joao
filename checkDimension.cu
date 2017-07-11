@@ -17,7 +17,7 @@ __global__ void checkIndex(int funcId) {
 
 int main(int argc, char **argv) {
 
-  if (argc != 8) {
+  if (argc != 9) {
         printf("Uso: %s <g.x> <g.y> <g.z> <b.x> <b.y> <b.z> <funcId> <gpuId>\n", argv[0]);
         printf("     funcId:\n");
         printf("     0: 1D_1D, 1: 1D_2D, 2: 1D_3D\n");
