@@ -108,6 +108,9 @@ __device__ int getGlobalIdx_3D_3D() {
 }
 
 /* Tabela de funções para chamada parametrizada. */
-__device__ op_func getGlobalIdFunc[9] = { getGlobalIdx_1D_1D, getGlobalIdx_1D_2D, getGlobalIdx_1D_3D, 
+/*__device__ op_func getGlobalIdFunc[9] = { getGlobalIdx_1D_1D, getGlobalIdx_1D_2D, getGlobalIdx_1D_3D, 
                       getGlobalIdx_2D_1D, getGlobalIdx_2D_2D, getGlobalIdx_2D_3D,
                       getGlobalIdx_3D_1D, getGlobalIdx_3D_2D, getGlobalIdx_3D_3D};
+*/
+__device__ op_func getGlobalIdFunc[9] = {getGlobalIdx_3D_3D};
+

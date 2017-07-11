@@ -1,18 +1,26 @@
 #include <cuda_runtime.h>
 #include <stdio.h>
-// #include "dimensions.h"
+#include "dimensions.h"
+
+
+__device__ int getGlobalIdx_3D_3D() {
+    // Operações -> multiply: 9 add: 5 (14 FLOPs).
+    // printf("getGlobalIdx_3D_3D.\n");
+    int blockId = blockIdx.x + blockIdx.y * gridDim.x
+            + gridDim.x * gridDim.y * blockIdx.z;
+    int threadId = blockId * (blockDim.x * blockDim.y * blockDim.z)
+            + (threadIdx.z * (blockDim.x * blockDim.y))
+            + (threadIdx.y * blockDim.x) + threadIdx.x;
+    return threadId;
+}
 
 __global__ void checkIndex(int funcId) {
-  /*printf("threadIdx:(%d, %d, %d) blockIdx:(%d, %d, %d) blockDim:(%d, %d, %d) "
+  printf("threadIdx:(%d, %d, %d) blockIdx:(%d, %d, %d) blockDim:(%d, %d, %d) "
          "gridDim:(%d, %d, %d) -> id: %d\n",
          threadIdx.x, threadIdx.y, threadIdx.z, blockIdx.x, blockIdx.y,
          blockIdx.z, blockDim.x, blockDim.y, blockDim.z, gridDim.x, gridDim.y,
-         gridDim.z, getGlobalIdFunc[funcId]());*/
-    printf("threadIdx:(%d, %d, %d) blockIdx:(%d, %d, %d) blockDim:(%d, %d, %d) "
-         "gridDim:(%d, %d, %d) -> id: %d\n",
-         threadIdx.x, threadIdx.y, threadIdx.z, blockIdx.x, blockIdx.y,
-         blockIdx.z, blockDim.x, blockDim.y, blockDim.z, gridDim.x, gridDim.y,
-         gridDim.z);
+         gridDim.z, getGlobalIdFunc[funcId]());
+    
 }
 
 int main(int argc, char **argv) {
