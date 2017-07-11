@@ -33,8 +33,7 @@ int main(int argc, char **argv) {
   cudaSetDevice(gpuId);
 
   // check grid and block dimension from host side
-  printf("grid.x %d grid.y %d grid.z %d\n", grid.x, grid.y, grid.z);
-  printf("block.x %d block.y %d block.z %d\n", block.x, block.y, block.z);
+  printf("config(gx: %d, gy: %d, gz: %d, bx: %d, by: %d, bz: %d)\n", grid.x, grid.y, grid.z, block.x, block.y, block.z);
   
   // check grid and block dimension from device side
   checkIndex<<<grid, block>>>(funcId);
