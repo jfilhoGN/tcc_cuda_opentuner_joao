@@ -27,23 +27,26 @@ __device__ int getGlobalIdx_1D_1D_z() {
     return blockIdx.z * blockDim.z + threadIdx.z;
 }
 
-__device__ int getGlobalIdx_1D_2D() {
+__device__ int getGlobalIdx_1D_2D_x() {
     // Operações -> multiply: 3 add: 2 (5 FLOPs).
     // printf("getGlobalIdx_1D_2D.\n");
     return blockIdx.x * blockDim.x * blockDim.y + threadIdx.y * blockDim.x
             + threadIdx.x;
 }
 
-__device__ int getGlobalIdx_1D_2D() {
+__device__ int getGlobalIdx_1D_2D_y() {
     // Operações -> multiply: 3 add: 2 (5 FLOPs).
     // printf("getGlobalIdx_1D_2D.\n");
-    return blockIdx.x * blockDim.x * blockDim.y + threadIdx.y * blockDim.x
-            + threadIdx.x;
+    return blockIdx.y * blockDim.y * blockDim.x + threadIdx.x * blockDim.y
+            + threadIdx.y;
 }
 
-
-
-
+__device__ int getGlobalIdx_1D_2D_z() {
+    // Operações -> multiply: 3 add: 2 (5 FLOPs).
+    // printf("getGlobalIdx_1D_2D.\n");
+    return blockIdx.z * blockDim.z * blockDim.x + threadIdx.x * blockDim.z
+            + threadIdx.z;
+}
 
 __device__ int getGlobalIdx_1D_3D() {
     // Operações -> multiply: 6 add: 3 (9 FLOPs).

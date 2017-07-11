@@ -17,9 +17,10 @@
 #include <stdarg.h>
 #include <string.h>
 #include <cuda.h>
-
+#include "../../dimensions.h"
 #include "../common/polybenchUtilFuncts.h"
 #include "../common/polybench.c"
+
 
 #define GPU_DEVICE 0
 

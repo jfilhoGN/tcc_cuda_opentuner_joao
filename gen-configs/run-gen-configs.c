@@ -15,7 +15,7 @@
 #define min(x,y)    ((x) < (y) ? (x) : (y))
 
 void calcDimensions(unsigned long long int iterations){
-	printf("Running for %d iterations.\n", iterations);
+	//printf("Running for %d iterations.\n", iterations);
 	
 	unsigned long long int bz = 1;
 	unsigned long long int by = 1;
@@ -37,7 +37,7 @@ void calcDimensions(unsigned long long int iterations){
 	int dimBlock = 1;
 	unsigned long long int funcId = 0;
 
-	printf("manipulator.add_parameter(EnumParameter(param, [ ");
+	//printf("manipulator.add_parameter(EnumParameter(param, [ ");
 
 	for(bz = 1; bz <= min(iterations,MAX_BLOCK_Z); bz++) {
 		for(by = 1; by <= min((iterations / bz),MAX_BLOCK_Y); by++) {
@@ -99,7 +99,7 @@ void calcDimensions(unsigned long long int iterations){
 									funcId = 8;
 
 
-								printf("'gx:%d, gy:%d, gz:%d, bx:%d, by:%d, bz:%d, funcId:%d', ", gx, gy, gz, bx, by, bz, funcId);
+								printf("'gx:%d, gy:%d, gz:%d, bx:%d, by:%d, bz:%d, funcId:%d' \n", gx, gy, gz, bx, by, bz, funcId);
 													
 								countConfig++;								
 							}
@@ -110,9 +110,9 @@ void calcDimensions(unsigned long long int iterations){
 		}
 	}
 
-	printf(" ]))");
+	//printf(" ]))");
 	
-	printf("\nConfigurations: %d\n", countConfig);
+	//printf("\nConfigurations: %d\n", countConfig);
 }
 
 int main(int argc, char **argv) {
@@ -125,18 +125,18 @@ int main(int argc, char **argv) {
 	else{
 		printf("# argumentos (argc): %d\n", argc);
 		for (i = 0; i < argc; ++i) {
-			printf("# argv[%d]: %s\n", i, argv[i]);
+			//printf("# argv[%d]: %s\n", i, argv[i]);
 		}
 		iterations = atoi(argv[1]);
-		printf("# Executando: %s %d\n", argv[0], iterations);
+		//printf("# Executando: %s %d\n", argv[0], iterations);
 	}
 	
 	/* Recuperar as informações da GPU. */
-	printf("%s Starting...\n", argv[0]);
+	//printf("%s Starting...\n", argv[0]);
 	
 	calcDimensions(iterations);
 	
-	printf("Done.\n");
+	//printf("Done.\n");
 	
 	return 0;
 }

@@ -14,7 +14,7 @@
 #include <unistd.h>
 #include <sys/time.h>
 #include <cuda.h>
-
+#include "../../dimensions.h"
 #include "../common/polybenchUtilFuncts.h"
 #include "../common/polybench.c"
 
