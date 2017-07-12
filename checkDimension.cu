@@ -39,7 +39,7 @@ int main(int argc, char **argv) {
   // check grid and block dimension from host side
   printf("config(gx: %d, gy: %d, gz: %d, bx: %d, by: %d, bz: %d)\n", grid.x, grid.y, grid.z, block.x, block.y, block.z);
   
-  printf("gridDim:( x, y, z) blockDim:( x, y, z) blockIdx:( x, y, z) threadIdx:( x, y, z)\n");
+  printf("gridDim:( x,  y,  z) blockDim:( x,  y,  z) blockIdx:( x,  y,  z) threadIdx:( x,  y,  z)\n");
   // check grid and block dimension from device side
   checkIndex<<<grid, block>>>(funcId);
   
