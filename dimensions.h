@@ -45,19 +45,19 @@ __device__ int getGlobalIdx_block_1D_z() {
 // gx,gy > 1 -> (32,32,1)(1,1,1)
 __device__ int getGlobalIdx_grid_2D_xy() {
     // TODO.
-    return 0;
+    return blockIdx.x + blockIdx.y * gridDim.x;
 }
 
 // gx,gz > 1 -> (32,1,32)(1,1,1)
 __device__ int getGlobalIdx_grid_2D_xz() {
     // TODO.
-    return 0;
+    return blockIdx.x + blockIdx.z * gridDim.x;
 }
 
 // gy,gz > 1 -> (1,32,32)(1,1,1)
 __device__ int getGlobalIdx_grid_2D_yz() {
     // TODO.
-    return 0;
+    return blockIdx.y + blockIdx.z * gridDim.y;
 }
 
 //---------------------------------------
