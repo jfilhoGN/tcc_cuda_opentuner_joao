@@ -40,6 +40,66 @@ __device__ int getGlobalIdx_block_1D_z() {
 }
 
 //---------------------------------------
+// 2D_ (grid)
+//---------------------------------------
+// gx,gy > 1 -> (32,32,1)(1,1,1)
+__device__ int getGlobalIdx_grid_2D_xy() {
+    // TODO.
+    return 0;
+}
+
+// gx,gz > 1 -> (32,1,32)(1,1,1)
+__device__ int getGlobalIdx_grid_2D_xz() {
+    // TODO.
+    return 0;
+}
+
+// gy,gz > 1 -> (1,32,32)(1,1,1)
+__device__ int getGlobalIdx_grid_2D_yz() {
+    // TODO.
+    return 0;
+}
+
+//---------------------------------------
+// _2D (block)
+//---------------------------------------
+// bx,by > 1 -> (1,1,1)(32,32,1)
+__device__ int getGlobalIdx_block_2D_xy() {
+    // TODO.
+    return 0;
+}
+
+// bx,bz > 1 -> (1,1,1)(32,1,32)
+__device__ int getGlobalIdx_block_2D_xz() {
+    // TODO.
+    return 0;
+}
+
+// by,bz > 1 -> (1,1,1)(1,32,32)
+__device__ int getGlobalIdx_block_2D_yz() {
+    // TODO.
+    return 0;
+}
+
+//---------------------------------------
+// 3D_ (grid)
+//---------------------------------------
+// gx,gy,gz > 1 -> (32,32,32)(1,1,1)
+__device__ int getGlobalIdx_grid_3D_xyz() {
+    // TODO.
+    return 0;
+}
+
+//---------------------------------------
+// _3D (block)
+//---------------------------------------
+// bx,by,bz > 1 -> (1,1,1)(32,32,32)
+__device__ int getGlobalIdx_block_3D_xyz() {
+    // TODO.
+    return 0;
+}
+
+//---------------------------------------
 // 1D_1D (grid and block)
 //---------------------------------------
 // gx e bx > 1 -> (32,1,1)(32,1,1)
