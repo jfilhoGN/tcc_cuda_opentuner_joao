@@ -92,56 +92,56 @@ __device__ int getGlobalIdx_grid_1D_z_block_1D_z() {
 //---------------------------------------
 // gx e bx,by > 1 -> (32,1,1)(32,32,1)
 __device__ int getGlobalIdx_grid_1D_x_block_2D_xy() {
-    // TODO NÃO VEM OS ID.
-    return 0;
+    // TODO.
+    return blockIdx.x * blockDim.x * blockDim.y + threadIdx.x + threadIdx.y;
 }
 
 // gx e bx,bz > 1 -> (32,1,1)(32,1,32)
 __device__ int getGlobalIdx_grid_1D_x_block_2D_xz() {
-    // TODO NÃO VEM OS ID.
-    return 0;
+    // TODO.
+    return blockDim.x * blockDim.z * blockIdx.x + threadIdx.x + threadIdx.z;
 }
 
 // gx e by,bz > 1 -> (32,1,1)(1,32,32)
 __device__ int getGlobalIdx_grid_1D_x_block_2D_yz() {
-    // TODO NÃO VEM OS ID.
-    return 0;
+    // TODO.
+    return blockDim.y * blockDim.z * blockIdx.x + threadIdx.y + threadIdx.z;
 }
 
 // gy e bx,by > 1 -> (1,32,1)(32,32,1)
 __device__ int getGlobalIdx_grid_1D_y_block_2D_xy() {
-    // TODO NÃO VEM OS ID.
-    return 0;
+    // TODO.
+    return blockDim.x * blockDim.y * blockIdx.y + threadIdx.x + threadIdx.y;
 }
 
 // gy e bx,bz > 1 -> (1,32,1)(32,1,32)
 __device__ int getGlobalIdx_grid_1D_y_block_2D_yz() {
-    // TODO NÃO VEM OS ID.
-    return 0;
+    // TODO.
+    return blockDim.x * blockDim.z * blockIdx.y + threadIdx.x + threadIdx.z;
 }
 
 // gy e by,bz > 1 -> (1,32,1)(1,32,32)
 __device__ int getGlobalIdx_grid_1D_y_block_2D_yzz() {
-    // TODO NÃO VEM OS ID.
-    return 0;
+    // TODO.
+    return blockDim.y * blockDim.z * blockIdx.y + threadIdx.y + threadIdx.z;
 }
 
 // gz e bx,by > 1 -> (1,1,32)(32,32,1)
 __device__ int getGlobalIdx_grid_1D_z_block_2D_xy() {
-    // TODO NÃO VEM OS ID.
-    return 0;
+    // TODO.
+    return blockDim.x * blockDim.y * blockIdx.z + threadIdx.x + threadIdx.y;
 }
 
 // gz e bx,bz > 1 -> (1,1,32)(32,1,32)
 __device__ int getGlobalIdx_grid_1D_z_block_2D_yz() {
-    // TODO NÃO VEM OS ID.
-    return 0;
+    // TODO .
+    return blockDim.x * blockDim.z * blockIdx.z + threadIdx.x + threadIdx.z;
 }
 
 // gz e by,bz > 1 -> (1,1,32)(1,32,32)
 __device__ int getGlobalIdx_grid_1D_z_block_2D_yyz() {
-    // TODO NÃO VEM OS ID.
-    return 0;
+    // TODO.
+    return blockDim.y * blockDim.z * blockIdx.z + threadIdx.y + threadIdx.z;
 }
 
 //---------------------------------------
@@ -149,20 +149,26 @@ __device__ int getGlobalIdx_grid_1D_z_block_2D_yyz() {
 //---------------------------------------
 // gx e bx,by,bz > 1 -> (32,1,1)(16,32,2)
 __device__ int getGlobalIdx_grid_1D_x_block_3D_xyz() {
-    // TODO NÃO VEM OS ID.
-    return 0;
+    // TODO
+    return blockIdx.x * blockDim.x * blockDim.y * blockDim.z
+            + threadIdx.z * blockDim.y * blockDim.x + threadIdx.y * blockDim.x
+            + threadIdx.x;
 }
 
 // gy e bx,by,bz > 1 -> (1,32,1)(16,32,2)
 __device__ int getGlobalIdx_grid_1D_y_block_3D_xyz() {
-    // TODO NÃO VEM OS ID.
-    return 0;
+    // TODO.
+    return blockIdx.y * blockDim.x * blockDim.y * blockDim.z
+            + threadIdx.z * blockDim.y * blockDim.x + threadIdx.y * blockDim.x
+            + threadIdx.x;
 }
 
 // gz e bx,by,bz > 1 -> (1,1,32)(16,32,2)
 __device__ int getGlobalIdx_grid_1D_z_block_3D_xyz() {
-    // TODO NÃO VEM OS ID.
-    return 0;
+    // TODO.
+    return blockIdx.z * blockDim.x * blockDim.y * blockDim.z
+            + threadIdx.z * blockDim.y * blockDim.x + threadIdx.y * blockDim.x
+            + threadIdx.x;
 }
 
 //---------------------------------------
@@ -171,13 +177,17 @@ __device__ int getGlobalIdx_grid_1D_z_block_3D_xyz() {
 // gx,gy e bx > 1 -> (32,32,1)(32,1,1)
 __device__ int getGlobalIdx_grid_2D_xy_block_1D_x() {
     // TODO.
-    return 0;
+    int blockId = blockIdx.y * gridDim.x + blockIdx.x;
+    int threadId = blockId * blockDim.x + threadIdx.x;
+    return threadId;
 }
 
 // gx,gy e by > 1 -> (32,32,1)(1,32,1)
 __device__ int getGlobalIdx_grid_2D_xy_block_1D_y() {
     // TODO.
-    return 0;
+    int blockId = blockIdx.y * gridDim.y + blockIdx.x;
+    int threadId = blockId * blockDim.y + threadIdx.y;
+    return threadId;
 }
 
 // gx,gy e bz > 1 -> (32,32,1)(1,1,32)
