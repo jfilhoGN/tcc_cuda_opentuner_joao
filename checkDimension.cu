@@ -4,11 +4,15 @@
 
 
 __global__ void checkIndex(int funcId) {
-  printf("threadIdx:(%2d, %2d, %2d) blockIdx:(%2d, %2d, %2d) blockDim:(%2d, %2d, %2d) "
+  /*printf("threadIdx:(%2d, %2d, %2d) blockIdx:(%2d, %2d, %2d) blockDim:(%2d, %2d, %2d) "
          "gridDim:(%2d, %2d, %2d) -> id: %2d\n",
          threadIdx.x, threadIdx.y, threadIdx.z, blockIdx.x, blockIdx.y,
          blockIdx.z, blockDim.x, blockDim.y, blockDim.z, gridDim.x, gridDim.y,
-         gridDim.z, getGlobalIdFunc[funcId]());
+         gridDim.z, getGlobalIdFunc[funcId]());*/
+    printf("gridDim:(%2d, %2d, %2d) blockDim:(%2d, %2d, %2d) blockIdx:(%2d, %2d, %2d) "
+         "threadIdx:(%2d, %2d, %2d) -> id: %2d\n", gridDim.x, gridDim.y,
+         gridDim.z, blockDim.x, blockDim.y, blockDim.z, blockIdx.x, blockIdx.y,
+         blockIdx.z, threadIdx.x, threadIdx.y, threadIdx.z, getGlobalIdFunc[funcId]());
     
 }
 
