@@ -18,19 +18,34 @@ __global__ void checkIndex(int funcId) {
 
 int main(int argc, char **argv) {
 
-  if (argc != 9) {
-        printf("Uso: %s <g.x> <g.y> <g.z> <b.x> <b.y> <b.z> <funcId> <gpuId>\n", argv[0]);
-        printf("     funcId:\n");
-        printf("     0: 1D_1D, 1: 1D_2D, 2: 1D_3D\n");
-        printf("     3: 2D_1D, 4: 2D_2D, 5: 2D_3D\n");
-        printf("     6: 3D_1D, 7: 3D_2D, 8: 3D_3D\n");
+  if (argc != 8) {
+        printf("Uso: %s <g.x> <g.y> <g.z> <b.x> <b.y> <b.z> <gpuId>\n", argv[0]);
         return 0;
     }
   /* Definição do arranjo de threads em blocos do grid. */
   dim3 grid(atoi(argv[1]), atoi(argv[2]), atoi(argv[3]));
   dim3 block(atoi(argv[4]), atoi(argv[5]), atoi(argv[6]));
 
-  int funcId = atoi(argv[7]);
+  /*
+     grid(gx,gy,gx) block(bx,by,bz)
+     funcId é escolhida com base nos valores de [gx,gy,gx,bx,by,bz]
+     Cada valor irá contribuir com uma parcela para o cálculo do índice da função:
+     [gx > 1, gy > 1, gx > 1, bx > 1, by > 1, bz > 1]
+     Exemplo: grid(32,1,1) block(32,1,1)
+              [1,0,0,1,0,0] -> [32,16,8,4,2,1] = [32 + 4] = 36
+              A função getGlobalIdFunc(36) será:
+              // 36: 100 100 getGlobalIdx_grid_1D_x_block_1D_x 
+  */
+
+  int funcId = 0;
+
+  funcId += (grid.x > 1) ? 32 : 0;
+  funcId += (grid.y > 1) ? 16 : 0;
+  funcId += (grid.z > 1) ? 8 : 0;
+  funcId += (block.x > 1) ? 4 : 0;
+  funcId += (block.y > 1) ? 2 : 0;
+  funcId += (block.z > 1) ? 1 : 0;
+
   int gpuId =  atoi(argv[8]);
 
   /* Define the gpu id to work */
