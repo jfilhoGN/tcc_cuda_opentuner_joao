@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "debug.h"
 
 /* Tipo para o ponteiro de função. */
 typedef int (*op_func) (void);
@@ -8,16 +9,19 @@ typedef int (*op_func) (void);
 //---------------------------------------
 // gx > 1 -> (32,1,1)(1,1,1)
 __device__ int getGlobalIdx_grid_1D_x() {
+    PRINT_FUNC_NAME;
     return blockIdx.x;
 }
 
 // gy > 1 -> (1,32,1)(1,1,1)
 __device__ int getGlobalIdx_grid_1D_y() {
+    PRINT_FUNC_NAME;
     return blockIdx.y;
 }
 
 // gz > 1 -> (1,1,32)(1,1,1)
 __device__ int getGlobalIdx_grid_1D_z() {
+    PRINT_FUNC_NAME;
     return blockIdx.z;
 }
 
@@ -26,16 +30,19 @@ __device__ int getGlobalIdx_grid_1D_z() {
 //---------------------------------------
 // bx > 1 -> (1,1,1)(32,1,1)
 __device__ int getGlobalIdx_block_1D_x() {
+    PRINT_FUNC_NAME;
     return threadIdx.x;
 }
 
 // by > 1 -> (1,1,1)(1,32,1)
 __device__ int getGlobalIdx_block_1D_y() {
+    PRINT_FUNC_NAME;
     return threadIdx.y;
 }
 
 // bz > 1 -> (1,1,1)(1,1,32)
 __device__ int getGlobalIdx_block_1D_z() {
+    PRINT_FUNC_NAME;
     return threadIdx.z;
 }
 
@@ -44,19 +51,19 @@ __device__ int getGlobalIdx_block_1D_z() {
 //---------------------------------------
 // gx,gy > 1 -> (32,32,1)(1,1,1)
 __device__ int getGlobalIdx_grid_2D_xy() {
-    // TODO.
+    PRINT_FUNC_NAME;
     return blockIdx.x + blockIdx.y * gridDim.x;
 }
 
 // gx,gz > 1 -> (32,1,32)(1,1,1)
 __device__ int getGlobalIdx_grid_2D_xz() {
-    // TODO.
+    PRINT_FUNC_NAME;
     return blockIdx.x + blockIdx.z * gridDim.x;
 }
 
 // gy,gz > 1 -> (1,32,32)(1,1,1)
 __device__ int getGlobalIdx_grid_2D_yz() {
-    // TODO.
+    PRINT_FUNC_NAME;
     return blockIdx.y + blockIdx.z * gridDim.y;
 }
 
@@ -65,19 +72,19 @@ __device__ int getGlobalIdx_grid_2D_yz() {
 //---------------------------------------
 // bx,by > 1 -> (1,1,1)(32,32,1)
 __device__ int getGlobalIdx_block_2D_xy() {
-    // TODO.
+    PRINT_FUNC_NAME;
     return threadIdx.x + threadIdx.y * blockDim.x;
 }
 
 // bx,bz > 1 -> (1,1,1)(32,1,32)
 __device__ int getGlobalIdx_block_2D_xz() {
-    // TODO.
+    PRINT_FUNC_NAME;
     return threadIdx.x + threadIdx.z * blockDim.x;
 }
 
 // by,bz > 1 -> (1,1,1)(1,32,32)
 __device__ int getGlobalIdx_block_2D_yz() {
-    // TODO.
+    PRINT_FUNC_NAME;
     return threadIdx.y + threadIdx.z * blockDim.y;
 }
 
@@ -86,7 +93,7 @@ __device__ int getGlobalIdx_block_2D_yz() {
 //---------------------------------------
 // gx,gy,gz > 1 -> (32,32,32)(1,1,1)
 __device__ int getGlobalIdx_grid_3D_xyz() {
-    // TODO.
+    PRINT_FUNC_NAME;
     return blockIdx.x + blockIdx.y * gridDim.x + blockIdx.z * gridDim.x * gridDim.y;
 }
 
@@ -95,7 +102,7 @@ __device__ int getGlobalIdx_grid_3D_xyz() {
 //---------------------------------------
 // bx,by,bz > 1 -> (1,1,1)(32,32,32)
 __device__ int getGlobalIdx_block_3D_xyz() {
-    // TODO.
+    PRINT_FUNC_NAME;
     return threadIdx.x + threadIdx.y * blockDim.x + threadIdx.z * blockDim.x * blockDim.y;
 }
 
@@ -104,46 +111,55 @@ __device__ int getGlobalIdx_block_3D_xyz() {
 //---------------------------------------
 // gx e bx > 1 -> (32,1,1)(32,1,1)
 __device__ int getGlobalIdx_grid_1D_x_block_1D_x() {
+    PRINT_FUNC_NAME;
     return blockIdx.x * blockDim.x + threadIdx.x;
 }
 
 // gx e by > 1 -> (32,1,1)(1,32,1)
 __device__ int getGlobalIdx_grid_1D_x_block_1D_y() {
+    PRINT_FUNC_NAME;
     return blockIdx.x * blockDim.y + threadIdx.y;
 }
 
 // gx e bz > 1 -> (32,1,1)(1,1,32)
 __device__ int getGlobalIdx_grid_1D_x_block_1D_z() {
+    PRINT_FUNC_NAME;
     return blockIdx.x * blockDim.z + threadIdx.z;
 }
 
 // gy e bx > 1 -> (1,32,1)(32,1,1)
 __device__ int getGlobalIdx_grid_1D_y_block_1D_x() {
+    PRINT_FUNC_NAME;
     return blockIdx.y * blockDim.x + threadIdx.x;
 }
 
 // gy e by > 1 -> (1,32,1)(1,32,1)
 __device__ int getGlobalIdx_grid_1D_y_block_1D_y() {
+    PRINT_FUNC_NAME;
     return blockIdx.y * blockDim.y + threadIdx.y;
 }
 
 // gy e bz > 1 -> (1,32,1)(1,1,32)
 __device__ int getGlobalIdx_grid_1D_y_block_1D_z() {
+    PRINT_FUNC_NAME;
     return blockIdx.y * blockDim.z + threadIdx.z;
 }
 
 // gz e bx > 1 -> (1,1,32)(32,1,1)
 __device__ int getGlobalIdx_grid_1D_z_block_1D_x() {
+    PRINT_FUNC_NAME;
     return blockIdx.z * blockDim.x + threadIdx.x;
 }
 
 // gz e by > 1 -> (1,1,32)(1,32,1)
 __device__ int getGlobalIdx_grid_1D_z_block_1D_y() {
+    PRINT_FUNC_NAME;
     return blockIdx.z * blockDim.y + threadIdx.y;
 }
 
 // gz e bz > 1 -> (1,1,32)(1,1,32)
 __device__ int getGlobalIdx_grid_1D_z_block_1D_z() {
+    PRINT_FUNC_NAME;
     return blockIdx.z * blockDim.z + threadIdx.z;
 }
 
@@ -155,7 +171,7 @@ __device__ int getGlobalIdx_grid_1D_z_block_1D_z() {
 //                     z       x  y
 //   id = x + y . Dx + z . Dx . Dy 
 __device__ int getGlobalIdx_grid_1D_x_block_2D_xy() {
-    // TODO.
+    PRINT_FUNC_NAME;
     // return blockIdx.x * blockDim.x * blockDim.y + threadIdx.x + threadIdx.y;
     return threadIdx.x + threadIdx.y * blockDim.x + blockIdx.x * blockDim.x * blockDim.y;
 }
@@ -165,7 +181,7 @@ __device__ int getGlobalIdx_grid_1D_x_block_2D_xy() {
 //                     z       x    y
 //   id = x + y . Dx + z . Dx . Dy 
 __device__ int getGlobalIdx_grid_1D_x_block_2D_xz() {
-    // TODO.
+    PRINT_FUNC_NAME;
     // return blockDim.x * blockDim.z * blockIdx.x + threadIdx.x + threadIdx.z;
     return threadIdx.x + threadIdx.z * blockDim.x + blockIdx.x * blockDim.x * blockDim.z;
 }
@@ -175,35 +191,35 @@ __device__ int getGlobalIdx_grid_1D_x_block_2D_xz() {
 //                     z         x  y
 //   id = x + y . Dx + z . Dx . Dy
 __device__ int getGlobalIdx_grid_1D_x_block_2D_yz() {
-    // TODO.
+    PRINT_FUNC_NAME;
     // return blockDim.y * blockDim.z * blockIdx.x + threadIdx.y + threadIdx.z;
     return threadIdx.y + threadIdx.z * blockDim.y + blockIdx.x * blockDim.y * blockDim.z;
 }
 
 // gy e bx,by > 1 -> (1,32,1)(32,32,1)
 __device__ int getGlobalIdx_grid_1D_y_block_2D_xy() {
-    // TODO.
+    PRINT_FUNC_NAME;
     // return blockDim.x * blockDim.y * blockIdx.y + threadIdx.x + threadIdx.y;
     return threadIdx.x + threadIdx.y * blockDim.x + blockIdx.y * blockDim.x * blockDim.y;
 }
 
 // gy e bx,bz > 1 -> (1,32,1)(32,1,32)
 __device__ int getGlobalIdx_grid_1D_y_block_2D_xz() {
-    // TODO.
+    PRINT_FUNC_NAME;
     // return blockDim.x * blockDim.z * blockIdx.y + threadIdx.x + threadIdx.z;
     return threadIdx.x + threadIdx.z * blockDim.x + blockIdx.y * blockDim.x * blockDim.z;
 }
 
 // gy e by,bz > 1 -> (1,32,1)(1,32,32)
 __device__ int getGlobalIdx_grid_1D_y_block_2D_yz() {
-    // TODO.
+    PRINT_FUNC_NAME;
     //return blockDim.y * blockDim.z * blockIdx.y + threadIdx.y + threadIdx.z;
     return threadIdx.y + threadIdx.z * blockDim.y + blockIdx.y * blockDim.y * blockDim.z;
 }
 
 // gz e bx,by > 1 -> (1,1,32)(32,32,1)
 __device__ int getGlobalIdx_grid_1D_z_block_2D_xy() {
-    // TODO.
+    PRINT_FUNC_NAME;
     // return blockDim.x * blockDim.y * blockIdx.z + threadIdx.x + threadIdx.y;
     return threadIdx.x + threadIdx.y * blockDim.x + blockIdx.z * blockDim.x * blockDim.y;
 }
@@ -217,7 +233,7 @@ __device__ int getGlobalIdx_grid_1D_z_block_2D_xz() {
 
 // gz e by,bz > 1 -> (1,1,32)(1,32,32)
 __device__ int getGlobalIdx_grid_1D_z_block_2D_yz() {
-    // TODO.
+    PRINT_FUNC_NAME;
     // return blockDim.y * blockDim.z * blockIdx.z + threadIdx.y + threadIdx.z;
     return threadIdx.y + threadIdx.z * blockDim.y + blockIdx.z * blockDim.y * blockDim.z;
 }
@@ -240,7 +256,7 @@ __device__ int getGlobalIdx_grid_1D_x_block_3D_xyz() {
 //                         Dw    Dx Dy Dz
 //  id = x + y . Dx + z . Dx . Dy + w . Dx . Dy . Dz
 __device__ int getGlobalIdx_grid_1D_y_block_3D_xyz() {
-    // TODO.
+    PRINT_FUNC_NAME;
     return threadIdx.x 
            + threadIdx.y * blockDim.x 
            + threadIdx.z * blockDim.x * blockDim.y 
@@ -251,7 +267,7 @@ __device__ int getGlobalIdx_grid_1D_y_block_3D_xyz() {
 //                           Dw  Dx Dy Dz
 //  id = x + y . Dx + z . Dx . Dy + w . Dx . Dy . Dz
 __device__ int getGlobalIdx_grid_1D_z_block_3D_xyz() {
-    // TODO.
+    PRINT_FUNC_NAME;
     return threadIdx.x 
            + threadIdx.y * blockDim.x 
            + threadIdx.z * blockDim.x * blockDim.y 
@@ -265,7 +281,7 @@ __device__ int getGlobalIdx_grid_1D_z_block_3D_xyz() {
 //                    Dy Dz    Dx
 //  id = x + y . Dx + z . Dx . Dy
 __device__ int getGlobalIdx_grid_2D_xy_block_1D_x() {
-    // TODO.
+    PRINT_FUNC_NAME;
     // int blockId = blockIdx.x + blockIdx.y * gridDim.x;
     // int threadId = blockId * blockDim.x + threadIdx.x;
     // return threadId;
@@ -280,7 +296,7 @@ __device__ int getGlobalIdx_grid_2D_xy_block_1D_x() {
 //                    Dy Dz      Dx
 //  id = x + y . Dx + z . Dx . Dy
 __device__ int getGlobalIdx_grid_2D_xy_block_1D_y() {
-    // TODO.
+    PRINT_FUNC_NAME;
     // int blockId = blockIdx.y * gridDim.y + blockIdx.x;
     // int threadId = blockId * blockDim.y + threadIdx.y;
     // return threadId;
@@ -294,7 +310,7 @@ __device__ int getGlobalIdx_grid_2D_xy_block_1D_y() {
 //                    Dy Dz        Dx
 //  id = x + y . Dx + z . Dx . Dy
 __device__ int getGlobalIdx_grid_2D_xy_block_1D_z() {
-    // TODO.
+    PRINT_FUNC_NAME;
     return threadIdx.z
            + blockIdx.x * blockDim.z
            + blockIdx.y * gridDim.x * blockDim.z;
@@ -304,7 +320,7 @@ __device__ int getGlobalIdx_grid_2D_xy_block_1D_z() {
 //                    Dy   Dz  Dx
 //  id = x + y . Dx + z . Dx . Dy
 __device__ int getGlobalIdx_grid_2D_xz_block_1D_x() {
-    // TODO.
+    PRINT_FUNC_NAME;
     return threadIdx.x
            + blockIdx.x * blockDim.x
            + blockIdx.z * gridDim.x * blockDim.x;
@@ -314,7 +330,7 @@ __device__ int getGlobalIdx_grid_2D_xz_block_1D_x() {
 //                    Dy   Dz    Dx
 //  id = x + y . Dx + z . Dx . Dy
 __device__ int getGlobalIdx_grid_2D_xz_block_1D_y() {
-    // TODO.
+    PRINT_FUNC_NAME;
     return threadIdx.y
            + blockIdx.x * blockDim.y
            + blockIdx.z * gridDim.x * blockDim.y;
@@ -324,7 +340,7 @@ __device__ int getGlobalIdx_grid_2D_xz_block_1D_y() {
 //                    Dy   Dz      Dx
 //  id = x + y . Dx + z . Dx . Dy
 __device__ int getGlobalIdx_grid_2D_xz_block_1D_z() {
-    // TODO.
+    PRINT_FUNC_NAME;
     return threadIdx.z
            + blockIdx.x * blockDim.z
            + blockIdx.z * gridDim.x * blockDim.z;
@@ -334,7 +350,7 @@ __device__ int getGlobalIdx_grid_2D_xz_block_1D_z() {
 //                      Dy Dz  Dx
 //  id = x + y . Dx + z . Dx . Dy
 __device__ int getGlobalIdx_grid_2D_yz_block_1D_x() {
-    // TODO.
+    PRINT_FUNC_NAME;
     return threadIdx.x
            + blockIdx.y * blockDim.x
            + blockIdx.z * gridDim.y * blockDim.x;
@@ -344,7 +360,7 @@ __device__ int getGlobalIdx_grid_2D_yz_block_1D_x() {
 //                      Dy Dz    Dx
 //  id = x + y . Dx + z . Dx . Dy
 __device__ int getGlobalIdx_grid_2D_yz_block_1D_y() {
-    // TODO.
+    PRINT_FUNC_NAME;
     return threadIdx.y
            + blockIdx.y * blockDim.y
            + blockIdx.z * gridDim.y * blockDim.y;
@@ -354,7 +370,7 @@ __device__ int getGlobalIdx_grid_2D_yz_block_1D_y() {
 //                      Dy Dz      Dx
 //  id = x + y . Dx + z . Dx . Dy
 __device__ int getGlobalIdx_grid_2D_yz_block_1D_z() {
-    // TODO.
+    PRINT_FUNC_NAME;
     return threadIdx.z
            + blockIdx.y * blockDim.z
            + blockIdx.z * gridDim.y * blockDim.z;
@@ -367,7 +383,7 @@ __device__ int getGlobalIdx_grid_2D_yz_block_1D_z() {
 //                       Dz Dw    Dx Dy
 //  id = x + y . Dx + z . Dx . Dy + w . Dx . Dy . Dz
 __device__ int getGlobalIdx_grid_2D_xy_block_2D_xy() {
-    // TODO.
+    PRINT_FUNC_NAME;
     // 9 operações.
     /*return threadIdx.x 
            + threadIdx.y * blockDim.x
@@ -386,7 +402,7 @@ __device__ int getGlobalIdx_grid_2D_xy_block_2D_xy() {
 //                       Dz Dw    Dx   Dy
 //  id = x + y . Dx + z . Dx . Dy + w . Dx . Dy . Dz
 __device__ int getGlobalIdx_grid_2D_xy_block_2D_xz() {
-    // TODO.
+    PRINT_FUNC_NAME;
 
     /*return threadIdx.x 
            + threadIdx.z * blockDim.x
@@ -403,7 +419,7 @@ __device__ int getGlobalIdx_grid_2D_xy_block_2D_xz() {
 //                       Dz Dw      Dx Dy
 //  id = x + y . Dx + z . Dx . Dy + w . Dx . Dy . Dz
 __device__ int getGlobalIdx_grid_2D_xy_block_2D_yz() {
-    // TODO.
+    PRINT_FUNC_NAME;
     /*return threadIdx.y 
            + threadIdx.z * blockDim.y
            + blockIdx.x + blockDim.y * blockDim.z
@@ -419,7 +435,7 @@ __device__ int getGlobalIdx_grid_2D_xy_block_2D_yz() {
 //                       Dz   Dw  Dx Dy
 //  id = x + y . Dx + z . Dx . Dy + w . Dx . Dy . Dz
 __device__ int getGlobalIdx_grid_2D_xz_block_2D_xy() {
-    // TODO.
+    PRINT_FUNC_NAME;
     /*return threadIdx.x 
            + threadIdx.y * blockDim.x
            + blockIdx.x + blockDim.x * blockDim.y
@@ -436,7 +452,7 @@ __device__ int getGlobalIdx_grid_2D_xz_block_2D_xy() {
 //                       Dz   Dw  Dx   Dy
 //  id = x + y . Dx + z . Dx . Dy + w . Dx . Dy . Dz
 __device__ int getGlobalIdx_grid_2D_xz_block_2D_xz() {
-    // TODO.
+    PRINT_FUNC_NAME;
     /*return threadIdx.x 
            + threadIdx.z * blockDim.x
            + blockIdx.x + blockDim.x * blockDim.z
@@ -453,7 +469,7 @@ __device__ int getGlobalIdx_grid_2D_xz_block_2D_xz() {
 //                       Dz   Dw    Dx Dy
 //  id = x + y . Dx + z . Dx . Dy + w . Dx . Dy . Dz
 __device__ int getGlobalIdx_grid_2D_xz_block_2D_yz() {
-    // TODO.
+    PRINT_FUNC_NAME;
     /*return threadIdx.y 
            + threadIdx.z * blockDim.y
            + blockIdx.x + blockDim.y * blockDim.z
@@ -470,7 +486,7 @@ __device__ int getGlobalIdx_grid_2D_xz_block_2D_yz() {
 //                         Dz Dw  Dx Dy
 //  id = x + y . Dx + z . Dx . Dy + w . Dx . Dy . Dz
 __device__ int getGlobalIdx_grid_2D_yz_block_2D_xy() {
-    // TODO.
+    PRINT_FUNC_NAME;
     /*return threadIdx.x 
            + threadIdx.y * blockDim.x
            + blockIdx.y + blockDim.x * blockDim.y
@@ -487,7 +503,7 @@ __device__ int getGlobalIdx_grid_2D_yz_block_2D_xy() {
 //                         Dz Dw  Dx   Dy
 //  id = x + y . Dx + z . Dx . Dy + w . Dx . Dy . Dz
 __device__ int getGlobalIdx_grid_2D_yz_block_2D_xz() {
-    // TODO.
+    PRINT_FUNC_NAME;
     /*return threadIdx.x 
            + threadIdx.z * blockDim.x
            + blockIdx.y + blockDim.x * blockDim.z
@@ -504,7 +520,7 @@ __device__ int getGlobalIdx_grid_2D_yz_block_2D_xz() {
 //                         Dz Dw    Dx Dy
 //  id = x + y . Dx + z . Dx . Dy + w . Dx . Dy . Dz
 __device__ int getGlobalIdx_grid_2D_yz_block_2D_yz() {
-    // TODO.
+    PRINT_FUNC_NAME;
     /*return threadIdx.y 
            + threadIdx.z * blockDim.y
            + blockIdx.y + blockDim.y * blockDim.z
@@ -524,7 +540,7 @@ __device__ int getGlobalIdx_grid_2D_yz_block_2D_yz() {
 //                          Dw Dt    Dx Dy Dz
 //  id = x + y . Dx + z . Dx . Dy + w . Dx . Dy . Dz + t . Dx . Dy . Dz . Dw
 __device__ int getGlobalIdx_grid_2D_xy_block_3D_xyz() {
-    // TODO.
+    PRINT_FUNC_NAME;
     // 14 operations.
     /*int threadId = threadIdx.x 
                    + threadIdx.y * blockDim.x
@@ -558,7 +574,7 @@ __device__ int getGlobalIdx_grid_2D_xy_block_3D_xyz() {
 //                          Dw   Dt  Dx Dy Dz
 //  id = x + y . Dx + z . Dx . Dy + w . Dx . Dy . Dz + t . Dx . Dy . Dz . Dw
 __device__ int getGlobalIdx_grid_2D_xz_block_3D_xyz() {
-    // TODO.
+    PRINT_FUNC_NAME;
     int blockId = blockIdx.x + blockIdx.z * gridDim.x;
     
     int threadId = threadIdx.x 
@@ -572,7 +588,7 @@ __device__ int getGlobalIdx_grid_2D_xz_block_3D_xyz() {
 //                            Dw Dt  Dx Dy Dz
 //  id = x + y . Dx + z . Dx . Dy + w . Dx . Dy . Dz + t . Dx . Dy . Dz . Dw
 __device__ int getGlobalIdx_grid_2D_yz_block_3D_xyz() {
-    // TODO.
+    PRINT_FUNC_NAME;
     int blockId = blockIdx.y + blockIdx.z * gridDim.y;
     
     int threadId = threadIdx.x 
@@ -589,7 +605,7 @@ __device__ int getGlobalIdx_grid_2D_yz_block_3D_xyz() {
 //                       Dy Dz Dw  Dx
 //  id = x + y . Dx + z . Dx . Dy + w . Dx . Dy . Dz
 __device__ int getGlobalIdx_grid_3D_xyz_block_1D_x() {
-    // TODO.
+    PRINT_FUNC_NAME;
 
     /*return threadIdx.x
            + blockIdx.x * blockDim.x
@@ -609,7 +625,7 @@ __device__ int getGlobalIdx_grid_3D_xyz_block_1D_x() {
 //                       Dy Dz Dw    Dx
 //  id = x + y . Dx + z . Dx . Dy + w . Dx . Dy . Dz
 __device__ int getGlobalIdx_grid_3D_xyz_block_1D_y() {
-    // TODO.
+    PRINT_FUNC_NAME;
     int blockId = blockIdx.x 
                   + blockIdx.y * gridDim.x
                   + blockIdx.z * gridDim.x * gridDim.y;
@@ -623,7 +639,7 @@ __device__ int getGlobalIdx_grid_3D_xyz_block_1D_y() {
 //                       Dy Dz Dw      Dx
 //  id = x + y . Dx + z . Dx . Dy + w . Dx . Dy . Dz
 __device__ int getGlobalIdx_grid_3D_xyz_block_1D_z() {
-    // TODO.
+    PRINT_FUNC_NAME;
     int blockId = blockIdx.x 
                   + blockIdx.y * gridDim.x
                   + blockIdx.z * gridDim.x * gridDim.y;
@@ -640,7 +656,7 @@ __device__ int getGlobalIdx_grid_3D_xyz_block_1D_z() {
 //                          Dz Dw Dt  Dx Dy
 //  id = x + y . Dx + z . Dx . Dy + w . Dx . Dy . Dz + t . Dx . Dy . Dz . Dw
 __device__ int getGlobalIdx_grid_3D_xyz_block_2D_xy() {
-    // TODO.
+    PRINT_FUNC_NAME;
     int blockId = blockIdx.x 
                   + blockIdx.y * gridDim.x
                   + blockIdx.z * gridDim.x * gridDim.y;
@@ -656,7 +672,7 @@ __device__ int getGlobalIdx_grid_3D_xyz_block_2D_xy() {
 //                          Dz Dw Dt  Dx   Dy
 //  id = x + y . Dx + z . Dx . Dy + w . Dx . Dy . Dz + t . Dx . Dy . Dz . Dw
 __device__ int getGlobalIdx_grid_3D_xyz_block_2D_xz() {
-    // TODO.
+    PRINT_FUNC_NAME;
     int blockId = blockIdx.x 
                   + blockIdx.y * gridDim.x
                   + blockIdx.z * gridDim.x * gridDim.y;
@@ -672,7 +688,7 @@ __device__ int getGlobalIdx_grid_3D_xyz_block_2D_xz() {
 //                          Dz Dw Dt    Dx Dy
 //  id = x + y . Dx + z . Dx . Dy + w . Dx . Dy . Dz + t . Dx . Dy . Dz . Dw
 __device__ int getGlobalIdx_grid_3D_xyz_block_2D_yz() {
-    // TODO.
+    PRINT_FUNC_NAME;
     int blockId = blockIdx.x 
                   + blockIdx.y * gridDim.x
                   + blockIdx.z * gridDim.x * gridDim.y;
