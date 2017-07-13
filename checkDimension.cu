@@ -48,26 +48,6 @@ int main(int argc, char **argv) {
 
   int funcId = 0;
 
-  printf("funcId: %d\n", funcId);
-
-  /*if(gx > 1)
-  	funcId += 32;
-
-  if(gy > 1)
-   funcId += 16;
-
-  if (gz > 1)
-    funcId += 8;
-
-  if (bx > 1)
-  	funcId += 4;
-
-  if (by > 1)
-  	funcId += 2;
-
-  if (bz > 1)
-  	funcId += 1;*/
-
   funcId += (grid.x > 1) ? 32 : 0;
   funcId += (grid.y > 1) ? 16 : 0;
   funcId += (grid.z > 1) ? 8 : 0;
@@ -77,7 +57,7 @@ int main(int argc, char **argv) {
 
   printf("funcId: %d\n", funcId);
 
-  int gpuId =  atoi(argv[8]);
+  int gpuId =  atoi(argv[7]);
 
   /* Define the gpu id to work */
   cudaSetDevice(gpuId);
