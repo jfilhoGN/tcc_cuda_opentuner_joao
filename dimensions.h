@@ -719,7 +719,7 @@ __device__ op_func getGlobalIdFunc[64] = {
     /* 4: 000 100*/ getGlobalIdx_block_1D_x,
     /* 5: 000 101*/ getGlobalIdx_block_2D_xz,
     /* 6: 000 110*/ getGlobalIdx_block_2D_xy,
-    /* 7: 000 111*/ getGlobalIdx_block_3D_xzy,
+    /* 7: 000 111*/ getGlobalIdx_block_3D_xyz,
     /* 8: 001 000*/ getGlobalIdx_grid_1D_z,
     /* 9: 001 001*/ getGlobalIdx_grid_1D_z_block_1D_z,
     /*10: 001 010*/ getGlobalIdx_grid_1D_z_block_1D_y,
