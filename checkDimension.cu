@@ -23,8 +23,17 @@ int main(int argc, char **argv) {
         return 0;
     }
   /* Definição do arranjo de threads em blocos do grid. */
-  dim3 grid(atoi(argv[1]), atoi(argv[2]), atoi(argv[3]));
-  dim3 block(atoi(argv[4]), atoi(argv[5]), atoi(argv[6]));
+  int gx = atoi(argv[1]);
+  int gy = atoi(argv[2]);
+  int gz = atoi(argv[3]);
+  int bx = atoi(argv[4]);
+  int by = atoi(argv[5]);
+  int bz = atoi(argv[6]);
+
+  dim3 grid(gx, gy, gz);
+  dim3 block(bx, by, bz);
+
+  printf("config(gx: %d, gy: %d, gz: %d, bx: %d, by: %d, bz: %d)\n", grid.x, grid.y, grid.z, block.x, block.y, block.z);
 
   /*
      grid(gx,gy,gx) block(bx,by,bz)
@@ -39,12 +48,34 @@ int main(int argc, char **argv) {
 
   int funcId = 0;
 
+  printf("funcId: %d\n", funcId);
+
+  /*if(gx > 1)
+  	funcId += 32;
+
+  if(gy > 1)
+   funcId += 16;
+
+  if (gz > 1)
+    funcId += 8;
+
+  if (bx > 1)
+  	funcId += 4;
+
+  if (by > 1)
+  	funcId += 2;
+
+  if (bz > 1)
+  	funcId += 1;*/
+
   funcId += (grid.x > 1) ? 32 : 0;
   funcId += (grid.y > 1) ? 16 : 0;
   funcId += (grid.z > 1) ? 8 : 0;
   funcId += (block.x > 1) ? 4 : 0;
   funcId += (block.y > 1) ? 2 : 0;
   funcId += (block.z > 1) ? 1 : 0;
+
+  printf("funcId: %d\n", funcId);
 
   int gpuId =  atoi(argv[8]);
 
