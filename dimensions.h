@@ -245,7 +245,7 @@ __device__ int getGlobalIdx_grid_1D_z_block_2D_yz() {
 //                       Dw      Dx Dy Dz
 //  id = x + y . Dx + z . Dx . Dy + w . Dx . Dy . Dz
 __device__ int getGlobalIdx_grid_1D_x_block_3D_xyz() {
-    // TODO
+    PRINT_FUNC_NAME;
     return threadIdx.x 
            + threadIdx.y * blockDim.x 
            + threadIdx.z * blockDim.x * blockDim.y 
@@ -707,6 +707,7 @@ __device__ int getGlobalIdx_grid_3D_xyz_block_2D_yz() {
 //                          Dw Dt Du Dx Dy Dz
 //  id = x + y . Dx + z . Dx . Dy + w . Dx . Dy . Dz + t . Dx . Dy . Dz . Dw + u . Dx . Dy . Dz . Dw . Dt
 __device__ int getGlobalIdx_grid_3D_xyz_block_3D_xyz() {
+    PRINT_FUNC_NAME;
     // Operações -> multiply: 9 add: 5 (14 FLOPs).
     // printf("getGlobalIdx_3D_3D.\n");
     int blockId = blockIdx.x 
