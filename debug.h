@@ -6,7 +6,7 @@
 // #define VERBOSE 1
 
 #if defined(DEBUG) && DEBUG > 0
- #define TRACE(fmt, args...)	do{fprintf(stderr, "[TRACE]: [%10s:%07d] in %s(): " fmt, \
+ #define TRACE(fmt, args...)	do{printf("[TRACE]: [%10s:%07d] in %s(): " fmt, \
     __FILE__, __LINE__, __func__, ##args); } while(0)
 
 #else
@@ -14,7 +14,7 @@
 #endif
 
 #if defined(VERBOSE) && VERBOSE > 0
-#define PRINT_FUNC_NAME fprintf(stderr, "TRACE-FUNC-NAME: [%10s:%07d] is calling [%s()]\n",__FILE__, __LINE__, __FUNCTION__)
+#define PRINT_FUNC_NAME printf("TRACE-FUNC-NAME: [%10s:%07d] is calling [%s()]\n",__FILE__, __LINE__, __FUNCTION__)
 #else
 #define PRINT_FUNC_NAME (void) 0
 #endif
