@@ -48,7 +48,7 @@ void calcDimensions(unsigned long long int iterations){
 							config = confBlock * confGrid ;
 							// Evict kernel divergence, blocks with multiply warp size.
 							if((confBlock <= 1024) && (config == iterations) && (confBlock % 32 == 0)){
-								printf("'gx:%d, gy:%d, gz:%d, bx:%d, by:%d, bz:%d' \n", gx, gy, gz, bx, by, bz);								
+								printf("'gx:%d, gy:%d, gz:%d, bx:%d, by:%d, bz:%d, ' \n", gx, gy, gz, bx, by, bz);								
 								countConfig++;								
 							}
 						}
