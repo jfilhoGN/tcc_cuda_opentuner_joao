@@ -257,7 +257,7 @@ int main(int argc, char **argv) {
   int ny = 0;
   int nz = 0;
   int funcId = 0;
-	int gpuId = 0;
+  int gpuId = 0;
   
   if (argc != 12) {
     printf("Uso: %s <kernel> <g.x> <g.y> <g.z> <b.x> <b.y> <b.z> <nx> <ny> <nz> <gpuId>\n", argv[0]);
@@ -352,7 +352,7 @@ int main(int argc, char **argv) {
   dim3 grid(atoi(argv[2]), atoi(argv[3]), atoi(argv[4]));
   dim3 block(atoi(argv[5]), atoi(argv[6]), atoi(argv[7]));
 
-  int funcId = calculateFunctionId(grid, block);
+  funcId = calculateFunctionId(grid, block);
   printf("funcId: %d\n", funcId);
   
   printf("Execute the kernel.\n");
