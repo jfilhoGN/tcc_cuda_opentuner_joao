@@ -45,7 +45,7 @@ BLOCK_GRID_PARAMS = [
 BLOCO_PARAMETROS_CONFIGS = [ 'config' ]
 
 def read_file_configs():
-  file_sincos = open('/home/projetocuda/Documentos/tcc_cuda_opentuner/wscad/gen-configs/saida_sincos-128-128.txt','r')
+  file_sincos = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_sincos-128-128.txt','r')
   list_configs = []
   for linha in file_sincos:
     list_configs.append(linha)
