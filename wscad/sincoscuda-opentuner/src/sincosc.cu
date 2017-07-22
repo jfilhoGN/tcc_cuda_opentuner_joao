@@ -6,6 +6,7 @@
 // For the CUDA runtime routines (prefixed with "cuda_")
 #include <cuda_runtime.h>
 #include <math.h>
+#include "../../../dimensions.h"
 
 #ifndef DATA_TYPE
 #define DATA_TYPE float
@@ -37,7 +38,7 @@ void sincos_function_(DATA_TYPE* x, DATA_TYPE* y, DATA_TYPE* xy, int nx, int ny,
   }
 }
 
-__device__ int getGlobalIdx_1D_1D() {
+/*__device__ int getGlobalIdx_1D_1D() {
 	// Operações -> multiply: 1 add: 1 (2 FLOPs).
 	// printf("getGlobalIdx_1D_1D.\n");
 	return blockIdx.x * blockDim.x + threadIdx.x;
@@ -108,12 +109,12 @@ __device__ int getGlobalIdx_3D_3D() {
 }
 
 /* Tipo para o ponteiro de função. */
-typedef int (*op_func) (void);
+//typedef int (*op_func) (void);
 
-/* Tabela de funções para chamada parametrizada. */
+/* Tabela de funções para chamada parametrizada. 
 __device__ op_func getGlobalIdFunc[9] = { getGlobalIdx_1D_1D, getGlobalIdx_1D_2D, getGlobalIdx_1D_3D, 
 					  getGlobalIdx_2D_1D, getGlobalIdx_2D_2D, getGlobalIdx_2D_3D,
-					  getGlobalIdx_3D_1D, getGlobalIdx_3D_2D, getGlobalIdx_3D_3D};
+					  getGlobalIdx_3D_1D, getGlobalIdx_3D_2D, getGlobalIdx_3D_3D};*/
 // Usar um enum para selecionar a função.
 //typedef enum {ID_1D_1D, ID_1D_2D, ID_1D_3D, ID_2D_1D, ID_2D_2D, ID_2D_3D, ID_3D_1D, ID_3D_2D, ID_3D_3D} func_dimenstions_t;
 // func_dimenstions_t func_dimension = ID_1D_1D;
@@ -423,7 +424,6 @@ int main(int argc, char **argv) {
   free(h_y);
   free(h_xy);
 
-  
   
   printf("Reset no dispositivo.\n");
   CHECK(cudaDeviceReset());
