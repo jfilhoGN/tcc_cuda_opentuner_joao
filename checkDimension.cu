@@ -46,14 +46,7 @@ int main(int argc, char **argv) {
               // 36: 100 100 getGlobalIdx_grid_1D_x_block_1D_x 
   */
 
-  int funcId = 0;
-
-  funcId += (grid.x > 1) ? 32 : 0;
-  funcId += (grid.y > 1) ? 16 : 0;
-  funcId += (grid.z > 1) ? 8 : 0;
-  funcId += (block.x > 1) ? 4 : 0;
-  funcId += (block.y > 1) ? 2 : 0;
-  funcId += (block.z > 1) ? 1 : 0;
+  int funcId = calculateFunctionId(grid, block);
 
   printf("funcId: %d\n", funcId);
 

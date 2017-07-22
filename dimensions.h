@@ -722,6 +722,29 @@ __device__ int getGlobalIdx_grid_3D_xyz_block_3D_xyz() {
     return threadId;
 }
 
+/*
+     grid(gx,gy,gx) block(bx,by,bz)
+     funcId é escolhida com base nos valores de [gx,gy,gx,bx,by,bz]
+     Cada valor irá contribuir com uma parcela para o cálculo do índice da função:
+     [gx > 1, gy > 1, gx > 1, bx > 1, by > 1, bz > 1]
+     Exemplo: grid(32,1,1) block(32,1,1)
+              [1,0,0,1,0,0] -> [32,16,8,4,2,1] = [32 + 4] = 36
+              A função getGlobalIdFunc(36) será:
+              // 36: 100 100 getGlobalIdx_grid_1D_x_block_1D_x 
+*/
+int calculateFunctionId(dim3 grid, dim3 block){
+  int funcId = 0;
+
+  funcId += (grid.x > 1) ? 32 : 0;
+  funcId += (grid.y > 1) ? 16 : 0;
+  funcId += (grid.z > 1) ? 8 : 0;
+  funcId += (block.x > 1) ? 4 : 0;
+  funcId += (block.y > 1) ? 2 : 0;
+  funcId += (block.z > 1) ? 1 : 0;
+
+  return funcId;
+}
+
 
 /* Tabela de funções para chamada parametrizada. */
 /*__device__ op_func getGlobalIdFunc[9] = { getGlobalIdx_1D_1D, getGlobalIdx_1D_2D, getGlobalIdx_1D_3D, 
