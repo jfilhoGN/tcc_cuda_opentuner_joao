@@ -32,7 +32,7 @@ from opentuner import Result
 
 # Configs
 # (name, min, max)
-BLOCK_GRID_PARAMS = [
+BLOCO_PARAMETROS = [
   ('kernel', 0, 3),
   ('nx', 128, 128),
   ('ny', 128, 128),
