@@ -50,7 +50,7 @@ def read_file_configs():
   list_configs = []
   for linha in file_sincos:
     list_configs.append(linha)
-  print list_configs
+  #print list_configs
   return list_configs
 
 class SincosCudaTuner(MeasurementInterface):
