@@ -6,6 +6,7 @@
 #
 import adddeps  # fix sys.path
 import math
+import re
 
 import opentuner
 from opentuner import ConfigurationManipulator
