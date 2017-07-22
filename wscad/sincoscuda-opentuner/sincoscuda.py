@@ -34,9 +34,9 @@ from opentuner import Result
 # (name, min, max)
 BLOCK_GRID_PARAMS = [
   ('kernel', 0, 3),
-  ('nx', 357, 357),
-  ('ny', 357, 357),
-  ('nz', 357, 357),
+  ('nx', 128, 128),
+  ('ny', 128, 128),
+  ('nz', 128, 128),
   ('gpuId', 0, 0)  
 ]
 # Test para 2 1 1 64 1 1 1 64 64 64 0 0 
@@ -194,7 +194,7 @@ class SincosCudaTuner(MeasurementInterface):
 if __name__ == '__main__':
   FAIL_PENALTY = 9999999999
   compiled = False
-  n = 1 * 357 * 357
+  n = 1 * 128 * 128
 
   argparser = opentuner.default_argparser()
   SincosCudaTuner.main(argparser.parse_args())
