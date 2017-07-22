@@ -7,6 +7,8 @@
 #include <cuda_runtime.h>
 #include <math.h>
 
+#include "../../dimensions.h"
+
 #ifndef DATA_TYPE
 #define DATA_TYPE float
 #endif
@@ -37,90 +39,91 @@ void sincos_function_(DATA_TYPE* x, DATA_TYPE* y, DATA_TYPE* xy, int nx, int ny,
   }
 }
 
-__device__ int getGlobalIdx_1D_1D() {
-	// Operações -> multiply: 1 add: 1 (2 FLOPs).
-	// printf("getGlobalIdx_1D_1D.\n");
-	return blockIdx.x * blockDim.x + threadIdx.x;
-}
-__device__ int getGlobalIdx_1D_2D() {
-	// Operações -> multiply: 3 add: 2 (5 FLOPs).
-	// printf("getGlobalIdx_1D_2D.\n");
-	return blockIdx.x * blockDim.x * blockDim.y + threadIdx.y * blockDim.x
-			+ threadIdx.x;
-}
-__device__ int getGlobalIdx_1D_3D() {
-	// Operações -> multiply: 6 add: 3 (9 FLOPs).
-	// printf("getGlobalIdx_1D_3D.\n");
-	return blockIdx.x * blockDim.x * blockDim.y * blockDim.z
-			+ threadIdx.z * blockDim.y * blockDim.x + threadIdx.y * blockDim.x
-			+ threadIdx.x;
-}
-__device__ int getGlobalIdx_2D_1D() {
-	// Operações -> multiply: 2 add: 2 (4 FLOPs).
-	// printf("getGlobalIdx_2D_1D.\n");
-	int blockId = blockIdx.y * gridDim.x + blockIdx.x;
-	int threadId = blockId * blockDim.x + threadIdx.x;
-	return threadId;
-}
-__device__ int getGlobalIdx_2D_2D() {
-	// Operações -> multiply: 4 add: 3 (7 FLOPs).
-	// printf("getGlobalIdx_2D_2D.\n");
-	int blockId = blockIdx.x + blockIdx.y * gridDim.x;
-	int threadId = blockId * (blockDim.x * blockDim.y)
-			+ (threadIdx.y * blockDim.x) + threadIdx.x;
-	return threadId;
-}
-__device__ int getGlobalIdx_2D_3D() {
-	// Operações -> multiply: 7 add: 4 (11 FLOPs).
-	// printf("getGlobalIdx_2D_3D.\n");
-	int blockId = blockIdx.x + blockIdx.y * gridDim.x;
-	int threadId = blockId * (blockDim.x * blockDim.y * blockDim.z)
-	+ (threadIdx.z * (blockDim.x * blockDim.y)) + (threadIdx.y * blockDim.x)
-			+ threadIdx.x;
-	return threadId;
-}
-__device__ int getGlobalIdx_3D_1D() {
-	// Operações -> multiply: 4 add: 3 (7 FLOPs).
-	// printf("getGlobalIdx_3D_1D.\n");
-	int blockId = blockIdx.x + blockIdx.y * gridDim.x
-			+ gridDim.x * gridDim.y * blockIdx.z;
-	int threadId = blockId * blockDim.x + threadIdx.x;
-	return threadId;
-}
-__device__ int getGlobalIdx_3D_2D() {
-	// Operações -> multiply: 6 add: 4 (10 FLOPs).
-	// printf("getGlobalIdx_3D_2D.\n");
-	int blockId = blockIdx.x + blockIdx.y * gridDim.x
-			+ gridDim.x * gridDim.y * blockIdx.z;
-	int threadId = blockId * (blockDim.x * blockDim.y)
-			+ (threadIdx.y * blockDim.x) + threadIdx.x;
-	return threadId;
-}
-__device__ int getGlobalIdx_3D_3D() {
-	// Operações -> multiply: 9 add: 5 (14 FLOPs).
-	// printf("getGlobalIdx_3D_3D.\n");
-	int blockId = blockIdx.x + blockIdx.y * gridDim.x
-			+ gridDim.x * gridDim.y * blockIdx.z;
-	int threadId = blockId * (blockDim.x * blockDim.y * blockDim.z)
-			+ (threadIdx.z * (blockDim.x * blockDim.y))
-			+ (threadIdx.y * blockDim.x) + threadIdx.x;
-	return threadId;
-}
+// __device__ int getGlobalIdx_1D_1D() {
+// 	// Operações -> multiply: 1 add: 1 (2 FLOPs).
+// 	// printf("getGlobalIdx_1D_1D.\n");
+// 	return blockIdx.x * blockDim.x + threadIdx.x;
+// }
+// __device__ int getGlobalIdx_1D_2D() {
+// 	// Operações -> multiply: 3 add: 2 (5 FLOPs).
+// 	// printf("getGlobalIdx_1D_2D.\n");
+// 	return blockIdx.x * blockDim.x * blockDim.y + threadIdx.y * blockDim.x
+// 			+ threadIdx.x;
+// }
+// __device__ int getGlobalIdx_1D_3D() {
+// 	// Operações -> multiply: 6 add: 3 (9 FLOPs).
+// 	// printf("getGlobalIdx_1D_3D.\n");
+// 	return blockIdx.x * blockDim.x * blockDim.y * blockDim.z
+// 			+ threadIdx.z * blockDim.y * blockDim.x + threadIdx.y * blockDim.x
+// 			+ threadIdx.x;
+// }
+// __device__ int getGlobalIdx_2D_1D() {
+// 	// Operações -> multiply: 2 add: 2 (4 FLOPs).
+// 	// printf("getGlobalIdx_2D_1D.\n");
+// 	int blockId = blockIdx.y * gridDim.x + blockIdx.x;
+// 	int threadId = blockId * blockDim.x + threadIdx.x;
+// 	return threadId;
+// }
+// __device__ int getGlobalIdx_2D_2D() {
+// 	// Operações -> multiply: 4 add: 3 (7 FLOPs).
+// 	// printf("getGlobalIdx_2D_2D.\n");
+// 	int blockId = blockIdx.x + blockIdx.y * gridDim.x;
+// 	int threadId = blockId * (blockDim.x * blockDim.y)
+// 			+ (threadIdx.y * blockDim.x) + threadIdx.x;
+// 	return threadId;
+// }
+// __device__ int getGlobalIdx_2D_3D() {
+// 	// Operações -> multiply: 7 add: 4 (11 FLOPs).
+// 	// printf("getGlobalIdx_2D_3D.\n");
+// 	int blockId = blockIdx.x + blockIdx.y * gridDim.x;
+// 	int threadId = blockId * (blockDim.x * blockDim.y * blockDim.z)
+// 	+ (threadIdx.z * (blockDim.x * blockDim.y)) + (threadIdx.y * blockDim.x)
+// 			+ threadIdx.x;
+// 	return threadId;
+// }
+// __device__ int getGlobalIdx_3D_1D() {
+// 	// Operações -> multiply: 4 add: 3 (7 FLOPs).
+// 	// printf("getGlobalIdx_3D_1D.\n");
+// 	int blockId = blockIdx.x + blockIdx.y * gridDim.x
+// 			+ gridDim.x * gridDim.y * blockIdx.z;
+// 	int threadId = blockId * blockDim.x + threadIdx.x;
+// 	return threadId;
+// }
+// __device__ int getGlobalIdx_3D_2D() {
+// 	// Operações -> multiply: 6 add: 4 (10 FLOPs).
+// 	// printf("getGlobalIdx_3D_2D.\n");
+// 	int blockId = blockIdx.x + blockIdx.y * gridDim.x
+// 			+ gridDim.x * gridDim.y * blockIdx.z;
+// 	int threadId = blockId * (blockDim.x * blockDim.y)
+// 			+ (threadIdx.y * blockDim.x) + threadIdx.x;
+// 	return threadId;
+// }
+// __device__ int getGlobalIdx_3D_3D() {
+// 	// Operações -> multiply: 9 add: 5 (14 FLOPs).
+// 	// printf("getGlobalIdx_3D_3D.\n");
+// 	int blockId = blockIdx.x + blockIdx.y * gridDim.x
+// 			+ gridDim.x * gridDim.y * blockIdx.z;
+// 	int threadId = blockId * (blockDim.x * blockDim.y * blockDim.z)
+// 			+ (threadIdx.z * (blockDim.x * blockDim.y))
+// 			+ (threadIdx.y * blockDim.x) + threadIdx.x;
+// 	return threadId;
+// }
 
-/* Tipo para o ponteiro de função. */
-typedef int (*op_func) (void);
+// /* Tipo para o ponteiro de função. */
+// typedef int (*op_func) (void);
 
-/* Tabela de funções para chamada parametrizada. */
-__device__ op_func getGlobalIdFunc[9] = { getGlobalIdx_1D_1D, getGlobalIdx_1D_2D, getGlobalIdx_1D_3D, 
-					  getGlobalIdx_2D_1D, getGlobalIdx_2D_2D, getGlobalIdx_2D_3D,
-					  getGlobalIdx_3D_1D, getGlobalIdx_3D_2D, getGlobalIdx_3D_3D};
-// Usar um enum para selecionar a função.
-//typedef enum {ID_1D_1D, ID_1D_2D, ID_1D_3D, ID_2D_1D, ID_2D_2D, ID_2D_3D, ID_3D_1D, ID_3D_2D, ID_3D_3D} func_dimenstions_t;
-// func_dimenstions_t func_dimension = ID_1D_1D;
+// /* Tabela de funções para chamada parametrizada. */
+// __device__ op_func getGlobalIdFunc[9] = { getGlobalIdx_1D_1D, getGlobalIdx_1D_2D, getGlobalIdx_1D_3D, 
+// 					  getGlobalIdx_2D_1D, getGlobalIdx_2D_2D, getGlobalIdx_2D_3D,
+// 					  getGlobalIdx_3D_1D, getGlobalIdx_3D_2D, getGlobalIdx_3D_3D};
+// // Usar um enum para selecionar a função.
+// //typedef enum {ID_1D_1D, ID_1D_2D, ID_1D_3D, ID_2D_1D, ID_2D_2D, ID_2D_3D, ID_3D_1D, ID_3D_2D, ID_3D_3D} func_dimenstions_t;
+// // func_dimenstions_t func_dimension = ID_1D_1D;
 					  
-/* O índice aqui é calculado pelos laços, uma cópia do kernel executando os três laços.
- * Chamada: sincos_kernel_3<<dim3(1,1,1), dim3(1,1,1)>>>(...);
- */
+// /* O índice aqui é calculado pelos laços, uma cópia do kernel executando os três laços.
+//  * Chamada: sincos_kernel_3<<dim3(1,1,1), dim3(1,1,1)>>>(...);
+// */
+
 __global__ void sincos_kernel_3(DATA_TYPE* x, DATA_TYPE* y, DATA_TYPE* xy, int nx, int ny, int nz) {
   int i, j, k, indice;
   for (i = 0; i < nx; ++i) {
@@ -256,12 +259,15 @@ int main(int argc, char **argv) {
   int funcId = 0;
 	int gpuId = 0;
   
-  if (argc != 13) {
-    printf("Uso: %s <kernel> <g.x> <g.y> <g.z> <b.x> <b.y> <b.z> <nx> <ny> <nz> <funcId> <gpuId>\n", argv[0]);
-    printf("     funcId:\n");
-    printf("     0: 1D_1D, 1: 1D_2D, 2: 1D_3D\n");
-    printf("     3: 2D_1D, 4: 2D_2D, 5: 2D_3D\n");
-    printf("     6: 3D_1D, 7: 3D_2D, 8: 3D_3D\n");
+  if (argc != 12) {
+    printf("Uso: %s <kernel> <g.x> <g.y> <g.z> <b.x> <b.y> <b.z> <nx> <ny> <nz> <gpuId>\n", argv[0]);
+
+    // funcId agora é calculado conforme as dimensões utilizadas.
+    //   printf("Uso: %s <kernel> <g.x> <g.y> <g.z> <b.x> <b.y> <b.z> <nx> <ny> <nz> <funcId> <gpuId>\n", argv[0]);
+    //   printf("     funcId:\n");
+    //   printf("     0: 1D_1D, 1: 1D_2D, 2: 1D_3D\n");
+    //   printf("     3: 2D_1D, 4: 2D_2D, 5: 2D_3D\n");
+    //   printf("     6: 3D_1D, 7: 3D_2D, 8: 3D_3D\n");
     return 0;
   }
   else{
@@ -274,8 +280,10 @@ int main(int argc, char **argv) {
     nx = atoi(argv[8]);
     ny = atoi(argv[9]);
     nz = atoi(argv[10]);
-    funcId = atoi(argv[11]);
-		gpuId = atoi(argv[12]);
+    // funcId = atoi(argv[11]);
+
+		gpuId = atoi(argv[11]);
+
     printf("Executando: %s sincos_kernel_%d grid(%d, %d, %d) block(%d, %d, %d) %d %d %d\n", argv[0], kernel, atoi(argv[2]), atoi(argv[3]), atoi(argv[4]), atoi(argv[5]), atoi(argv[6]), atoi(argv[7]), nx, ny, nz);
   }
   
@@ -343,6 +351,9 @@ int main(int argc, char **argv) {
   /* Definição do arranjo de threads em blocos do grid. */
   dim3 grid(atoi(argv[2]), atoi(argv[3]), atoi(argv[4]));
   dim3 block(atoi(argv[5]), atoi(argv[6]), atoi(argv[7]));
+
+  int funcId = calculateFunctionId(grid, block);
+  printf("funcId: %d\n", funcId);
   
   printf("Execute the kernel.\n");
   cudaEvent_t start_event, stop_event;
@@ -422,8 +433,6 @@ int main(int argc, char **argv) {
   free(h_x);
   free(h_y);
   free(h_xy);
-
-  
   
   printf("Reset no dispositivo.\n");
   CHECK(cudaDeviceReset());

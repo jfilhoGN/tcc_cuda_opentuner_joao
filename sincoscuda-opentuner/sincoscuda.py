@@ -43,7 +43,7 @@ BLOCK_GRID_PARAMS = [
   ('nx', 357, 357),
   ('ny', 357, 357),
   ('nz', 357, 357),
-  ('funcId', 0, 9),
+  ('funcId', 0, 9), # Retirar.
   ('gpuId', 0, 0)  
 ]
 # Test para 2 1 1 64 1 1 1 64 64 64 0 0 
