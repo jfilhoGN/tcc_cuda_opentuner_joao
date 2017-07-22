@@ -50,7 +50,7 @@ def read_file_configs():
   list_configs = []
   for linha in file_sincos:
     list_configs.append(linha)
-  #print list_configs
+  print list_configs
   return list_configs
 
 class SincosCudaTuner(MeasurementInterface):
@@ -85,7 +85,7 @@ class SincosCudaTuner(MeasurementInterface):
       print "Configuration: ", configuration
       cfg = { match.group(1):match.group(2) for match in re.finditer(r"([^:]+):(\S+)\s*,[ ']", configuration['config'])}
       print "CFG: ", cfg
-      confBlock = int(cfg['bx']) * int(cfg['by']) * int(cfg['bz'"\""])
+      confBlock = int(cfg['bx']) * int(cfg['by']) * int(cfg['bz'])
       confGrid =  int(cfg["'gx"]) * int(cfg['gy']) * int(cfg['gz'])
       config = confBlock * confGrid
       print "ConfBlock "+ str(confBlock)
