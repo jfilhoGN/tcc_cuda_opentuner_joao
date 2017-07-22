@@ -36063,3 +36063,1080 @@ substrg:  ['Occupancy', '0.656704', '0.656704', '0.656704']
 achieved_occupancy:  0.656704
 Optimal block size written to sincoscuda_final_config.json: {'kernel': 1, 'nx': 128, 'ny': 128, 'nz': 128, 'gpuId': 0, 'config': "'gx:4, gy:4, gz:1, bx:1, by:16, bz:64, ' \n"}
 Executing manipulator
+sincoscuda.py:107: SyntaxWarning: name 'compiled' is used prior to global declaration
+  global compiled
+[    15s]    INFO opentuner.search.plugin.DisplayPlugin: tests=4, best #23610, cost time=0.0183, found by UniformGreedyMutation
+[    68s]    INFO opentuner.search.plugin.DisplayPlugin: tests=8, best #23621, cost time=0.0113, found by DifferentialEvolutionAlt
+[    68s] WARNING opentuner.search.driver: duplicate configuration request #11 UniformGreedyMutation/UniformGreedyMutation PENDING
+Executing manipulator
+Executing manipulator
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:32, gy:2, gz:2, bx:16, by:1, bz:32, ' \n"}
+CFG:  {"'gx": '32', 'gy': '2', 'gz': '2', 'bx': '16', 'by': '1', 'bz': '32'}
+ConfBlock 512
+ConfGrid 128
+compiled:  false
+Compiling the program...
+ OK.
+
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 32 2 2 16 1 32 256 256 256 0
+substrg:  ['Occupancy', '0.981696', '0.981696', '0.981696']
+achieved_occupancy:  0.981696
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:16, gy:2, gz:4, bx:128, by:4, bz:1, ' \n"}
+CFG:  {"'gx": '16', 'gy': '2', 'gz': '4', 'bx': '128', 'by': '4', 'bz': '1'}
+ConfBlock 512
+ConfGrid 128
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 16 2 4 128 4 1 256 256 256 0
+substrg:  ['Occupancy', '0.981405', '0.981405', '0.981405']
+achieved_occupancy:  0.981405
+Configuration:  {'kernel': 0, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:2, gy:2, gz:16, bx:64, by:4, bz:4, ' \n"}
+CFG:  {"'gx": '2', 'gy': '2', 'gz': '16', 'bx': '64', 'by': '4', 'bz': '4'}
+ConfBlock 1024
+ConfGrid 64
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 0 2 2 16 64 4 4 256 256 256 0
+substrg:  ['Occupancy', '0.888267', '0.888267', '0.888267']
+achieved_occupancy:  0.888267
+Configuration:  {'kernel': 2, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:2, gy:2, gz:32, bx:32, by:16, bz:1, ' \n"}
+CFG:  {"'gx": '2', 'gy': '2', 'gz': '32', 'bx': '32', 'by': '16', 'bz': '1'}
+ConfBlock 512
+ConfGrid 128
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 2 2 2 32 32 16 1 256 256 256 0
+Configuration:  {'kernel': 0, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:1, gy:64, gz:8, bx:1, by:128, bz:1, ' \n"}
+CFG:  {"'gx": '1', 'gy': '64', 'gz': '8', 'bx': '1', 'by': '128', 'bz': '1'}
+ConfBlock 128
+ConfGrid 512
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 0 1 64 8 1 128 1 256 256 256 0
+substrg:  ['Occupancy', '0.859592', '0.859592', '0.859592']
+achieved_occupancy:  0.859592
+Configuration:  {'kernel': 3, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:8, gy:8, gz:8, bx:2, by:32, bz:2, ' \n"}
+CFG:  {"'gx": '8', 'gy': '8', 'gz': '8', 'bx': '2', 'by': '32', 'bz': '2'}
+ConfBlock 128
+ConfGrid 512
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 3 8 8 8 2 32 2 256 256 256 0
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:2, gy:16, gz:4, bx:32, by:8, bz:2, ' \n"}
+CFG:  {"'gx": '2', 'gy': '16', 'gz': '4', 'bx': '32', 'by': '8', 'bz': '2'}
+ConfBlock 512
+ConfGrid 128
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 2 16 4 32 8 2 256 256 256 0
+substrg:  ['Occupancy', '0.988681', '0.988681', '0.988681']
+achieved_occupancy:  0.988681
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:2, gy:128, gz:4, bx:4, by:8, bz:2, ' \n"}
+CFG:  {"'gx": '2', 'gy': '128', 'gz': '4', 'bx': '4', 'by': '8', 'bz': '2'}
+ConfBlock 64
+ConfGrid 1024
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 2 128 4 4 8 2 256 256 256 0
+substrg:  ['Occupancy', '0.493905', '0.493905', '0.493905']
+achieved_occupancy:  0.493905
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:16, gy:32, gz:2, bx:16, by:2, bz:2, ' \n"}
+CFG:  {"'gx": '16', 'gy': '32', 'gz': '2', 'bx': '16', 'by': '2', 'bz': '2'}
+ConfBlock 64
+ConfGrid 1024
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 16 32 2 16 2 2 256 256 256 0
+substrg:  ['Occupancy', '0.494473', '0.494473', '0.494473']
+achieved_occupancy:  0.494473
+Configuration:  {'kernel': 2, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, [   167s]    INFO opentuner.search.plugin.DisplayPlugin: tests=15, best #23625, cost time=0.0033, found by DifferentialEvolutionAlt
+[   218s]    INFO opentuner.search.plugin.DisplayPlugin: tests=19, best #23625, cost time=0.0033, found by DifferentialEvolutionAlt
+'config': "'gx:2, gy:2, gz:128, bx:2, by:64, bz:1, ' \n"}
+CFG:  {"'gx": '2', 'gy': '2', 'gz': '128', 'bx': '2', 'by': '64', 'bz': '1'}
+ConfBlock 128
+ConfGrid 512
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 2 2 2 128 2 64 1 256 256 256 0
+Configuration:  {'kernel': 0, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:2, gy:16, gz:4, bx:32, by:8, bz:2, ' \n"}
+CFG:  {"'gx": '2', 'gy': '16', 'gz': '4', 'bx': '32', 'by': '8', 'bz': '2'}
+ConfBlock 512
+ConfGrid 128
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 0 2 16 4 32 8 2 256 256 256 0
+substrg:  ['Occupancy', '0.872994', '0.872994', '0.872994']
+achieved_occupancy:  0.872994
+Configuration:  {'kernel': 0, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:128, gy:1, gz:16, bx:1, by:2, bz:16, ' \n"}
+CFG:  {"'gx": '128', 'gy': '1', 'gz': '16', 'bx': '1', 'by': '2', 'bz': '16'}
+ConfBlock 32
+ConfGrid 2048
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 0 128 1 16 1 2 16 256 256 256 0
+substrg:  ['Occupancy', '0.228308', '0.228308', '0.228308']
+achieved_occupancy:  0.228308
+Configuration:  {'kernel': 3, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:16, gy:4, gz:4, bx:2, by:128, bz:1, ' \n"}
+CFG:  {"'gx": '16', 'gy': '4', 'gz': '4', 'bx': '2', 'by': '128', 'bz': '1'}
+ConfBlock 256
+ConfGrid 256
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 3 16 4 4 2 128 1 256 256 256 0
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:4, gy:16, gz:1, bx:1024, by:1, bz:1, ' \n"}
+CFG:  {"'gx": '4', 'gy': '16', 'gz': '1', 'bx': '1024', 'by': '1', 'bz': '1'}
+ConfBlock 1024
+ConfGrid 64
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 4 16 1 1024 1 1 256 256 256 0
+substrg:  ['Occupancy', '0.996710', '0.996710', '0.996710']
+achieved_occupancy:  0.99671
+Configuration:  {'kernel': 3, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:2, gy:8, gz:16, bx:4, by:2, bz:32, ' \n"}
+CFG:  {"'gx": '2', 'gy': '8', 'gz': '16', 'bx': '4', 'by': '2', 'bz': '32'}
+ConfBlock 256
+ConfGrid 256
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 3 2 8 16 4 2 32 256 256 256 0
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:128, gy:16, gz:1, bx:16, by:1, bz:2, ' \n"}
+CFG:  {"'gx": '128', 'gy': '16', 'gz': '1', 'bx': '16', 'by': '1', 'bz': '2'}
+ConfBlock 32
+ConfGrid 2048
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 128 16 1 16 1 2 256 256 256 0
+substrg:  ['Occupancy', '0.245813', '0.245813', '0.245813']
+achieved_occupancy:  0.245813
+Configuration:  {'kernel': 3, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:4, gy:512, gz:1, bx:2, by:4, bz:4, ' \n"}
+CFG:  {"'gx": '4', 'gy': '512', 'gz': '1', 'bx': '2', 'by': '4', 'bz': '4'}
+ConfBlock 32
+ConfGrid 2048
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 3 4 512 1 2 4 4 256 256 256 0
+Configuration:  {'kernel': 0, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:64, gy:4, gz:1, bx:16, by:8, bz:2, ' \n"}
+CFG:  {"'gx": '64', 'gy': '4', 'gz': '1', 'bx': '16', 'by': '8', 'bz': '2'}
+ConfBlock 256
+ConfGrid 256
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 0 64 4 1 16 8 2 256 256 256 0
+substrg:  ['Occupancy', '0.870814', '0.870814', '0.870814']
+achieved_occupancy:  0.870814
+Configuration:  {'kernel': 2, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:32, gy:1, gz:4, bx:4, by:32, bz:4, ' \n"}
+CFG:  {"'gx": '32', 'gy': '1', 'gz': '4', 'bx': '4', 'by': '32', 'bz': '4'}
+ConfBlock 512
+ConfGrid 128
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 2 32 1 4 4 32 4 256 256 256 0
+Configuration:  {'kernel': 3[   310s]    INFO opentuner.search.plugin.DisplayPlugin: tests=23, best #23625, cost time=0.0033, found by DifferentialEvolutionAlt
+[   359s]    INFO opentuner.search.plugin.DisplayPlugin: tests=27, best #23625, cost time=0.0033, found by DifferentialEvolutionAlt
+, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:8, gy:64, gz:4, bx:1, by:16, bz:2, ' \n"}
+CFG:  {"'gx": '8', 'gy': '64', 'gz': '4', 'bx': '1', 'by': '16', 'bz': '2'}
+ConfBlock 32
+ConfGrid 2048
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 3 8 64 4 1 16 2 256 256 256 0
+Configuration:  {'kernel': 0, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:32, gy:4, gz:2, bx:4, by:32, bz:2, ' \n"}
+CFG:  {"'gx": '32', 'gy': '4', 'gz': '2', 'bx': '4', 'by': '32', 'bz': '2'}
+ConfBlock 256
+ConfGrid 256
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 0 32 4 2 4 32 2 256 256 256 0
+substrg:  ['Occupancy', '0.868780', '0.868780', '0.868780']
+achieved_occupancy:  0.86878
+Configuration:  {'kernel': 3, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:8, gy:8, gz:2, bx:1, by:64, bz:8, ' \n"}
+CFG:  {"'gx": '8', 'gy': '8', 'gz': '2', 'bx': '1', 'by': '64', 'bz': '8'}
+ConfBlock 512
+ConfGrid 128
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 3 8 8 2 1 64 8 256 256 256 0
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:1, gy:8, gz:128, bx:2, by:4, bz:8, ' \n"}
+CFG:  {"'gx": '1', 'gy': '8', 'gz': '128', 'bx': '2', 'by': '4', 'bz': '8'}
+ConfBlock 64
+ConfGrid 1024
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 1 8 128 2 4 8 256 256 256 0
+substrg:  ['Occupancy', '0.494094', '0.494094', '0.494094']
+achieved_occupancy:  0.494094
+Configuration:  {'kernel': 0, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:4, gy:16, gz:1, bx:1024, by:1, bz:1, ' \n"}
+CFG:  {"'gx": '4', 'gy': '16', 'gz': '1', 'bx': '1024', 'by': '1', 'bz': '1'}
+ConfBlock 1024
+ConfGrid 64
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 0 4 16 1 1024 1 1 256 256 256 0
+substrg:  ['Occupancy', '0.884822', '0.884822', '0.884822']
+achieved_occupancy:  0.884822
+Configuration:  {'kernel': 3, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:8, gy:1, gz:256, bx:4, by:4, bz:2, ' \n"}
+CFG:  {"'gx": '8', 'gy': '1', 'gz': '256', 'bx': '4', 'by': '4', 'bz': '2'}
+ConfBlock 32
+ConfGrid 2048
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 3 8 1 256 4 4 2 256 256 256 0
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:32, gy:4, gz:4, bx:2, by:1, bz:64, ' \n"}
+CFG:  {"'gx": '32', 'gy': '4', 'gz': '4', 'bx': '2', 'by': '1', 'bz': '64'}
+ConfBlock 128
+ConfGrid 512
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 32 4 4 2 1 64 256 256 256 0
+substrg:  ['Occupancy', '0.995792', '0.995792', '0.995792']
+achieved_occupancy:  0.995792
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:1, gy:128, gz:1, bx:16, by:8, bz:4, ' \n"}
+CFG:  {"'gx": '1', 'gy': '128', 'gz': '1', 'bx': '16', 'by': '8', 'bz': '4'}
+ConfBlock 512
+ConfGrid 128
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 1 128 1 16 8 4 256 256 256 0
+substrg:  ['Occupancy', '0.981299', '0.981299', '0.981299']
+achieved_occupancy:  0.981299
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:1, gy:256, gz:2, bx:4, by:8, bz:4, ' \n"}
+CFG:  {"'gx": '1', 'gy': '256', 'gz': '2', 'bx': '4', 'by': '8', 'bz': '4'}
+ConfBlock 128
+ConfGrid 512
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 1 256 2 4 8 4 256 256 256 0
+substrg:  ['Occupancy', '0.995748', '0.995748', '0.995748']
+achieved_occupancy:  0.995748
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:8, gy:1, gz:8, bx:2, by:32, bz:16, ' \n"}
+CFG:  {"'gx": '8', 'gy': '1', 'gz': '8', 'bx': '2', 'by': '32', 'bz': '16'}
+ConfBlock 1024
+ConfGrid 64
+compiled:  true
+Antes do IF
+Running comma[   408s]    INFO opentuner.search.plugin.DisplayPlugin: tests=31, best #23625, cost time=0.0033, found by DifferentialEvolutionAlt
+[   419s]    INFO opentuner.search.plugin.DisplayPlugin: tests=35, best #23625, cost time=0.0033, found by DifferentialEvolutionAlt
+nd line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 8 1 8 2 32 16 256 256 256 0
+substrg:  ['Occupancy', '0.996557', '0.996557', '0.996557']
+achieved_occupancy:  0.996557
+Configuration:  {'kernel': 2, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:4, gy:2, gz:16, bx:4, by:32, bz:4, ' \n"}
+CFG:  {"'gx": '4', 'gy': '2', 'gz': '16', 'bx': '4', 'by': '32', 'bz': '4'}
+ConfBlock 512
+ConfGrid 128
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 2 4 2 16 4 32 4 256 256 256 0
+Configuration:  {'kernel': 3, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:1, gy:512, gz:1, bx:16, by:8, bz:1, ' \n"}
+CFG:  {"'gx": '1', 'gy': '512', 'gz': '1', 'bx': '16', 'by': '8', 'bz': '1'}
+ConfBlock 128
+ConfGrid 512
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 3 1 512 1 16 8 1 256 256 256 0
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:8, gy:1, gz:8, bx:1, by:512, bz:2, ' \n"}
+CFG:  {"'gx": '8', 'gy': '1', 'gz': '8', 'bx': '1', 'by': '512', 'bz': '2'}
+ConfBlock 1024
+ConfGrid 64
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 8 1 8 1 512 2 256 256 256 0
+substrg:  ['Occupancy', '0.996618', '0.996618', '0.996618']
+achieved_occupancy:  0.996618
+Configuration:  {'kernel': 2, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:4, gy:16, gz:1, bx:1024, by:1, bz:1, ' \n"}
+CFG:  {"'gx": '4', 'gy': '16', 'gz': '1', 'bx': '1024', 'by': '1', 'bz': '1'}
+ConfBlock 1024
+ConfGrid 64
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 2 4 16 1 1024 1 1 256 256 256 0
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:2, gy:2, gz:32, bx:4, by:64, bz:2, ' \n"}
+CFG:  {"'gx": '2', 'gy': '2', 'gz': '32', 'bx': '4', 'by': '64', 'bz': '2'}
+ConfBlock 512
+ConfGrid 128
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 2 2 32 4 64 2 256 256 256 0
+substrg:  ['Occupancy', '0.981474', '0.981474', '0.981474']
+achieved_occupancy:  0.981474
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:64, gy:1, gz:1, bx:1024, by:1, bz:1, ' \n"}
+CFG:  {"'gx": '64', 'gy': '1', 'gz': '1', 'bx': '1024', 'by': '1', 'bz': '1'}
+ConfBlock 1024
+ConfGrid 64
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 64 1 1 1024 1 1 256 256 256 0
+substrg:  ['Occupancy', '0.984198', '0.984198', '0.984198']
+achieved_occupancy:  0.984198
+Configuration:  {'kernel': 2, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:4, gy:2, gz:16, bx:512, by:1, bz:1, ' \n"}
+CFG:  {"'gx": '4', 'gy': '2', 'gz': '16', 'bx': '512', 'by': '1', 'bz': '1'}
+ConfBlock 512
+ConfGrid 128
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 2 4 2 16 512 1 1 256 256 256 0
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:8, gy:32, gz:8, bx:1, by:32, bz:1, ' \n"}
+CFG:  {"'gx": '8', 'gy': '32', 'gz': '8', 'bx': '1', 'by': '32', 'bz': '1'}
+ConfBlock 32
+ConfGrid 2048
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 8 32 8 1 32 1 256 256 256 0
+substrg:  ['Occupancy', '0.244994', '0.244994', '0.244994']
+achieved_occupancy:  0.244994
+Configuration:  {'kernel': 3, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:16, gy:4, gz:1, bx:256, by:4, bz:1, ' \n"}
+CFG:  {"'gx": '16', 'gy': '4', 'gz': '1', 'bx': '256', 'by': '4', 'bz': '1'}
+ConfBlock 1024
+ConfGrid 64
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 3 16 4 1 256 4 1 256 256 256 0
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:1, gy:4, gz:16, bx:128, by:8, bz:1, ' \n"}
+CFG:  {"'gx": '1', 'gy': '4', 'gz': '16', 'bx': '128', 'by': '8', 'bz': '1'}
+ConfBlock 1024
+ConfGr[   482s]    INFO opentuner.search.plugin.DisplayPlugin: tests=39, best #23625, cost time=0.0033, found by DifferentialEvolutionAlt
+[   602s]    INFO opentuner.search.plugin.DisplayPlugin: tests=43, best #23625, cost time=0.0033, found by DifferentialEvolutionAlt
+[   613s]    INFO opentuner.search.plugin.DisplayPlugin: tests=47, best #23625, cost time=0.0033, found by DifferentialEvolutionAlt
+[   613s] WARNING opentuner.search.driver: duplicate configuration request #49 UniformGreedyMutation/NormalGreedyMutation OLD
+[   613s] WARNING opentuner.search.driver: duplicate configuration request #50 UniformGreedyMutation/NormalGreedyMutation OLD
+id 64
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 1 4 16 128 8 1 256 256 256 0
+substrg:  ['Occupancy', '0.996208', '0.996208', '0.996208']
+achieved_occupancy:  0.996208
+Configuration:  {'kernel': 3, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:1, gy:2, gz:512, bx:1, by:32, bz:2, ' \n"}
+CFG:  {"'gx": '1', 'gy': '2', 'gz': '512', 'bx': '1', 'by': '32', 'bz': '2'}
+ConfBlock 64
+ConfGrid 1024
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 3 1 2 512 1 32 2 256 256 256 0
+Configuration:  {'kernel': 0, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:512, gy:1, gz:1, bx:2, by:1, bz:64, ' \n"}
+CFG:  {"'gx": '512', 'gy': '1', 'gz': '1', 'bx': '2', 'by': '1', 'bz': '64'}
+ConfBlock 128
+ConfGrid 512
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 0 512 1 1 2 1 64 256 256 256 0
+substrg:  ['Occupancy', '0.865950', '0.865950', '0.865950']
+achieved_occupancy:  0.86595
+Configuration:  {'kernel': 3, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:16, gy:32, gz:2, bx:1, by:2, bz:32, ' \n"}
+CFG:  {"'gx": '16', 'gy': '32', 'gz': '2', 'bx': '1', 'by': '2', 'bz': '32'}
+ConfBlock 64
+ConfGrid 1024
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 3 16 32 2 1 2 32 256 256 256 0
+Configuration:  {'kernel': 0, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:4, gy:4, gz:4, bx:2, by:256, bz:2, ' \n"}
+CFG:  {"'gx": '4', 'gy': '4', 'gz': '4', 'bx': '2', 'by': '256', 'bz': '2'}
+ConfBlock 1024
+ConfGrid 64
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 0 4 4 4 2 256 2 256 256 256 0
+substrg:  ['Occupancy', '0.886365', '0.886365', '0.886365']
+achieved_occupancy:  0.886365
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:8, gy:1, gz:32, bx:8, by:2, bz:16, ' \n"}
+CFG:  {"'gx": '8', 'gy': '1', 'gz': '32', 'bx': '8', 'by': '2', 'bz': '16'}
+ConfBlock 256
+ConfGrid 256
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 8 1 32 8 2 16 256 256 256 0
+substrg:  ['Occupancy', '0.995949', '0.995949', '0.995949']
+achieved_occupancy:  0.995949
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:2, gy:16, gz:4, bx:4, by:128, bz:1, ' \n"}
+CFG:  {"'gx": '2', 'gy': '16', 'gz': '4', 'bx': '4', 'by': '128', 'bz': '1'}
+ConfBlock 512
+ConfGrid 128
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 2 16 4 4 128 1 256 256 256 0
+substrg:  ['Occupancy', '0.967477', '0.967477', '0.967477']
+achieved_occupancy:  0.967477
+Configuration:  {'kernel': 0, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:16, gy:16, gz:4, bx:2, by:1, bz:32, ' \n"}
+CFG:  {"'gx": '16', 'gy': '16', 'gz': '4', 'bx': '2', 'by': '1', 'bz': '32'}
+ConfBlock 64
+ConfGrid 1024
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 0 16 16 4 2 1 32 256 256 256 0
+substrg:  ['Occupancy', '0.446726', '0.446726', '0.446726']
+achieved_occupancy:  0.446726
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:8, gy:16, gz:1, bx:512, by:1, bz:1, ' \n"}
+CFG:  {"'gx": '8', 'gy': '16', 'gz': '1', 'bx': '512', 'by': '1', 'bz': '1'}
+ConfBlock 512
+ConfGrid 128
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 8 16 1 512 1 1 256 256 256 0
+substrg:  ['Occupancy', '0.976226', '0.976226', '0.976226']
+achieved_occupancy:  0.976226
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:16, gy:4, gz:1, bx:128, by:2, bz:4, ' \n"}
+CFG:  {"'gx": '16', 'gy': '4', 'gz': '1', 'bx': '128', 'by': '2', 'bz': '4'}
+ConfBlock 1024
+ConfGrid 64
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 16 4 1 128 2 4 256 256 256 0
+subs/usr/lib/python2.7/dist-packages/sqlalchemy/orm/relationships.py:1404: SAWarning: Got None for value of column configuration.id; this is unsupported for a relationship comparison and will not currently produce an IS comparison (but may in a future release)
+  "(but may in a future release)" % column)
+[   742s]    INFO opentuner.search.plugin.DisplayPlugin: tests=53, best #23625, cost time=0.0033, found by DifferentialEvolutionAlt
+[   742s] WARNING opentuner.search.driver: duplicate configuration request #59 NormalGreedyMutation/NormalGreedyMutation OLD
+trg:  ['Occupancy', '0.984417', '0.984417', '0.984417']
+achieved_occupancy:  0.984417
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:512, gy:2, gz:1, bx:16, by:1, bz:4, ' \n"}
+CFG:  {"'gx": '512', 'gy': '2', 'gz': '1', 'bx': '16', 'by': '1', 'bz': '4'}
+ConfBlock 64
+ConfGrid 1024
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 512 2 1 16 1 4 256 256 256 0
+substrg:  ['Occupancy', '0.495337', '0.495337', '0.495337']
+achieved_occupancy:  0.495337
+Configuration:  {'kernel': 0, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:32, gy:1, gz:32, bx:64, by:1, bz:1, ' \n"}
+CFG:  {"'gx": '32', 'gy': '1', 'gz': '32', 'bx': '64', 'by': '1', 'bz': '1'}
+ConfBlock 64
+ConfGrid 1024
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 0 32 1 32 64 1 1 256 256 256 0
+substrg:  ['Occupancy', '0.446370', '0.446370', '0.446370']
+achieved_occupancy:  0.44637
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:32, gy:2, gz:1, bx:8, by:128, bz:1, ' \n"}
+CFG:  {"'gx": '32', 'gy': '2', 'gz': '1', 'bx': '8', 'by': '128', 'bz': '1'}
+ConfBlock 1024
+ConfGrid 64
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 32 2 1 8 128 1 256 256 256 0
+substrg:  ['Occupancy', '0.996189', '0.996189', '0.996189']
+achieved_occupancy:  0.996189
+Configuration:  {'kernel': 3, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:128, gy:4, gz:4, bx:8, by:1, bz:4, ' \n"}
+CFG:  {"'gx": '128', 'gy': '4', 'gz': '4', 'bx': '8', 'by': '1', 'bz': '4'}
+ConfBlock 32
+ConfGrid 2048
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 3 128 4 4 8 1 4 256 256 256 0
+Configuration:  {'kernel': 3, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:8, gy:16, gz:8, bx:1, by:1, bz:64, ' \n"}
+CFG:  {"'gx": '8', 'gy': '16', 'gz': '8', 'bx': '1', 'by': '1', 'bz': '64'}
+ConfBlock 64
+ConfGrid 1024
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 3 8 16 8 1 1 64 256 256 256 0
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:64, gy:4, gz:1, bx:8, by:32, bz:1, ' \n"}
+CFG:  {"'gx": '64', 'gy': '4', 'gz': '1', 'bx': '8', 'by': '32', 'bz': '1'}
+ConfBlock 256
+ConfGrid 256
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 64 4 1 8 32 1 256 256 256 0
+substrg:  ['Occupancy', '0.995414', '0.995414', '0.995414']
+achieved_occupancy:  0.995414
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:1, gy:8, gz:256, bx:1, by:16, bz:2, ' \n"}
+CFG:  {"'gx": '1', 'gy': '8', 'gz': '256', 'bx': '1', 'by': '16', 'bz': '2'}
+ConfBlock 32
+ConfGrid 2048
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 1 8 256 1 16 2 256 256 256 0
+substrg:  ['Occupancy', '0.245139', '0.245139', '0.245139']
+achieved_occupancy:  0.245139
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:32, gy:2, gz:8, bx:1, by:4, bz:32, ' \n"}
+CFG:  {"'gx": '32', 'gy': '2', 'gz': '8', 'bx': '1', 'by': '4', 'bz': '32'}
+ConfBlock 128
+ConfGrid 512
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 32 2 8 1 4 32 256 256 256 0
+substrg:  ['Occupancy', '0.995975', '0.995975', '0.995975']
+achieved_occupancy:  0.995975
+Configuration:  {'kernel': 2, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:128, gy:1, gz:8, bx:1, by:16, bz:4, ' \n"}
+CFG:  {"'gx": '128', 'gy': '1', 'gz': '8', 'bx': '1', 'by': '16', 'bz': '4'}
+ConfBlock 64
+ConfGrid 1024
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 2 128 1 8 1 16 4 256 256 256 0
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:8, gy:32, gz:2, bx:1, by:32, bz:4, ' \n"}
+CFG:  {"'gx": '8', 'g[   805s]    INFO opentuner.search.plugin.DisplayPlugin: tests=60, best #23625, cost time=0.0033, found by DifferentialEvolutionAlt
+[   805s] WARNING opentuner.search.driver: duplicate configuration request #65 UniformGreedyMutation/UniformGreedyMutation OLD
+y': '32', 'gz': '2', 'bx': '1', 'by': '32', 'bz': '4'}
+ConfBlock 128
+ConfGrid 512
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 8 32 2 1 32 4 256 256 256 0
+substrg:  ['Occupancy', '0.995638', '0.995638', '0.995638']
+achieved_occupancy:  0.995638
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:1, gy:2, gz:64, bx:128, by:1, bz:4, ' \n"}
+CFG:  {"'gx": '1', 'gy': '2', 'gz': '64', 'bx': '128', 'by': '1', 'bz': '4'}
+ConfBlock 512
+ConfGrid 128
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 1 2 64 128 1 4 256 256 256 0
+substrg:  ['Occupancy', '0.981438', '0.981438', '0.981438']
+achieved_occupancy:  0.981438
+Configuration:  {'kernel': 3, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:32, gy:1, gz:2, bx:128, by:8, bz:1, ' \n"}
+CFG:  {"'gx": '32', 'gy': '1', 'gz': '2', 'bx': '128', 'by': '8', 'bz': '1'}
+ConfBlock 1024
+ConfGrid 64
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 3 32 1 2 128 8 1 256 256 256 0
+Configuration:  {'kernel': 2, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:1, gy:64, gz:32, bx:2, by:16, bz:1, ' \n"}
+CFG:  {"'gx": '1', 'gy': '64', 'gz': '32', 'bx': '2', 'by': '16', 'bz': '1'}
+ConfBlock 32
+ConfGrid 2048
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 2 1 64 32 2 16 1 256 256 256 0
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:8, gy:16, gz:2, bx:8, by:32, bz:1, ' \n"}
+CFG:  {"'gx": '8', 'gy': '16', 'gz': '2', 'bx': '8', 'by': '32', 'bz': '1'}
+ConfBlock 256
+ConfGrid 256
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 8 16 2 8 32 1 256 256 256 0
+substrg:  ['Occupancy', '0.984567', '0.984567', '0.984567']
+achieved_occupancy:  0.984567
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:256, gy:1, gz:2, bx:128, by:1, bz:1, ' \n"}
+CFG:  {"'gx": '256', 'gy': '1', 'gz': '2', 'bx': '128', 'by': '1', 'bz': '1'}
+ConfBlock 128
+ConfGrid 512
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 256 1 2 128 1 1 256 256 256 0
+substrg:  ['Occupancy', '0.996134', '0.996134', '0.996134']
+achieved_occupancy:  0.996134
+Configuration:  {'kernel': 2, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:8, gy:2, gz:16, bx:256, by:1, bz:1, ' \n"}
+CFG:  {"'gx": '8', 'gy': '2', 'gz': '16', 'bx': '256', 'by': '1', 'bz': '1'}
+ConfBlock 256
+ConfGrid 256
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 2 8 2 16 256 1 1 256 256 256 0
+Configuration:  {'kernel': 0, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:128, gy:4, gz:4, bx:4, by:1, bz:8, ' \n"}
+CFG:  {"'gx": '128', 'gy': '4', 'gz': '4', 'bx': '4', 'by': '1', 'bz': '8'}
+ConfBlock 32
+ConfGrid 2048
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 0 128 4 4 4 1 8 256 256 256 0
+substrg:  ['Occupancy', '0.228770', '0.228770', '0.228770']
+achieved_occupancy:  0.22877
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:256, gy:1, gz:2, bx:1, by:32, bz:4, ' \n"}
+CFG:  {"'gx": '256', 'gy': '1', 'gz': '2', 'bx': '1', 'by': '32', 'bz': '4'}
+ConfBlock 128
+ConfGrid 512
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 256 1 2 1 32 4 256 256 256 0
+substrg:  ['Occupancy', '0.995866', '0.995866', '0.995866']
+achieved_occupancy:  0.995866
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:1, gy:128, gz:16, bx:1, by:4, bz:8, ' \n"}
+CFG:  {"'gx": '1', 'gy': '128', 'gz': '16', 'bx': '1', 'by': '4', 'bz': '8'}
+ConfBlock 32
+ConfGrid 2048
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 1 128 16 1 4 8 256 256 256 0
+substrg:  ['Occu[   824s]    INFO opentuner.search.plugin.DisplayPlugin: tests=67, best #23625, cost time=0.0033, found by DifferentialEvolutionAlt
+[   835s]    INFO opentuner.search.plugin.DisplayPlugin: tests=71, best #23625, cost time=0.0033, found by DifferentialEvolutionAlt
+[   888s]    INFO opentuner.search.plugin.DisplayPlugin: tests=75, best #23625, cost time=0.0033, found by DifferentialEvolutionAlt
+pancy', '0.245002', '0.245002', '0.245002']
+achieved_occupancy:  0.245002
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:512, gy:1, gz:2, bx:16, by:4, bz:1, ' \n"}
+CFG:  {"'gx": '512', 'gy': '1', 'gz': '2', 'bx': '16', 'by': '4', 'bz': '1'}
+ConfBlock 64
+ConfGrid 1024
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 512 1 2 16 4 1 256 256 256 0
+substrg:  ['Occupancy', '0.494339', '0.494339', '0.494339']
+achieved_occupancy:  0.494339
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:4, gy:256, gz:1, bx:16, by:4, bz:1, ' \n"}
+CFG:  {"'gx": '4', 'gy': '256', 'gz': '1', 'bx': '16', 'by': '4', 'bz': '1'}
+ConfBlock 64
+ConfGrid 1024
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 4 256 1 16 4 1 256 256 256 0
+substrg:  ['Occupancy', '0.494145', '0.494145', '0.494145']
+achieved_occupancy:  0.494145
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:8, gy:128, gz:1, bx:1, by:8, bz:8, ' \n"}
+CFG:  {"'gx": '8', 'gy': '128', 'gz': '1', 'bx': '1', 'by': '8', 'bz': '8'}
+ConfBlock 64
+ConfGrid 1024
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 8 128 1 1 8 8 256 256 256 0
+substrg:  ['Occupancy', '0.464462', '0.464462', '0.464462']
+achieved_occupancy:  0.464462
+Configuration:  {'kernel': 2, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:32, gy:1, gz:16, bx:4, by:1, bz:32, ' \n"}
+CFG:  {"'gx": '32', 'gy': '1', 'gz': '16', 'bx': '4', 'by': '1', 'bz': '32'}
+ConfBlock 128
+ConfGrid 512
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 2 32 1 16 4 1 32 256 256 256 0
+Configuration:  {'kernel': 2, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:8, gy:16, gz:2, bx:1, by:128, bz:2, ' \n"}
+CFG:  {"'gx": '8', 'gy': '16', 'gz': '2', 'bx': '1', 'by': '128', 'bz': '2'}
+ConfBlock 256
+ConfGrid 256
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 2 8 16 2 1 128 2 256 256 256 0
+Configuration:  {'kernel': 0, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:1, gy:128, gz:1, bx:16, by:16, bz:2, ' \n"}
+CFG:  {"'gx": '1', 'gy': '128', 'gz': '1', 'bx': '16', 'by': '16', 'bz': '2'}
+ConfBlock 512
+ConfGrid 128
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 0 1 128 1 16 16 2 256 256 256 0
+substrg:  ['Occupancy', '0.877360', '0.877360', '0.877360']
+achieved_occupancy:  0.87736
+Configuration:  {'kernel': 3, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:4, gy:16, gz:1, bx:1024, by:1, bz:1, ' \n"}
+CFG:  {"'gx": '4', 'gy': '16', 'gz': '1', 'bx': '1024', 'by': '1', 'bz': '1'}
+ConfBlock 1024
+ConfGrid 64
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 3 4 16 1 1024 1 1 256 256 256 0
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:1, gy:128, gz:2, bx:2, by:32, bz:4, ' \n"}
+CFG:  {"'gx": '1', 'gy': '128', 'gz': '2', 'bx': '2', 'by': '32', 'bz': '4'}
+ConfBlock 256
+ConfGrid 256
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 1 128 2 2 32 4 256 256 256 0
+substrg:  ['Occupancy', '0.990543', '0.990543', '0.990543']
+achieved_occupancy:  0.990543
+Configuration:  {'kernel': 2, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:16, gy:4, gz:2, bx:8, by:32, bz:2, ' \n"}
+CFG:  {"'gx": '16', 'gy': '4', 'gz': '2', 'bx': '8', 'by': '32', 'bz': '2'}
+ConfBlock 512
+ConfGrid 128
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 2 16 4 2 8 32 2 256 256 256 0
+Configuration:  {'kernel': 2, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:64, gy:1, gz:8, bx:1, by:2, bz:64, ' \n"}
+CFG:  {"'gx": '64', 'gy': '1', 'gz': '8', 'bx': '1', 'by': '2', 'bz': '64'}
+ConfBlock 128
+ConfGrid 512
+compiled[   953s]    INFO opentuner.search.plugin.DisplayPlugin: tests=79, best #23625, cost time=0.0033, found by DifferentialEvolutionAlt
+[   964s]    INFO opentuner.search.plugin.DisplayPlugin: tests=83, best #23625, cost time=0.0033, found by DifferentialEvolutionAlt
+:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 2 64 1 8 1 2 64 256 256 256 0
+Configuration:  {'kernel': 2, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:1024, gy:2, gz:1, bx:1, by:4, bz:8, ' \n"}
+CFG:  {"'gx": '1024', 'gy': '2', 'gz': '1', 'bx': '1', 'by': '4', 'bz': '8'}
+ConfBlock 32
+ConfGrid 2048
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 2 1024 2 1 1 4 8 256 256 256 0
+Configuration:  {'kernel': 3, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:4, gy:64, gz:1, bx:64, by:2, bz:2, ' \n"}
+CFG:  {"'gx": '4', 'gy': '64', 'gz': '1', 'bx': '64', 'by': '2', 'bz': '2'}
+ConfBlock 256
+ConfGrid 256
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 3 4 64 1 64 2 2 256 256 256 0
+Configuration:  {'kernel': 2, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:128, gy:1, gz:1, bx:16, by:8, bz:4, ' \n"}
+CFG:  {"'gx": '128', 'gy': '1', 'gz': '1', 'bx': '16', 'by': '8', 'bz': '4'}
+ConfBlock 512
+ConfGrid 128
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 2 128 1 1 16 8 4 256 256 256 0
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:64, gy:2, gz:4, bx:128, by:1, bz:1, ' \n"}
+CFG:  {"'gx": '64', 'gy': '2', 'gz': '4', 'bx': '128', 'by': '1', 'bz': '1'}
+ConfBlock 128
+ConfGrid 512
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 64 2 4 128 1 1 256 256 256 0
+substrg:  ['Occupancy', '0.995831', '0.995831', '0.995831']
+achieved_occupancy:  0.995831
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:8, gy:4, gz:4, bx:1, by:256, bz:2, ' \n"}
+CFG:  {"'gx": '8', 'gy': '4', 'gz': '4', 'bx': '1', 'by': '256', 'bz': '2'}
+ConfBlock 512
+ConfGrid 128
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 8 4 4 1 256 2 256 256 256 0
+substrg:  ['Occupancy', '0.988330', '0.988330', '0.988330']
+achieved_occupancy:  0.98833
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:2, gy:8, gz:8, bx:1, by:512, bz:1, ' \n"}
+CFG:  {"'gx": '2', 'gy': '8', 'gz': '8', 'bx': '1', 'by': '512', 'bz': '1'}
+ConfBlock 512
+ConfGrid 128
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 2 8 8 1 512 1 256 256 256 0
+substrg:  ['Occupancy', '0.981376', '0.981376', '0.981376']
+achieved_occupancy:  0.981376
+Configuration:  {'kernel': 2, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:2, gy:1, gz:64, bx:4, by:2, bz:64, ' \n"}
+CFG:  {"'gx": '2', 'gy': '1', 'gz': '64', 'bx': '4', 'by': '2', 'bz': '64'}
+ConfBlock 512
+ConfGrid 128
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 2 2 1 64 4 2 64 256 256 256 0
+Configuration:  {'kernel': 0, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:4, gy:32, gz:1, bx:2, by:4, bz:64, ' \n"}
+CFG:  {"'gx": '4', 'gy': '32', 'gz': '1', 'bx': '2', 'by': '4', 'bz': '64'}
+ConfBlock 512
+ConfGrid 128
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 0 4 32 1 2 4 64 256 256 256 0
+substrg:  ['Occupancy', '0.870537', '0.870537', '0.870537']
+achieved_occupancy:  0.870537
+Configuration:  {'kernel': 0, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:1, gy:8, gz:64, bx:4, by:2, bz:16, ' \n"}
+CFG:  {"'gx": '1', 'gy': '8', 'gz': '64', 'bx': '4', 'by': '2', 'bz': '16'}
+ConfBlock 128
+ConfGrid 512
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 0 1 8 64 4 2 16 256 256 256 0
+substrg:  ['Occupancy', '0.862195', '0.862195', '0.862195']
+achieved_occupancy:  0.862195
+Configuration:  {'kernel': 3, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:4, gy:128, gz:4, bx:1, by:2, bz:16, ' \n"}
+CFG:  {"'gx": '4', 'gy': '128', 'gz': '4', 'bx': '1', 'by': '2', 'bz': '16'}
+C[  1016s]    INFO opentuner.search.plugin.DisplayPlugin: tests=87, best #23625, cost time=0.0033, found by DifferentialEvolutionAlt
+[  1016s] WARNING opentuner.search.driver: duplicate configuration request #95 UniformGreedyMutation/UniformGreedyMutation OLD
+[  1024s] WARNING opentuner.search.driver: duplicate configuration request #99 NormalGreedyMutation/UniformGreedyMutation OLD
+[  1032s]    INFO opentuner.search.plugin.DisplayPlugin: tests=93, best #23625, cost time=0.0033, found by DifferentialEvolutionAlt
+onfBlock 32
+ConfGrid 2048
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 3 4 128 4 1 2 16 256 256 256 0
+Configuration:  {'kernel': 2, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:1, gy:2, gz:1024, bx:4, by:2, bz:4, ' \n"}
+CFG:  {"'gx": '1', 'gy': '2', 'gz': '1024', 'bx': '4', 'by': '2', 'bz': '4'}
+ConfBlock 32
+ConfGrid 2048
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 2 1 2 1024 4 2 4 256 256 256 0
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:128, gy:1, gz:4, bx:32, by:2, bz:2, ' \n"}
+CFG:  {"'gx": '128', 'gy': '1', 'gz': '4', 'bx': '32', 'by': '2', 'bz': '2'}
+ConfBlock 128
+ConfGrid 512
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 128 1 4 32 2 2 256 256 256 0
+substrg:  ['Occupancy', '0.996008', '0.996008', '0.996008']
+achieved_occupancy:  0.996008
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:2, gy:4, gz:64, bx:1, by:8, bz:16, ' \n"}
+CFG:  {"'gx": '2', 'gy': '4', 'gz': '64', 'bx': '1', 'by': '8', 'bz': '16'}
+ConfBlock 128
+ConfGrid 512
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 2 4 64 1 8 16 256 256 256 0
+substrg:  ['Occupancy', '0.995863', '0.995863', '0.995863']
+achieved_occupancy:  0.995863
+Configuration:  {'kernel': 2, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:1, gy:16, gz:64, bx:64, by:1, bz:1, ' \n"}
+CFG:  {"'gx": '1', 'gy': '16', 'gz': '64', 'bx': '64', 'by': '1', 'bz': '1'}
+ConfBlock 64
+ConfGrid 1024
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 2 1 16 64 64 1 1 256 256 256 0
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:16, gy:2, gz:32, bx:4, by:1, bz:16, ' \n"}
+CFG:  {"'gx": '16', 'gy': '2', 'gz': '32', 'bx': '4', 'by': '1', 'bz': '16'}
+ConfBlock 64
+ConfGrid 1024
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 16 2 32 4 1 16 256 256 256 0
+substrg:  ['Occupancy', '0.493603', '0.493603', '0.493603']
+achieved_occupancy:  0.493603
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:4, gy:2, gz:64, bx:4, by:32, bz:1, ' \n"}
+CFG:  {"'gx": '4', 'gy': '2', 'gz': '64', 'bx': '4', 'by': '32', 'bz': '1'}
+ConfBlock 128
+ConfGrid 512
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 4 2 64 4 32 1 256 256 256 0
+substrg:  ['Occupancy', '0.995821', '0.995821', '0.995821']
+achieved_occupancy:  0.995821
+Configuration:  {'kernel': 2, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:64, gy:1, gz:2, bx:8, by:64, bz:1, ' \n"}
+CFG:  {"'gx": '64', 'gy': '1', 'gz': '2', 'bx': '8', 'by': '64', 'bz': '1'}
+ConfBlock 512
+ConfGrid 128
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 2 64 1 2 8 64 1 256 256 256 0
+Configuration:  {'kernel': 0, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:4, gy:2, gz:16, bx:128, by:4, bz:1, ' \n"}
+CFG:  {"'gx": '4', 'gy': '2', 'gz': '16', 'bx': '128', 'by': '4', 'bz': '1'}
+ConfBlock 512
+ConfGrid 128
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 0 4 2 16 128 4 1 256 256 256 0
+substrg:  ['Occupancy', '0.869040', '0.869040', '0.869040']
+achieved_occupancy:  0.86904
+Configuration:  {'kernel': 2, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:4, gy:1, gz:512, bx:4, by:8, bz:1, ' \n"}
+CFG:  {"'gx": '4', 'gy': '1', 'gz': '512', 'bx': '4', 'by': '8', 'bz': '1'}
+ConfBlock 32
+ConfGrid 2048
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 2 4 1 512 4 8 1 256 256 256 0
+Configuration:  {'kernel': 0, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:1, gy:4, gz:64, bx:16, by:4, bz:4, ' \n"}
+CFG:  {"'gx": '1', 'gy': '4', 'gz': '6[  1043s]    INFO opentuner.search.plugin.DisplayPlugin: tests=97, best #23625, cost time=0.0033, found by DifferentialEvolutionAlt
+[  1043s] WARNING opentuner.search.driver: duplicate configuration request #106 UniformGreedyMutation/UniformGreedyMutation OLD
+[  1062s]    INFO opentuner.search.plugin.DisplayPlugin: tests=104, best #23625, cost time=0.0033, found by DifferentialEvolutionAlt
+4', 'bx': '16', 'by': '4', 'bz': '4'}
+ConfBlock 256
+ConfGrid 256
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 0 1 4 64 16 4 4 256 256 256 0
+substrg:  ['Occupancy', '0.870170', '0.870170', '0.870170']
+achieved_occupancy:  0.87017
+Configuration:  {'kernel': 2, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:1, gy:256, gz:2, bx:4, by:32, bz:1, ' \n"}
+CFG:  {"'gx": '1', 'gy': '256', 'gz': '2', 'bx': '4', 'by': '32', 'bz': '1'}
+ConfBlock 128
+ConfGrid 512
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 2 1 256 2 4 32 1 256 256 256 0
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:1, gy:64, gz:2, bx:64, by:8, bz:1, ' \n"}
+CFG:  {"'gx": '1', 'gy': '64', 'gz': '2', 'bx': '64', 'by': '8', 'bz': '1'}
+ConfBlock 512
+ConfGrid 128
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 1 64 2 64 8 1 256 256 256 0
+substrg:  ['Occupancy', '0.980629', '0.980629', '0.980629']
+achieved_occupancy:  0.980629
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:32, gy:1, gz:4, bx:128, by:2, bz:2, ' \n"}
+CFG:  {"'gx": '32', 'gy': '1', 'gz': '4', 'bx': '128', 'by': '2', 'bz': '2'}
+ConfBlock 512
+ConfGrid 128
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 32 1 4 128 2 2 256 256 256 0
+substrg:  ['Occupancy', '0.980052', '0.980052', '0.980052']
+achieved_occupancy:  0.980052
+Configuration:  {'kernel': 2, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:1, gy:4, gz:16, bx:32, by:1, bz:32, ' \n"}
+CFG:  {"'gx": '1', 'gy': '4', 'gz': '16', 'bx': '32', 'by': '1', 'bz': '32'}
+ConfBlock 1024
+ConfGrid 64
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 2 1 4 16 32 1 32 256 256 256 0
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:8, gy:4, gz:2, bx:64, by:2, bz:8, ' \n"}
+CFG:  {"'gx": '8', 'gy': '4', 'gz': '2', 'bx': '64', 'by': '2', 'bz': '8'}
+ConfBlock 1024
+ConfGrid 64
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 8 4 2 64 2 8 256 256 256 0
+substrg:  ['Occupancy', '0.994445', '0.994445', '0.994445']
+achieved_occupancy:  0.994445
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:8, gy:8, gz:16, bx:32, by:2, bz:1, ' \n"}
+CFG:  {"'gx": '8', 'gy': '8', 'gz': '16', 'bx': '32', 'by': '2', 'bz': '1'}
+ConfBlock 64
+ConfGrid 1024
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 8 8 16 32 2 1 256 256 256 0
+substrg:  ['Occupancy', '0.492500', '0.492500', '0.492500']
+achieved_occupancy:  0.4925
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:2, gy:1, gz:256, bx:1, by:4, bz:32, ' \n"}
+CFG:  {"'gx": '2', 'gy': '1', 'gz': '256', 'bx': '1', 'by': '4', 'bz': '32'}
+ConfBlock 128
+ConfGrid 512
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 2 1 256 1 4 32 256 256 256 0
+substrg:  ['Occupancy', '0.988922', '0.988922', '0.988922']
+achieved_occupancy:  0.988922
+Configuration:  {'kernel': 2, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:1, gy:64, gz:8, bx:16, by:4, bz:2, ' \n"}
+CFG:  {"'gx": '1', 'gy': '64', 'gz': '8', 'bx': '16', 'by': '4', 'bz': '2'}
+ConfBlock 128
+ConfGrid 512
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 2 1 64 8 16 4 2 256 256 256 0
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:32, gy:1, gz:64, bx:1, by:8, bz:4, ' \n"}
+CFG:  {"'gx": '32', 'gy': '1', 'gz': '64', 'bx': '1', 'by': '8', 'bz': '4'}
+ConfBlock 32
+ConfGrid 2048
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 32 1 64 1 8 4 256 256 256 0
+substrg:  ['Occupancy', '0.245417', '0.245417', '0[  1135s]    INFO opentuner.search.plugin.DisplayPlugin: tests=108, best #23625, cost time=0.0033, found by DifferentialEvolutionAlt
+[  1146s]    INFO opentuner.search.plugin.DisplayPlugin: tests=112, best #23625, cost time=0.0033, found by DifferentialEvolutionAlt
+.245417']
+achieved_occupancy:  0.245417
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:2, gy:16, gz:16, bx:4, by:8, bz:4, ' \n"}
+CFG:  {"'gx": '2', 'gy': '16', 'gz': '16', 'bx': '4', 'by': '8', 'bz': '4'}
+ConfBlock 128
+ConfGrid 512
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 2 16 16 4 8 4 256 256 256 0
+substrg:  ['Occupancy', '0.993393', '0.993393', '0.993393']
+achieved_occupancy:  0.993393
+Configuration:  {'kernel': 3, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:2, gy:16, gz:4, bx:16, by:4, bz:8, ' \n"}
+CFG:  {"'gx": '2', 'gy': '16', 'gz': '4', 'bx': '16', 'by': '4', 'bz': '8'}
+ConfBlock 512
+ConfGrid 128
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 3 2 16 4 16 4 8 256 256 256 0
+Configuration:  {'kernel': 2, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:64, gy:4, gz:1, bx:2, by:64, bz:2, ' \n"}
+CFG:  {"'gx": '64', 'gy': '4', 'gz': '1', 'bx': '2', 'by': '64', 'bz': '2'}
+ConfBlock 256
+ConfGrid 256
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 2 64 4 1 2 64 2 256 256 256 0
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:256, gy:1, gz:2, bx:8, by:1, bz:16, ' \n"}
+CFG:  {"'gx": '256', 'gy': '1', 'gz': '2', 'bx': '8', 'by': '1', 'bz': '16'}
+ConfBlock 128
+ConfGrid 512
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 256 1 2 8 1 16 256 256 256 0
+substrg:  ['Occupancy', '0.996033', '0.996033', '0.996033']
+achieved_occupancy:  0.996033
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:64, gy:8, gz:1, bx:16, by:1, bz:8, ' \n"}
+CFG:  {"'gx": '64', 'gy': '8', 'gz': '1', 'bx': '16', 'by': '1', 'bz': '8'}
+ConfBlock 128
+ConfGrid 512
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 64 8 1 16 1 8 256 256 256 0
+substrg:  ['Occupancy', '0.996025', '0.996025', '0.996025']
+achieved_occupancy:  0.996025
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:4, gy:2, gz:8, bx:1, by:16, bz:64, ' \n"}
+CFG:  {"'gx": '4', 'gy': '2', 'gz': '8', 'bx': '1', 'by': '16', 'bz': '64'}
+ConfBlock 1024
+ConfGrid 64
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 4 2 8 1 16 64 256 256 256 0
+substrg:  ['Occupancy', '0.984003', '0.984003', '0.984003']
+achieved_occupancy:  0.984003
+Configuration:  {'kernel': 2, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:16, gy:1, gz:8, bx:16, by:32, bz:1, ' \n"}
+CFG:  {"'gx": '16', 'gy': '1', 'gz': '8', 'bx': '16', 'by': '32', 'bz': '1'}
+ConfBlock 512
+ConfGrid 128
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 2 16 1 8 16 32 1 256 256 256 0
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:1, gy:2, gz:32, bx:1, by:32, bz:32, ' \n"}
+CFG:  {"'gx": '1', 'gy': '2', 'gz': '32', 'bx': '1', 'by': '32', 'bz': '32'}
+ConfBlock 1024
+ConfGrid 64
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 1 2 32 1 32 32 256 256 256 0
+substrg:  ['Occupancy', '0.995970', '0.995970', '0.995970']
+achieved_occupancy:  0.99597
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:32, gy:2, gz:4, bx:4, by:64, bz:1, ' \n"}
+CFG:  {"'gx": '32', 'gy': '2', 'gz': '4', 'bx': '4', 'by': '64', 'bz': '1'}
+ConfBlock 256
+ConfGrid 256
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 32 2 4 4 64 1 256 256 256 0
+substrg:  ['Occupancy', '0.984367', '0.984367', '0.984367']
+achieved_occupancy:  0.984367
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:1, gy:8, gz:8, bx:1, by:64, bz:16, ' \n"}
+CFG:  {"'gx": '1', 'gy': '8', 'gz': '8', 'bx': '1', 'by': '64', 'bz': '16[  1157s]    INFO opentuner.search.plugin.DisplayPlugin: tests=116, best #23625, cost time=0.0033, found by DifferentialEvolutionAlt
+[  1238s]    INFO opentuner.search.plugin.DisplayPlugin: tests=120, best #23625, cost time=0.0033, found by DifferentialEvolutionAlt
+[  1238s] WARNING opentuner.search.driver: duplicate configuration request #129 UniformGreedyMutation/UniformGreedyMutation OLD
+'}
+ConfBlock 1024
+ConfGrid 64
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 1 8 8 1 64 16 256 256 256 0
+substrg:  ['Occupancy', '0.984318', '0.984318', '0.984318']
+achieved_occupancy:  0.984318
+Configuration:  {'kernel': 2, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:2, gy:256, gz:4, bx:4, by:2, bz:4, ' \n"}
+CFG:  {"'gx": '2', 'gy': '256', 'gz': '4', 'bx': '4', 'by': '2', 'bz': '4'}
+ConfBlock 32
+ConfGrid 2048
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 2 2 256 4 4 2 4 256 256 256 0
+Configuration:  {'kernel': 2, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:1, gy:4, gz:128, bx:32, by:4, bz:1, ' \n"}
+CFG:  {"'gx": '1', 'gy': '4', 'gz': '128', 'bx': '32', 'by': '4', 'bz': '1'}
+ConfBlock 128
+ConfGrid 512
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 2 1 4 128 32 4 1 256 256 256 0
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:16, gy:16, gz:1, bx:64, by:1, bz:4, ' \n"}
+CFG:  {"'gx": '16', 'gy': '16', 'gz': '1', 'bx': '64', 'by': '1', 'bz': '4'}
+ConfBlock 256
+ConfGrid 256
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 16 16 1 64 1 4 256 256 256 0
+substrg:  ['Occupancy', '0.983439', '0.983439', '0.983439']
+achieved_occupancy:  0.983439
+Configuration:  {'kernel': 3, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:32, gy:1, gz:2, bx:512, by:1, bz:2, ' \n"}
+CFG:  {"'gx": '32', 'gy': '1', 'gz': '2', 'bx': '512', 'by': '1', 'bz': '2'}
+ConfBlock 1024
+ConfGrid 64
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 3 32 1 2 512 1 2 256 256 256 0
+Configuration:  {'kernel': 2, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:32, gy:1, gz:16, bx:2, by:1, bz:64, ' \n"}
+CFG:  {"'gx": '32', 'gy': '1', 'gz': '16', 'bx': '2', 'by': '1', 'bz': '64'}
+ConfBlock 128
+ConfGrid 512
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 2 32 1 16 2 1 64 256 256 256 0
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:16, gy:1, gz:64, bx:8, by:4, bz:2, ' \n"}
+CFG:  {"'gx": '16', 'gy': '1', 'gz': '64', 'bx': '8', 'by': '4', 'bz': '2'}
+ConfBlock 64
+ConfGrid 1024
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 16 1 64 8 4 2 256 256 256 0
+substrg:  ['Occupancy', '0.493129', '0.493129', '0.493129']
+achieved_occupancy:  0.493129
+Configuration:  {'kernel': 2, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:1, gy:1, gz:64, bx:128, by:8, bz:1, ' \n"}
+CFG:  {"'gx": '1', 'gy': '1', 'gz': '64', 'bx': '128', 'by': '8', 'bz': '1'}
+ConfBlock 1024
+ConfGrid 64
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 2 1 1 64 128 8 1 256 256 256 0
+Configuration:  {'kernel': 2, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:256, gy:4, gz:2, bx:8, by:1, bz:4, ' \n"}
+CFG:  {"'gx": '256', 'gy': '4', 'gz': '2', 'bx': '8', 'by': '1', 'bz': '4'}
+ConfBlock 32
+ConfGrid 2048
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 2 256 4 2 8 1 4 256 256 256 0
+Configuration:  {'kernel': 0, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:256, gy:1, gz:2, bx:8, by:4, bz:4, ' \n"}
+CFG:  {"'gx": '256', 'gy': '1', 'gz': '2', 'bx': '8', 'by': '4', 'bz': '4'}
+ConfBlock 128
+ConfGrid 512
+compiled:  true
+Antes do IF
+Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 0 256 1 2 8 4 4 256 256 256 0
+substrg:  ['Occupancy', '0.855141', '0.855141', '0.855141']
+achieved_occupancy:  0.855141
+Configuration:  {'kernel': 1, 'nx': 256, 'ny': 256, 'nz': 256, 'gpuId': 0, 'config': "'gx:2, gy:1, gz:256, bx:2, by:4, bz:16, ' \n"}
+CFG:  {"'gx": '2', 'gy': '1', 'gz': '256', 'bx': '2', 'by': '4', 'bz': '16'}
+ConfBlock 128
+ConfGrid 512
+compiled:  true
+Ant
