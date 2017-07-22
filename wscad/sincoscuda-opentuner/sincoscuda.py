@@ -35,9 +35,9 @@ from opentuner import Result
 # (name, min, max)
 BLOCO_PARAMETROS = [
   ('kernel', 0, 3),
-  ('nx', 128, 128),
-  ('ny', 128, 128),
-  ('nz', 128, 128),
+  ('nx', 256, 256),
+  ('ny', 256, 256),
+  ('nz', 256, 256),
   ('gpuId', 0, 0)  
 ]
 # Test para 2 1 1 64 1 1 1 64 64 64 0 0 
@@ -46,7 +46,7 @@ BLOCO_PARAMETROS = [
 BLOCO_PARAMETROS_CONFIGS = [ 'config' ]
 
 def read_file_configs():
-  file_sincos = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_sincos-128-128.txt','r')
+  file_sincos = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_sincos-256-256.txt','r')
   list_configs = []
   for linha in file_sincos:
     list_configs.append(linha)
@@ -195,7 +195,7 @@ class SincosCudaTuner(MeasurementInterface):
 if __name__ == '__main__':
   FAIL_PENALTY = 9999999999
   compiled = False
-  n = 1 * 128 * 128
+  n = 1 * 256 * 256
 
   argparser = opentuner.default_argparser()
   SincosCudaTuner.main(argparser.parse_args())
