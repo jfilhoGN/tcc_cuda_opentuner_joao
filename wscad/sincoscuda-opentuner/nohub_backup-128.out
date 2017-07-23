@@ -19171,7 +19171,7 @@ compiled:  true
 Antes do IF
 Running command line:  nvprof --metrics achieved_occupancy ./sincosc-cuda 1 2 16 1 1 256 2 128 128 128 0
 substrg:  ['Occupancy', '0.676874', '0.676874', '0.676874']
-achieved_occupancy:  0[  2452s] WARNING opentuner.search.driver: duplicate configuration request #2541 NormalGreedyMutation/UniformGreedyMutation OLD
+  2452s] WARNING opentuner.search.driver: duplicate configuration request #2541 NormalGreedyMutation/UniformGreedyMutation OLD
 [  2455s] WARNING opentuner.search.driver: duplicate configuration request #2544 NormalGreedyMutation/NormalGreedyMutation OLD
 [  2455s] WARNING opentuner.search.driver: duplicate configuration request #2545 NormalGreedyMutation/RandomNelderMead OLD
 [  2457s]    INFO opentuner.search.plugin.DisplayPlugin: tests=2125, best #21813, cost time=0.2551, found by NormalGreedyMutation
