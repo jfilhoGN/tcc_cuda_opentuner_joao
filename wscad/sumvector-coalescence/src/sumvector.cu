@@ -103,7 +103,7 @@ __device__ int getGlobalIdx_3D_3D() {
     return threadId;
 }
 
-/* Tipo para o ponteiro de função. */
+/* Tipo para o ponteiro de função. 
 typedef int (*op_func) (void);
 
 /* Tabela de funções para chamada parametrizada. 
