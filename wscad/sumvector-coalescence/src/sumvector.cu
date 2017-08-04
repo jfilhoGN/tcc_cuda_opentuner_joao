@@ -1,10 +1,14 @@
+#include <iostream>
 #include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
 #include <malloc.h>
+#include <stdlib.h>
+
+// For the CUDA runtime routines (prefixed with "cuda_")
+#include <cuda_runtime.h>
+#include <math.h>
 
 #include "../../../dimensions.h"
- 
+
 #ifndef DATA_TYPE
 #define DATA_TYPE float
 #endif
@@ -155,7 +159,7 @@ int main(int argc, char **argv){
         kernel = atoi(argv[1]);
         n = atoi(argv[8]);
         //funcId = atoi(argv[9]);
-        gpuId = atoi(argv[10]);
+        gpuId = atoi(argv[9]);
         printf("Executando: %s sumvector_kernel_%d grid(%d, %d, %d) block(%d, %d, %d) %d\n", argv[0], kernel, atoi(argv[2]), atoi(argv[3]), atoi(argv[4]), atoi(argv[5]), atoi(argv[6]), atoi(argv[7]), n);
     }
   
