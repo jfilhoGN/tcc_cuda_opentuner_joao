@@ -49,7 +49,7 @@ def read_file_configs():
   #file_sincos_projetocuda = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_sincos-64-64.txt','r')
   file_sincos_titanx = open('/home/joao/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_sincos-64-64.txt','r')
   list_configs = []
-  for linha in file_sincos:
+  for linha in file_sincos_titanx:
     list_configs.append(linha)
   #print list_configs
   return list_configs
