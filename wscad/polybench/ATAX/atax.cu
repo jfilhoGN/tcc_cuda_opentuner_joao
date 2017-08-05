@@ -18,6 +18,11 @@
 #include "../common/polybenchUtilFuncts.h"
 #include "../common/polybench.c"
 
+#include <cuda_runtime.h>
+
+#include "../../../dimensions.h"
+
+
 //define the error threshold for the results "not matching"
 #define PERCENT_DIFF_ERROR_THRESHOLD 0.5
 
@@ -72,9 +77,9 @@ void GPU_argv_init()
 }
 
 
-__global__ void atax_kernel1(DATA_TYPE *A, DATA_TYPE *x, DATA_TYPE *tmp, int NX, int NY)
+__global__ void atax_kernel1(DATA_TYPE *A, DATA_TYPE *x, DATA_TYPE *tmp, int NX, int NY, funcId)
 {
-	int i = blockIdx.x * blockDim.x + threadIdx.x;
+	int i = getGlobalIdFunc[funcId]();
 
 	if (i < NX)
 	{
@@ -86,9 +91,9 @@ __global__ void atax_kernel1(DATA_TYPE *A, DATA_TYPE *x, DATA_TYPE *tmp, int NX,
 	}
 }
 
-__global__ void atax_kernel2(DATA_TYPE *A, DATA_TYPE *y, DATA_TYPE *tmp, int NX, int NY)
+__global__ void atax_kernel2(DATA_TYPE *A, DATA_TYPE *y, DATA_TYPE *tmp, int NX, int NY, int funcId)
 {
-	int j = blockIdx.x * blockDim.x + threadIdx.x;
+	int j = getGlobalIdFunc[funcId]();
 	
 	if (j < NY)
 	{
@@ -137,12 +142,12 @@ int main(int argc, char** argv)
 	int funcId = 0;
 	int i = 0;
 
-	if (argc != 12) {
-        printf("Uso: %s <kernel> <g.x> <g.y> <g.z> <b.x> <b.y> <b.z> <nx> <ny> <funcId> \n", argv[0]);
-        printf("     funcId:\n");
+	if (argc != 11) {
+        printf("Uso: %s <kernel> <g.x> <g.y> <g.z> <b.x> <b.y> <b.z> <nx> <ny> \n", argv[0]);
+        /*printf("     funcId:\n");
         printf("     0: 1D_1D, 1: 1D_2D, 2: 1D_3D\n");
         printf("     3: 2D_1D, 4: 2D_2D, 5: 2D_3D\n");
-        printf("     6: 3D_1D, 7: 3D_2D, 8: 3D_3D\n");
+        printf("     6: 3D_1D, 7: 3D_2D, 8: 3D_3D\n");*/
         return 0;
     }
     else{
@@ -154,7 +159,7 @@ int main(int argc, char** argv)
         kernel = atoi(argv[1]);
         NX = atoi(argv[8]);
         NY = atoi(argv[9]);
-        funcId = atoi(argv[10]);
+        //funcId = atoi(argv[10]);
         printf("Executando: %s atax_kernel_%d grid(%d, %d, %d) block(%d, %d, %d) %d\n", argv[0], kernel, atoi(argv[2]), atoi(argv[3]), atoi(argv[4]), atoi(argv[5]), atoi(argv[6]), atoi(argv[7]));
     }
   
@@ -194,8 +199,10 @@ int main(int argc, char** argv)
 	if (kernel == 0){
 		dim3 block(atoi(argv[5]), atoi(argv[6]), atoi(argv[7]));
 		dim3 grid1(atoi(argv[2]), atoi(argv[3]), atoi(argv[4]));
+		funcId = calculateFunctionId(grid, block);
+  		printf("funcId: %d\n", funcId);
 		t_start = rtclock();
-		atax_kernel1<<< grid1, block >>>(A_gpu,x_gpu,tmp_gpu, NX, NY);
+		atax_kernel1<<< grid1, block >>>(A_gpu,x_gpu,tmp_gpu, NX, NY, funcId);
 		cudaThreadSynchronize();
 		t_end = rtclock();
 		fprintf(stdout, "GPU Runtime: %0.6lfs\n", t_end - t_start);
@@ -207,8 +214,10 @@ int main(int argc, char** argv)
 	}else{
 		dim3 block(atoi(argv[5]), atoi(argv[6]), atoi(argv[7]));
 		dim3 grid2(atoi(argv[2]), atoi(argv[3]), atoi(argv[4]));
+		funcId = calculateFunctionId(grid, block);
+  		printf("funcId: %d\n", funcId);
 		t_start = rtclock();
-		atax_kernel2<<< grid2, block >>>(A_gpu,y_gpu,tmp_gpu, NX, NY);
+		atax_kernel2<<< grid2, block >>>(A_gpu,y_gpu,tmp_gpu, NX, NY, funcId);
 		cudaThreadSynchronize();
 		t_end = rtclock();
 		fprintf(stdout, "GPU Runtime: %0.6lfs\n", t_end - t_start);
