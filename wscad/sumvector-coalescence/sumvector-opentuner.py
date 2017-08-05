@@ -158,7 +158,7 @@ class SumVectorTuner(MeasurementInterface):
 		for current_line in lines:
 			strg = "" + current_line
 			if strg.find("Global Memory Load Efficiency") > -1:
-				idx = strg.index("Global Memory Load Efficiency")
+				idx = strg.index("gld_efficiency")
 				subsrtg = strg[idx:].split("    ")
 				print "substrg: ", subsrtg
 				metric_value = float(subsrtg[3])
