@@ -162,9 +162,8 @@ class SumVectorTuner(MeasurementInterface):
 				subsrtg = strg[idx:].split("    ")
 				print "substrg: ", subsrtg
 				substring = subsrtg[3]
-				print substring
-				substring = subsrtg.replace("%",'')
-				metric_value = float(substring)
+				substring1 = substring.replace("%",'')
+				metric_value = float(substring1)
 				print "gld_efficiency: ", metric_value
 		return (100.0 - metric_value)
 
