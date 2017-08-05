@@ -20,7 +20,7 @@ from opentuner import Result
 
 BLOCO_PARAMETROS = [
 	('kernel', 0, 0), 
-	('n', 1024, 1024),
+	('n', 2048, 2048),
 	('gpuId', 0, 0)  
 ]
 
@@ -175,6 +175,6 @@ class SumVectorTuner(MeasurementInterface):
 if __name__ == '__main__':
 	FAIL_PENALTY = 9999999999
 	compiled = False
-	n = 1024
+	n = 2048
 	argparser = opentuner.default_argparser()
 	SumVectorTuner.main(argparser.parse_args())
