@@ -27,7 +27,7 @@ BLOCO_PARAMETROS = [
 BLOCO_PARAMETROS_CONFIGS = [ 'config' ]
 
 def read_file_configs():
-  file_sumvector = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_sumvector-1024.txt','r')
+  file_sumvector = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_sumvector-2048.txt','r')
   list_configs = []
   for linha in file_sumvector:
     list_configs.append(linha)
