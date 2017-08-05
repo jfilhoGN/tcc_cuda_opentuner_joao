@@ -161,9 +161,10 @@ class SumVectorTuner(MeasurementInterface):
 				idx = strg.index("Global Memory Load Efficiency")
 				subsrtg = strg[idx:].split("    ")
 				print "substrg: ", subsrtg
-				metric_value = float(subsrtg[3])
+				substring = subsrtg.replace("%",'')
+				metric_value = float(substring)
 				print "gld_efficiency: ", metric_value
-		return (1.0 - metric_value)
+		return (100.0 - metric_value)
 
 	def save_final_config(self, configuration):
 		"""called at the end of tuning"""
