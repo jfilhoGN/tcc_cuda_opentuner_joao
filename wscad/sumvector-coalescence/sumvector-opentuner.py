@@ -20,14 +20,14 @@ from opentuner import Result
 
 BLOCO_PARAMETROS = [
 	('kernel', 0, 0), 
-	('n', 64, 64),
+	('n', 128, 128),
 	('gpuId', 0, 0)  
 ]
 
 BLOCO_PARAMETROS_CONFIGS = [ 'config' ]
 
 def read_file_configs():
-  file_sumvector = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_sumvector-64.txt','r')
+  file_sumvector = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_sumvector-128.txt','r')
   list_configs = []
   for linha in file_sumvector:
     list_configs.append(linha)
@@ -175,6 +175,6 @@ class SumVectorTuner(MeasurementInterface):
 if __name__ == '__main__':
 	FAIL_PENALTY = 9999999999
 	compiled = False
-	n = 64
+	n = 128
 	argparser = opentuner.default_argparser()
 	SumVectorTuner.main(argparser.parse_args())
