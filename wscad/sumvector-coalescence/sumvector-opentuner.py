@@ -164,7 +164,7 @@ class SumVectorTuner(MeasurementInterface):
 				#substring = subsrtg[3]
 				#substring1 = substring.replace("%",'')
 				#metric_value = float(substring1)
-				metric_value = subsrtg[3]
+				metric_value = float(subsrtg[3])
 				print "inst_executed: ", metric_value
 		#return (100.0 - metric_value)
 		return metric_value
