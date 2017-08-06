@@ -35,9 +35,9 @@ from opentuner import Result
 # (name, min, max)
 BLOCO_PARAMETROS = [
   ('kernel', 0, 3),
-  ('nx', 320, 320),
-  ('ny', 320, 320),
-  ('nz', 320, 320),
+  ('nx', 128, 128),
+  ('ny', 128, 128),
+  ('nz', 128, 128),
   ('gpuId', 0, 0)  
 ]
 # Test para 2 1 1 64 1 1 1 64 64 64 0 0 
@@ -47,7 +47,7 @@ BLOCO_PARAMETROS_CONFIGS = [ 'config' ]
 
 def read_file_configs():
   #file_sincos_projetocuda = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_sincos-96-96.txt','r')
-  file_sincos_titanx = open('/home/joao/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_sincos-320-320.txt','r')
+  file_sincos_titanx = open('/home/joao/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_sincos-128-128.txt','r')
   list_configs = []
   for linha in file_sincos_titanx:
     list_configs.append(linha)
@@ -178,13 +178,17 @@ class SincosCudaTuner(MeasurementInterface):
     lines = app_output.split("\n")
     for current_line in lines:
       strg = "" + current_line
-      if strg.find("Occupancy") > -1:
-        idx = strg.index("Occupancy")
+      if strg.find("Global Memory Load Efficiency") > -1:
+        idx = strg.index("Global Memory Load Efficiency")
         subsrtg = strg[idx:].split("    ")
         print "substrg: ", subsrtg
-        metric_value = float(subsrtg[3])
-        print "achieved_occupancy: ", metric_value
-    return (1.0 - metric_value)
+        #parte do GLD
+        substring = subsrtg[3]
+        substring1 = substring.replace("%",'')
+        metric_value = float(substring1)
+        #metric_value = float(subsrtg[3])
+        print "gld_efficiency: ", metric_value
+    return (100.0 - metric_value)
 
 # --------------------------------------------------------------------
   def save_final_config(self, configuration):
@@ -196,7 +200,7 @@ class SincosCudaTuner(MeasurementInterface):
 if __name__ == '__main__':
   FAIL_PENALTY = 9999999999
   compiled = False
-  n = 1 * 320 * 320
+  n = 1 * 128 * 128
 
   argparser = opentuner.default_argparser()
   SincosCudaTuner.main(argparser.parse_args())
