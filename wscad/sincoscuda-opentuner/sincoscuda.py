@@ -107,7 +107,7 @@ class SincosCudaTuner(MeasurementInterface):
       print " OK.\n"
       global compiled
       compiled = not compiled
-    run_cmd = 'nvprof --metrics achieved_occupancy ./sincosc-cuda'
+    run_cmd = 'nvprof --metrics gld_efficiency ./sincosc-cuda'
 
     #print "TESTE:" + " " + str(cfg['gx']) + " " + str(cfg['gy']) + " " + str(cfg['gz']) + str(cfg['bx']) + " " + str(cfg['by']) + " " + str(cfg['bz'])
     # confBlock = cfg['bx'] * cfg['by'] * cfg['bz']
