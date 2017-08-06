@@ -20,14 +20,14 @@ from opentuner import Result
 
 BLOCO_PARAMETROS = [
 	('kernel', 0, 0), 
-	('n', 131072, 131072),
+	('n', 128, 128),
 	('gpuId', 0, 0)  
 ]
 
 BLOCO_PARAMETROS_CONFIGS = [ 'config' ]
 
 def read_file_configs():
-  file_sumvector = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_sumvector-131072.txt','r')
+  file_sumvector = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_sumvector-128.txt','r')
   list_configs = []
   for linha in file_sumvector:
     list_configs.append(linha)
@@ -157,15 +157,17 @@ class SumVectorTuner(MeasurementInterface):
 		lines = app_output.split("\n")
 		for current_line in lines:
 			strg = "" + current_line
-			if strg.find("Global Memory Load Efficiency") > -1:
-				idx = strg.index("Global Memory Load Efficiency")
+			if strg.find("Instructions Executed") > -1:
+				idx = strg.index("Instructions Executed")
 				subsrtg = strg[idx:].split("    ")
 				print "substrg: ", subsrtg
-				substring = subsrtg[3]
-				substring1 = substring.replace("%",'')
-				metric_value = float(substring1)
-				print "gld_efficiency: ", metric_value
-		return (100.0 - metric_value)
+				#substring = subsrtg[3]
+				#substring1 = substring.replace("%",'')
+				#metric_value = float(substring1)
+				metric_value = subsrtg[3]
+				print "inst_executed: ", metric_value
+		#return (100.0 - metric_value)
+		return metric_value
 
 	def save_final_config(self, configuration):
 		"""called at the end of tuning"""
@@ -177,6 +179,6 @@ class SumVectorTuner(MeasurementInterface):
 if __name__ == '__main__':
 	FAIL_PENALTY = 9999999999
 	compiled = False
-	n = 131072
+	n = 128
 	argparser = opentuner.default_argparser()
 	SumVectorTuner.main(argparser.parse_args())
