@@ -89,7 +89,7 @@ class SumVectorTuner(MeasurementInterface):
 			print " OK.\n"
 			global compiled
 			compiled = not compiled
-		run_cmd = 'nvprof --metrics inst_executed ./sumvector-cuda'
+		run_cmd = 'nvprof --metrics sm_efficiency ./sumvector-cuda'
 
 		#print "TESTE:" + " " + str(cfg['gx']) + " " + str(cfg['gy']) + " " + str(cfg['gz']) + str(cfg['bx']) + " " + str(cfg['by']) + " " + str(cfg['bz'])
 		# confBlock = cfg['bx'] * cfg['by'] * cfg['bz']
@@ -157,7 +157,7 @@ class SumVectorTuner(MeasurementInterface):
 		lines = app_output.split("\n")
 		for current_line in lines:
 			strg = "" + current_line
-			if strg.find("Instructions Executed") > -1:
+			if strg.find("Multiprocessor Activity") > -1:
 				idx = strg.index("Multiprocessor Activity")
 				subsrtg = strg[idx:].split("    ")
 				print "substrg: ", subsrtg
