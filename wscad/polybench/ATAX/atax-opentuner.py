@@ -25,10 +25,12 @@ BLOCO_PARAMETROS = [
 	('gpuId', 0, 0)  
 ]
 
+BLOCO_PARAMETROS_CONFIGS = [ 'config' ]
+
 def read_file_configs():
-	file_gemm = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_atax-64-64.txt','r')
+	file_atax = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_atax-64-64.txt','r')
 	list_configs = []
-	for linha in file_gemm:
+	for linha in file_atax:
 		list_configs.append(linha)
 	#print list_configs
 	return list_configs
