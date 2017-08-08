@@ -35,9 +35,9 @@ from opentuner import Result
 # (name, min, max)
 BLOCO_PARAMETROS = [
   ('kernel', 0, 3),
-  ('nx', 96, 96),
-  ('ny', 96, 96),
-  ('nz', 96, 96),
+  ('nx', 128, 128),
+  ('ny', 128, 128),
+  ('nz', 128, 128),
   ('gpuId', 0, 0)  
 ]
 # Test para 2 1 1 64 1 1 1 64 64 64 0 0 
@@ -47,7 +47,7 @@ BLOCO_PARAMETROS_CONFIGS = [ 'config' ]
 
 def read_file_configs():
   #file_sincos_projetocuda = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_sincos-96-96.txt','r')
-  file_sincos_titanx = open('/home/joao/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_sincos-96-96.txt','r')
+  file_sincos_titanx = open('/home/joao/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_sincos-128-128.txt','r')
   list_configs = []
   for linha in file_sincos_titanx:
     list_configs.append(linha)
@@ -180,7 +180,7 @@ class SincosCudaTuner(MeasurementInterface):
       strg = "" + current_line
       if strg.find("Instructions Executed") > -1:
         idx = strg.index("Instructions Executed")
-        subsrtg = strg[idx:].split(" ")
+        subsrtg = strg[idx:].split("  ")
         print "substrg: ", subsrtg
         #parte do GLD
         #substring = subsrtg[3]
@@ -200,7 +200,7 @@ class SincosCudaTuner(MeasurementInterface):
 if __name__ == '__main__':
   FAIL_PENALTY = 9999999999
   compiled = False
-  n = 1 * 96 * 96
+  n = 1 * 128 * 128
 
   argparser = opentuner.default_argparser()
   SincosCudaTuner.main(argparser.parse_args())
