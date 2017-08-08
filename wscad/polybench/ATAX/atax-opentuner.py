@@ -20,13 +20,13 @@ from opentuner import Result
 
 BLOCO_PARAMETROS = [
 	('kernel', 0, 0), 
-	('nx', 0, 0),
-	('ny', 0, 0),
+	('nx', 64, 64),
+	('ny', 64, 64),
 	('gpuId', 0, 0)  
 ]
 
 def read_file_configs():
-	file_gemm = open('/home/projetocuda/Documentos/tcc_cuda_opentuner/wscad/gen-configs/saida_atax-512-512.txt','r')
+	file_gemm = open('/home/projetocuda/Documentos/tcc_cuda_opentuner/wscad/gen-configs/saida_atax-64-64.txt','r')
 	list_configs = []
 	for linha in file_gemm:
 		list_configs.append(linha)
@@ -156,13 +156,13 @@ class ataxTuner(MeasurementInterface):
 	def save_final_config(self, configuration):
 		"""called at the end of tuning"""
 		print "Optimal block size written to ataxcuda_final_config.json:", configuration.data
-		self.manipulator().save_to_file(configuration.data, 'gemmcuda_final_config.json')
+		self.manipulator().save_to_file(configuration.data, 'ataxcuda_final_config.json')
 
 if __name__ == '__main__':
 	FAIL_PENALTY = 9999999999
 	compiled = False
-	nx = 0
-	ny = 0
+	nx = 64
+	ny = 64
 	n = nx * ny
 	argparser = opentuner.default_argparser()
 	read_file_configs()
