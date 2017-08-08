@@ -195,12 +195,12 @@ int main(int argc, char** argv)
 	cudaMemcpy(tmp_gpu, tmp, sizeof(DATA_TYPE) * NX, cudaMemcpyHostToDevice);
 	
 	if (kernel == 0){
-		dim3 block(atoi(argv[5]), atoi(argv[6]), atoi(argv[7]));
+		dim3 block1(atoi(argv[5]), atoi(argv[6]), atoi(argv[7]));
 		dim3 grid1(atoi(argv[2]), atoi(argv[3]), atoi(argv[4]));
-		funcId = calculateFunctionId(grid1, block);
+		funcId = calculateFunctionId(grid1, block1);
   		printf("funcId: %d\n", funcId);
 		t_start = rtclock();
-		atax_kernel1<<< grid1, block >>>(A_gpu,x_gpu,tmp_gpu, NX, NY, funcId);
+		atax_kernel1<<< grid1, block1 >>>(A_gpu,x_gpu,tmp_gpu, NX, NY, funcId);
 		cudaThreadSynchronize();
 		t_end = rtclock();
 		fprintf(stdout, "GPU Runtime: %0.6lfs\n", t_end - t_start);
@@ -210,12 +210,12 @@ int main(int argc, char** argv)
 		cudaFree(y_gpu);
 		cudaFree(tmp_gpu);
 	}else{
-		dim3 block(atoi(argv[5]), atoi(argv[6]), atoi(argv[7]));
+		dim3 block2(atoi(argv[5]), atoi(argv[6]), atoi(argv[7]));
 		dim3 grid2(atoi(argv[2]), atoi(argv[3]), atoi(argv[4]));
-		funcId = calculateFunctionId(grid2, block);
+		funcId = calculateFunctionId(grid2, block2);
   		printf("funcId: %d\n", funcId);
 		t_start = rtclock();
-		atax_kernel2<<< grid2, block >>>(A_gpu,y_gpu,tmp_gpu, NX, NY, funcId);
+		atax_kernel2<<< grid2, block2 >>>(A_gpu,y_gpu,tmp_gpu, NX, NY, funcId);
 		cudaThreadSynchronize();
 		t_end = rtclock();
 		fprintf(stdout, "GPU Runtime: %0.6lfs\n", t_end - t_start);
