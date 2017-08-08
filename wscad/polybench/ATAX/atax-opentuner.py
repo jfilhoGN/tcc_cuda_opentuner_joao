@@ -20,15 +20,15 @@ from opentuner import Result
 
 BLOCO_PARAMETROS = [
 	('kernel', 0, 1), 
-	('nx', 160, 160),
-	('ny', 160, 160),
+	('nx', 192, 192),
+	('ny', 192, 192),
 	('gpuId', 0, 0)  
 ]
 
 BLOCO_PARAMETROS_CONFIGS = [ 'config' ]
 
 def read_file_configs():
-	file_atax = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_atax-160-160.txt','r')
+	file_atax = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_atax-192-192.txt','r')
 	list_configs = []
 	for linha in file_atax:
 		list_configs.append(linha)
@@ -163,8 +163,8 @@ class ataxTuner(MeasurementInterface):
 if __name__ == '__main__':
 	FAIL_PENALTY = 9999999999
 	compiled = False
-	nx = 160
-	ny = 160
+	nx = 192
+	ny = 192
 	n = nx * ny
 	argparser = opentuner.default_argparser()
 	read_file_configs()
