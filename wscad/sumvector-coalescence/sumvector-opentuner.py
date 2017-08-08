@@ -90,7 +90,7 @@ class SumVectorTuner(MeasurementInterface):
 			print " OK.\n"
 			global compiled
 			compiled = not compiled
-		run_cmd = 'nvprof --metrics gld_efficiency ./sumvector-cuda'
+		run_cmd = 'nvprof --metrics sm_efficiency ./sumvector-cuda'
 
 		#print "TESTE:" + " " + str(cfg['gx']) + " " + str(cfg['gy']) + " " + str(cfg['gz']) + str(cfg['bx']) + " " + str(cfg['by']) + " " + str(cfg['bz'])
 		# confBlock = cfg['bx'] * cfg['by'] * cfg['bz']
