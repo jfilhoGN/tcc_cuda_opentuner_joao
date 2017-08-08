@@ -140,7 +140,7 @@ int main(int argc, char** argv)
 	int funcId = 0;
 	int i = 0;
 
-	if (argc != 11) {
+	if (argc != 9) {
         printf("Uso: %s <kernel> <g.x> <g.y> <g.z> <b.x> <b.y> <b.z> <nx> <ny> \n", argv[0]);
         /*printf("     funcId:\n");
         printf("     0: 1D_1D, 1: 1D_2D, 2: 1D_3D\n");
@@ -158,7 +158,7 @@ int main(int argc, char** argv)
         NX = atoi(argv[8]);
         NY = atoi(argv[9]);
         //funcId = atoi(argv[10]);
-        printf("Executando: %s atax_kernel_%d grid(%d, %d, %d) block(%d, %d, %d) %d\n", argv[0], kernel, atoi(argv[2]), atoi(argv[3]), atoi(argv[4]), atoi(argv[5]), atoi(argv[6]), atoi(argv[7]));
+        //printf("Executando: %s atax_kernel_%d grid(%d, %d, %d) block(%d, %d, %d) %d\n", argv[0], kernel, atoi(argv[2]), atoi(argv[3]), atoi(argv[4]), atoi(argv[5]), atoi(argv[6]), atoi(argv[7]));
     }
   
     /* Recuperar as informações da GPU. */
