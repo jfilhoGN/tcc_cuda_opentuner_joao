@@ -166,4 +166,4 @@ if __name__ == '__main__':
 	n = nx * ny
 	argparser = opentuner.default_argparser()
 	read_file_configs()
-	gemmTuner.main(argparser.parse_args())
+	ataxTuner.main(argparser.parse_args())
