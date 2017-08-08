@@ -199,7 +199,7 @@ int main(int argc, char** argv)
 	if (kernel == 0){
 		dim3 block(atoi(argv[5]), atoi(argv[6]), atoi(argv[7]));
 		dim3 grid1(atoi(argv[2]), atoi(argv[3]), atoi(argv[4]));
-		funcId = calculateFunctionId(grid, block);
+		funcId = calculateFunctionId(grid1, block);
   		printf("funcId: %d\n", funcId);
 		t_start = rtclock();
 		atax_kernel1<<< grid1, block >>>(A_gpu,x_gpu,tmp_gpu, NX, NY, funcId);
@@ -214,7 +214,7 @@ int main(int argc, char** argv)
 	}else{
 		dim3 block(atoi(argv[5]), atoi(argv[6]), atoi(argv[7]));
 		dim3 grid2(atoi(argv[2]), atoi(argv[3]), atoi(argv[4]));
-		funcId = calculateFunctionId(grid, block);
+		funcId = calculateFunctionId(grid2, block);
   		printf("funcId: %d\n", funcId);
 		t_start = rtclock();
 		atax_kernel2<<< grid2, block >>>(A_gpu,y_gpu,tmp_gpu, NX, NY, funcId);

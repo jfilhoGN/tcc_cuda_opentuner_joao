@@ -19,7 +19,7 @@ from opentuner import Result
 # nvprof --metrics gld_efficiency ./atax-cuda kernel gx gy gz bx by bz nx ny funcId
 
 BLOCO_PARAMETROS = [
-	('kernel', 0, 0), 
+	('kernel', 0, 1), 
 	('nx', 64, 64),
 	('ny', 64, 64),
 	('gpuId', 0, 0)  
