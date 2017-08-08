@@ -26,7 +26,7 @@ BLOCO_PARAMETROS = [
 ]
 
 def read_file_configs():
-	file_gemm = open('/home/projetocuda/Documentos/tcc_cuda_opentuner/wscad/gen-configs/saida_atax-64-64.txt','r')
+	file_gemm = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_atax-64-64.txt','r')
 	list_configs = []
 	for linha in file_gemm:
 		list_configs.append(linha)
