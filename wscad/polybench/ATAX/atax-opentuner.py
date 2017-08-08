@@ -89,7 +89,7 @@ class ataxTuner(MeasurementInterface):
 			print " OK.\n"
 			global compiled
 			compiled = not compiled
-		run_cmd = 'nvprof --metrics achieved_occupancy ./atax-cuda'
+		run_cmd = 'nvprof --metrics achieved_occupancy ./atax-cuda.exe'
 
 		print "Antes do IF"
 		if((confBlock <= 1024) and (confBlock % 32 == 0) and (config == n)):
