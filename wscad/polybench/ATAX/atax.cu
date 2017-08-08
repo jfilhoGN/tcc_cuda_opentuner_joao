@@ -20,8 +20,6 @@
 
 #include <cuda_runtime.h>
 
-#include "../../../dimensions.h"
-
 
 //define the error threshold for the results "not matching"
 #define PERCENT_DIFF_ERROR_THRESHOLD 0.5
