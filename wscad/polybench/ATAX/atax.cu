@@ -77,7 +77,7 @@ void GPU_argv_init()
 }
 
 
-__global__ void atax_kernel1(DATA_TYPE *A, DATA_TYPE *x, DATA_TYPE *tmp, int NX, int NY, funcId)
+__global__ void atax_kernel1(DATA_TYPE *A, DATA_TYPE *x, DATA_TYPE *tmp, int NX, int NY, int funcId)
 {
 	int i = getGlobalIdFunc[funcId]();
 
