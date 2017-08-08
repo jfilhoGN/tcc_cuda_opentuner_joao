@@ -157,15 +157,15 @@ class SumVectorTuner(MeasurementInterface):
 		lines = app_output.split("\n")
 		for current_line in lines:
 			strg = "" + current_line
-			if strg.find("Multiprocessor Activity") > -1:
-				idx = strg.index("Multiprocessor Activity")
+			if strg.find("Global Memory Load Efficiency") > -1:
+				idx = strg.index("Global Memory Load Efficiency")
 				subsrtg = strg[idx:].split("    ")
 				print "substrg: ", subsrtg
 				substring = subsrtg[3]
 				substring1 = substring.replace("%",'')
 				metric_value = float(substring1)
 				#metric_value = float(subsrtg[3])
-				print "sm_efficiency: ", metric_value
+				print "gld_efficiency: ", metric_value
 		return (100.0 - metric_value)
 		#return metric_value
 
