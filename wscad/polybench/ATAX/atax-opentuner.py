@@ -149,7 +149,7 @@ class ataxTuner(MeasurementInterface):
 			strg = "" + current_line
 			if strg.find("Instructions Executed") > -1:
 				idx = strg.index("Instructions Executed")
-				subsrtg = strg[idx:].split("    ")
+				subsrtg = strg[idx:].split("  ")
 				print "substrg: ", subsrtg
 				metric_value = float(subsrtg[3])
 				print "inst_executed: ", metric_value
