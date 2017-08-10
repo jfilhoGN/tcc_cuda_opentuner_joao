@@ -35,9 +35,9 @@ from opentuner import Result
 # (name, min, max)
 BLOCO_PARAMETROS = [
   ('kernel', 0, 2),
-  ('nx', 96, 96),
-  ('ny', 96, 96),
-  ('nz', 96, 96),
+  ('nx', 224,224),
+  ('ny', 224, 224),
+  ('nz', 192, 192),
   ('gpuId', 0, 0)  
 ]
 # Test para 2 1 1 64 1 1 1 64 64 64 0 0 
@@ -47,7 +47,7 @@ BLOCO_PARAMETROS_CONFIGS = [ 'config' ]
 
 def read_file_configs():
   #file_sincos_projetocuda = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_sincos-96-96.txt','r')
-  file_sincos_titanx = open('/home/joao/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_sincos-96-96.txt','r')
+  file_sincos_titanx = open('/home/joao/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_sincos-224-224.txt','r')
   list_configs = []
   for linha in file_sincos_titanx:
     list_configs.append(linha)
@@ -107,7 +107,7 @@ class SincosCudaTuner(MeasurementInterface):
       print " OK.\n"
       global compiled
       compiled = not compiled
-    run_cmd = 'nvprof --metrics inst_executed ./sincosc-cuda'
+    run_cmd = 'nvprof --metrics sm_efficiency ./sincosc-cuda'
 
     #print "TESTE:" + " " + str(cfg['gx']) + " " + str(cfg['gy']) + " " + str(cfg['gz']) + str(cfg['bx']) + " " + str(cfg['by']) + " " + str(cfg['bz'])
     # confBlock = cfg['bx'] * cfg['by'] * cfg['bz']
@@ -178,18 +178,18 @@ class SincosCudaTuner(MeasurementInterface):
     lines = app_output.split("\n")
     for current_line in lines:
       strg = "" + current_line
-      if strg.find("Instructions Executed") > -1:
-        idx = strg.index("Instructions Executed")
-        subsrtg = strg[idx:].split("   ")
+      if strg.find("Multiprocessor Activity") > -1:
+        idx = strg.index("Multiprocessor Activity")
+        subsrtg = strg[idx:].split("    ")
         print "substrg: ", subsrtg
         #parte do GLD
-        #substring = subsrtg[3]
-        #substring1 = substring.replace("%",'')
-        #metric_value = float(substring1)
-        metric_value = float(subsrtg[3])
-        print "inst_executed: ", metric_value
-    #return (100.0 - metric_value)
-    return metric_value
+        substring = subsrtg[3]
+        substring1 = substring.replace("%",'')
+        metric_value = float(substring1)
+        #metric_value = float(subsrtg[3])
+        print "sm_eficiency: ", metric_value
+    return (100.0 - metric_value)
+    #return metric_value
 
 # --------------------------------------------------------------------
   def save_final_config(self, configuration):
@@ -201,7 +201,6 @@ class SincosCudaTuner(MeasurementInterface):
 if __name__ == '__main__':
   FAIL_PENALTY = 9999999999
   compiled = False
-  n = 1 * 96 * 96
-
+  n = 1 * 224 * 224
   argparser = opentuner.default_argparser()
   SincosCudaTuner.main(argparser.parse_args())
