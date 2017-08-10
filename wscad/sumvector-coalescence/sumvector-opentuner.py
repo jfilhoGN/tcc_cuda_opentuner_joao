@@ -20,7 +20,7 @@ from opentuner import Result
 
 BLOCO_PARAMETROS = [
 	('kernel', 0, 0), 
-	('n', 65568, 65568),
+	('n', 128, 128),
 	('gpuId', 0, 0)  
 ]
 
@@ -90,7 +90,7 @@ class SumVectorTuner(MeasurementInterface):
 			print " OK.\n"
 			global compiled
 			compiled = not compiled
-		run_cmd = 'nvprof --metrics inst_executed ./sumvector-cuda'
+		run_cmd = 'nvprof --metrics achieved_occupancy ./sumvector-cuda'
 
 		#print "TESTE:" + " " + str(cfg['gx']) + " " + str(cfg['gy']) + " " + str(cfg['gz']) + str(cfg['bx']) + " " + str(cfg['by']) + " " + str(cfg['bz'])
 		# confBlock = cfg['bx'] * cfg['by'] * cfg['bz']
@@ -158,17 +158,13 @@ class SumVectorTuner(MeasurementInterface):
 		lines = app_output.split("\n")
 		for current_line in lines:
 			strg = "" + current_line
-			if strg.find("Instructions Executed") > -1:
-				idx = strg.index("Instructions Executed")
-				subsrtg = strg[idx:].split("   ")
+			if strg.find("Occupancy") > -1:
+				idx = strg.index("Occupancy")
+				subsrtg = strg[idx:].split("    ")
 				print "substrg: ", subsrtg
-				#substring = subsrtg[3]
-				#substring1 = substring.replace("%",'')
-				#metric_value = float(substring1)
 				metric_value = float(subsrtg[3])
-				print "inst_executed: ", metric_value
-		#return (100.0 - metric_value)
-		return metric_value
+				print "achieved_occupancy: ", metric_value
+		return (1.0 - metric_value)
 
 	def save_final_config(self, configuration):
 		"""called at the end of tuning"""
@@ -180,6 +176,6 @@ class SumVectorTuner(MeasurementInterface):
 if __name__ == '__main__':
 	FAIL_PENALTY = 9999999999
 	compiled = False
-	n = 65568
+	n = 128
 	argparser = opentuner.default_argparser()
 	SumVectorTuner.main(argparser.parse_args())
