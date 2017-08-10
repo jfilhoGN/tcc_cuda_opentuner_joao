@@ -89,7 +89,7 @@ class ataxTuner(MeasurementInterface):
 			print " OK.\n"
 			global compiled
 			compiled = not compiled
-		run_cmd = 'nvprof --metrics inst_executed ./atax-cuda.exe'
+		run_cmd = 'nvprof --metrics sm_efficiency ./atax-cuda.exe'
 
 		print "Antes do IF"
 		if((confBlock <= 1024) and (confBlock % 32 == 0) and (config == n)):
@@ -147,17 +147,17 @@ class ataxTuner(MeasurementInterface):
 		lines = app_output.split("\n")
 		for current_line in lines:
 			strg = "" + current_line
-			if strg.find("Instructions Executed") > -1:
-				idx = strg.index("Instructions Executed")
+			if strg.find("Multiprocessor Activity") > -1:
+				idx = strg.index("Multiprocessor Activity")
 				subsrtg = strg[idx:].split("     ")
 				print "substrg: ", subsrtg
-				#substring = subsrtg[3]
-				#substring1 = substring.replace("%",'')
-				#metric_value = float(substring1)
-				metric_value = float(subsrtg[3])
-				print "inst_executed: ", metric_value
-		#return (100.0 - metric_value)
-		return metric_value
+				substring = subsrtg[3]
+				substring1 = substring.replace("%",'')
+				metric_value = float(substring1)
+				#metric_value = float(subsrtg[3])
+				print "sm_efficiency: ", metric_value
+		return (100.0 - metric_value)
+		#return metric_value
 
 	def save_final_config(self, configuration):
 		"""called at the end of tuning"""
