@@ -48,57 +48,7 @@ void calcDimensions(unsigned long long int iterations){
 							config = confBlock * confGrid ;
 							// Evict kernel divergence, blocks with multiply warp size.
 							if((confBlock <= 1024) && (config == iterations) && (confBlock % 32 == 0)){
-								//1D_1D Conjunto de |
-								if((gx==1 && gy==1 && gz==1 && bx==1 && by==1 && bz==1)||(gx!=1 && gy==1 && gz==1 && bx==1 && by==1 && bz==1)||(gx==1 && gy!=1 && gz==1 && bx==1 && by==1 && bz==1)||(gx==1 && gy==1 && gz!=1 && bx==1 && by==1 && bz==1)||(gx==1 && gy==1 && gz==1 && bx!=1 && by==1 && bz==1)||(gx==1 && gy==1 && gz==1 && bx==1 && by!=1 && bz==1)||(gx==1 && gy==1 && gz==1 && bx==1 && by==1 && bz!=1))
-									funcId = 0;
-								//1D_2D
-								if(gx==1 && gy==1 && gz==1 && bx!=1 && by!=1 && bz==1)
-									funcId = 1;
-								if(gx==1 && gy==1 && gz==1 && bx==1 && by!=1 && bz!=1)
-									funcId = 1;
-								if(gx==1 && gy==1 && gz==1 && bx!=1 && by==1 && bz!=1)
-									funcId = 1;
-								//1D_3D
-								if(gx==1 && gy==1 && gz==1 && bx!=1 && by!=1 && bz!=1)
-									funcId = 2;
-								//2D_1D
-								if(gx!=1 && gy!=1 && gz==1 && bx==1 && by==1 && bz==1)
-									funcId = 3;
-								if(gx!=1 && gy==1 && gz!=1 && bx==1 && by==1 && bz==1)
-									funcId = 3;
-								if(gx==1 && gy!=1 && gz!=1 && bx==1 && by==1 && bz==1)
-									funcId = 3;
-								//2D_2D
-								if(gx!=1 && gy!=1 && gz==1 && bx!=1 && by!=1 && bz==1)
-									funcId = 4;
-								if(gx!=1 && gy==1 && gz!=1 && bx!=1 && by==1 && bz!=1)
-									funcId = 4;
-								if(gx==1 && gy!=1 && gz!=1 && bx==1 && by!=1 && bz!=1)
-									funcId = 4;
-								//2D_3D
-								if(gx!=1 && gy!=1 && gz==1 && bx!=1 && by!=1 && bz!=1)
-									funcId = 5;
-								if(gx!=1 && gy==1 && gz==1 && bx!=1 && by!=1 && bz!=1)
-									funcId = 5;
-								if(gx==1 && gy!=1 && gz!=1 && bx!=1 && by!=1 && bz!=1)
-									funcId = 5;
-								//3D_1D Conjunto de |
-								if((gx!=1 && gy!=1 && gz!=1 && bx==1 && by==1 && bz==1)||(gx!=1 && gy!=1 && gz!=1 && bx!=1 && by==1 && bz==1)||(gx!=1 && gy!=1 && gz!=1 && bx==1 && by!=1 && bz==1)||(gx!=1 && gy!=1 && gz!=1 && bx==1 && by==1 && bz!=1))
-									funcId = 6;
-								//3D_2D
-								if(gx!=1 && gy!=1 && gz!=1 && bx!=1 && by!=1 && bz==1)
-									funcId = 7;
-								if(gx!=1 && gy!=1 && gz!=1 && bx!=1 && by==1 && bz!=1)
-									funcId = 7;
-								if(gx!=1 && gy!=1 && gz!=1 && bx==1 && by!=1 && bz!=1)
-									funcId = 7;
-								//3D_3D
-								if(gx!=1 && gy!=1 && gz!=1 && bx!=1 && by!=1 && bz!=1)
-									funcId = 8;
-
-
-								printf("'gx:%d, gy:%d, gz:%d, bx:%d, by:%d, bz:%d, funcId:%d' \n", gx, gy, gz, bx, by, bz, funcId);
-													
+								printf("'gx:%d, gy:%d, gz:%d, bx:%d, by:%d, bz:%d, ' \n", gx, gy, gz, bx, by, bz);								
 								countConfig++;								
 							}
 						}

@@ -196,20 +196,23 @@ int main(int argc, char *argv[])
 	
 	dim3 block(atoi(argv[5]), atoi(argv[6]), atoi(argv[7]));
 	dim3 grid(atoi(argv[2]), atoi(argv[3]), atoi(argv[4]));
-	funcId = calculateFunctionId(grid, block);
-	t_start = rtclock();
-
-	gemm_kernel<<< grid, block >>>(A_gpu, B_gpu, C_gpu, NI, NJ, NK, funcId);
-	cudaThreadSynchronize();
-
-	t_end = rtclock();
-	fprintf(stdout, "GPU Runtime: %0.6lfs\n", t_end - t_start);
-
-	cudaMemcpy(C_outputFromGpu, C_gpu, sizeof(DATA_TYPE) * NI * NJ, cudaMemcpyDeviceToHost);    
 	
-	cudaFree(A_gpu);
-	cudaFree(B_gpu);
-	cudaFree(C_gpu);
+	if (kernel==0){
+		funcId = calculateFunctionId(grid, block);
+		t_start = rtclock();
+		gemm_kernel<<< grid, block >>>(A_gpu, B_gpu, C_gpu, NI, NJ, NK, funcId);
+		cudaThreadSynchronize();
+
+		t_end = rtclock();
+		fprintf(stdout, "GPU Runtime: %0.6lfs\n", t_end - t_start);
+
+		cudaMemcpy(C_outputFromGpu, C_gpu, sizeof(DATA_TYPE) * NI * NJ, cudaMemcpyDeviceToHost);    
+	
+		cudaFree(A_gpu);
+		cudaFree(B_gpu);
+		cudaFree(C_gpu);
+	}
+	
 
 	t_start = rtclock();	
 	gemm(A, B, C, NI, NJ, NK);
