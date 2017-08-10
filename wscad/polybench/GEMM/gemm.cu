@@ -17,7 +17,7 @@
 #include <stdarg.h>
 #include <string.h>
 #include <cuda.h>
-#include "../../dimensions.h"
+#include "../../../dimensions.h"
 #include "../common/polybenchUtilFuncts.h"
 #include "../common/polybench.c"
 
@@ -115,10 +115,10 @@ void GPU_argv_init()
 }
 
 
-__global__ void gemm_kernel(DATA_TYPE *a, DATA_TYPE *b, DATA_TYPE *c, int NI, int NJ, int NK)
+__global__ void gemm_kernel(DATA_TYPE *a, DATA_TYPE *b, DATA_TYPE *c, int NI, int NJ, int NK, int funcId)
 {
-	int j = blockIdx.x * blockDim.x + threadIdx.x;
-	int i = blockIdx.y * blockDim.y + threadIdx.y;
+	int j = getGlobalIdFunc[funcId]();
+	int i = getGlobalIdFunc[funcId]();
 
 	if ((i < NI) && (j < NJ))
 	{	
@@ -142,12 +142,12 @@ int main(int argc, char *argv[])
     int kernel = 0;
     int funcId = 0;
     int i = 0;
-    if (argc != 13) {
-        printf("Uso: %s <kernel> <g.x> <g.y> <g.z> <b.x> <b.y> <b.z> <ni> <nj> <nk> <funcId> \n", argv[0]);
-        printf("     funcId:\n");
+    if (argc != 11) {
+        printf("Uso: %s <kernel> <g.x> <g.y> <g.z> <b.x> <b.y> <b.z> <ni> <nj> <nk> \n", argv[0]);
+        /*printf("     funcId:\n");
         printf("     0: 1D_1D, 1: 1D_2D, 2: 1D_3D\n");
         printf("     3: 2D_1D, 4: 2D_2D, 5: 2D_3D\n");
-        printf("     6: 3D_1D, 7: 3D_2D, 8: 3D_3D\n");
+        printf("     6: 3D_1D, 7: 3D_2D, 8: 3D_3D\n");*/
         return 0;
     }
     else{
@@ -160,8 +160,8 @@ int main(int argc, char *argv[])
         NI = atoi(argv[8]);
         NJ = atoi(argv[9]);
         NK = atoi(argv[10]);
-        funcId = atoi(argv[11]);
-        printf("Executando: %s gemm_kernel_%d grid(%d, %d, %d) block(%d, %d, %d) %d\n", argv[0], kernel, atoi(argv[2]), atoi(argv[3]), atoi(argv[4]), atoi(argv[5]), atoi(argv[6]), atoi(argv[7]));
+        //funcId = atoi(argv[11]);
+        //printf("Executando: %s gemm_kernel_%d grid(%d, %d, %d) block(%d, %d, %d) %d\n", argv[0], kernel, atoi(argv[2]), atoi(argv[3]), atoi(argv[4]), atoi(argv[5]), atoi(argv[6]), atoi(argv[7]));
     }
   
     /* Recuperar as informações da GPU. */
@@ -196,10 +196,10 @@ int main(int argc, char *argv[])
 	
 	dim3 block(atoi(argv[5]), atoi(argv[6]), atoi(argv[7]));
 	dim3 grid(atoi(argv[2]), atoi(argv[3]), atoi(argv[4]));
-
+	funcId = calculateFunctionId(grid, block);
 	t_start = rtclock();
 
-	gemm_kernel<<< grid, block >>>(A_gpu, B_gpu, C_gpu, NI, NJ, NK);
+	gemm_kernel<<< grid, block >>>(A_gpu, B_gpu, C_gpu, NI, NJ, NK, funcId);
 	cudaThreadSynchronize();
 
 	t_end = rtclock();
