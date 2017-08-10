@@ -20,15 +20,15 @@ from opentuner import Result
 
 BLOCO_PARAMETROS = [
 	('kernel', 0, 1), 
-	('nx', 128, 128),
-	('ny', 128, 128),
+	('nx', 256, 256),
+	('ny', 256, 256),
 	('gpuId', 0, 0)  
 ]
 
 BLOCO_PARAMETROS_CONFIGS = [ 'config' ]
 
 def read_file_configs():
-	file_atax = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_atax-128-128.txt','r')
+	file_atax = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_atax-256-256.txt','r')
 	list_configs = []
 	for linha in file_atax:
 		list_configs.append(linha)
@@ -89,7 +89,7 @@ class ataxTuner(MeasurementInterface):
 			print " OK.\n"
 			global compiled
 			compiled = not compiled
-		run_cmd = 'nvprof --metrics sm_efficiency ./atax-cuda.exe'
+		run_cmd = 'nvprof --metrics inst_executed ./atax-cuda.exe'
 
 		print "Antes do IF"
 		if((confBlock <= 1024) and (confBlock % 32 == 0) and (config == n)):
@@ -147,17 +147,17 @@ class ataxTuner(MeasurementInterface):
 		lines = app_output.split("\n")
 		for current_line in lines:
 			strg = "" + current_line
-			if strg.find("Multiprocessor Activity") > -1:
-				idx = strg.index("Multiprocessor Activity")
+			if strg.find("Instructions Executed") > -1:
+				idx = strg.index("Instructions Executed")
 				subsrtg = strg[idx:].split("    ")
 				print "substrg: ", subsrtg
-				substring = subsrtg[3]
-				substring1 = substring.replace("%",'')
-				metric_value = float(substring1)
-				#metric_value = float(subsrtg[3])
-				print "sm_efficiency: ", metric_value
-		return (100.0 - metric_value)
-		#return metric_value
+				#substring = subsrtg[3]
+				#substring1 = substring.replace("%",'')
+				#metric_value = float(substring1)
+				metric_value = float(subsrtg[3])
+				print "inst_executed: ", metric_value
+		#return (100.0 - metric_value)
+		return metric_value
 
 	def save_final_config(self, configuration):
 		"""called at the end of tuning"""
@@ -167,8 +167,8 @@ class ataxTuner(MeasurementInterface):
 if __name__ == '__main__':
 	FAIL_PENALTY = 9999999999
 	compiled = False
-	nx = 128
-	ny = 128
+	nx = 256
+	ny = 256
 	n = nx * ny
 	argparser = opentuner.default_argparser()
 	read_file_configs()

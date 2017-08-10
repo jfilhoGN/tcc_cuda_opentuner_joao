@@ -1,1 +1,1 @@
-{"nx": 320, "kernel": 1, "gpuId": 0, "config": "'gx:20, gy:5, gz:1, bx:1, by:128, bz:8, ' \n", "ny": 320}
+{"nx": 320, "kernel": 0, "config": "'gx:10, gy:80, gz:4, bx:4, by:2, bz:4, ' \n", "gpuId": 0, "ny": 320}
