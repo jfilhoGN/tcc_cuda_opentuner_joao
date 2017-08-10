@@ -34,7 +34,7 @@ from opentuner import Result
 # Configs
 # (name, min, max)
 BLOCO_PARAMETROS = [
-  ('kernel', 0, 3),
+  ('kernel', 0, 2),
   ('nx', 64, 64),
   ('ny', 64, 64),
   ('nz', 64, 64),
@@ -180,7 +180,7 @@ class SincosCudaTuner(MeasurementInterface):
       strg = "" + current_line
       if strg.find("Instructions Executed") > -1:
         idx = strg.index("Instructions Executed")
-        subsrtg = strg[idx:].split("   ")
+        subsrtg = strg[idx:].split("    ")
         print "substrg: ", subsrtg
         #parte do GLD
         #substring = subsrtg[3]
