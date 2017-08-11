@@ -20,16 +20,16 @@ from opentuner import Result
 
 BLOCO_PARAMETROS = [
 	('kernel', 0, 0), 
-	('ni', 192, 192),
-	('nj', 192, 192),
-	('nk', 192, 192),
+	('ni', 224, 224),
+	('nj', 224, 224),
+	('nk', 224, 224),
 	('gpuId', 0, 0)  
 ]
 
 BLOCO_PARAMETROS_CONFIGS = [ 'config' ]
 
 def read_file_configs():
-	file_gemm = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_gemm-192.txt','r')
+	file_gemm = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_gemm-224.txt','r')
 	list_configs = []
 	for linha in file_gemm:
 		list_configs.append(linha)
@@ -164,9 +164,9 @@ class gemmTuner(MeasurementInterface):
 if __name__ == '__main__':
 	FAIL_PENALTY = 9999999999
 	compiled = False
-	ni = 192
-	nj = 192
-	nk = 192
+	ni = 224
+	nj = 224
+	nk = 224
 	n = ni * nj
 	argparser = opentuner.default_argparser()
 	read_file_configs()
