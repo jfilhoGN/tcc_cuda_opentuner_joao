@@ -20,16 +20,16 @@ from opentuner import Result
 
 BLOCO_PARAMETROS = [
 	('kernel', 0, 0), 
-	('ni', 0, 0),
-	('nj', 0, 0),
-	('nk', 0, 0),
+	('ni', 224, 224),
+	('nj', 224, 224),
+	('nk', 224, 224),
 	('gpuId', 0, 0)  
 ]
 
 BLOCO_PARAMETROS_CONFIGS = [ 'config' ]
 
 def read_file_configs():
-	file_gemm = open('/home/projetocuda/Documentos/tcc_cuda_opentuner/wscad/gen-configs/saida_gemm.txt','r')
+	file_gemm = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_gemm-224.txt','r')
 	list_configs = []
 	for linha in file_gemm:
 		list_configs.append(linha)
@@ -90,7 +90,7 @@ class gemmTuner(MeasurementInterface):
 			print " OK.\n"
 			global compiled
 			compiled = not compiled
-		run_cmd = 'nvprof --metrics achieved_occupancy ./gem-cuda'
+		run_cmd = 'nvprof --metrics achieved_occupancy ./gem-cuda.exe'
 
 		print "Antes do IF"
 		if((confBlock <= 1024) and (confBlock % 32 == 0) and (config == n)):
@@ -128,7 +128,6 @@ class gemmTuner(MeasurementInterface):
 			run_cmd += ' {0}'.format(configuration['ni'])
 			run_cmd += ' {0}'.format(configuration['nj'])
 			run_cmd += ' {0}'.format(configuration['nk'])
-			run_cmd += ' {0}'.format(cfg['funcId'])
 
 			print "Running command line: ", run_cmd
 			#print "CFG->funcId: " +  str(cfg['funcId'])
@@ -165,9 +164,9 @@ class gemmTuner(MeasurementInterface):
 if __name__ == '__main__':
 	FAIL_PENALTY = 9999999999
 	compiled = False
-	ni = 0
-	nj = 0
-	nk = 0
+	ni = 224
+	nj = 224
+	nk = 224
 	n = ni * nj
 	argparser = opentuner.default_argparser()
 	read_file_configs()
