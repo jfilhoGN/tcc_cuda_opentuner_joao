@@ -46,10 +46,10 @@ BLOCO_PARAMETROS = [
 BLOCO_PARAMETROS_CONFIGS = [ 'config' ]
 
 def read_file_configs():
-  #file_sincos_projetocuda = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_sincos-96-96.txt','r')
-  file_sincos_titanx = open('/home/joao/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_sincos-320-320.txt','r')
+  file_sincos_projetocuda = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_sincos-320-320.txt','r')
+  #file_sincos_titanx = open('/home/joao/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_sincos-64-64.txt','r')
   list_configs = []
-  for linha in file_sincos_titanx:
+  for linha in file_sincos_projetocuda:
     list_configs.append(linha)
   #print list_configs
   return list_configs
@@ -107,7 +107,7 @@ class SincosCudaTuner(MeasurementInterface):
       print " OK.\n"
       global compiled
       compiled = not compiled
-    run_cmd = 'nvprof --metrics sm_efficiency ./sincosc-cuda'
+    run_cmd = 'nvprof --metrics inst_executed ./sincosc-cuda'
 
     #print "TESTE:" + " " + str(cfg['gx']) + " " + str(cfg['gy']) + " " + str(cfg['gz']) + str(cfg['bx']) + " " + str(cfg['by']) + " " + str(cfg['bz'])
     # confBlock = cfg['bx'] * cfg['by'] * cfg['bz']
@@ -178,8 +178,8 @@ class SincosCudaTuner(MeasurementInterface):
     lines = app_output.split("\n")
     for current_line in lines:
       strg = "" + current_line
-      if strg.find("Multiprocessor Activity") > -1:
-        idx = strg.index("Multiprocessor Activity")
+      if strg.find("Instructions Executed") > -1:
+        idx = strg.index("Instructions Executed")
         subsrtg = strg[idx:].split("    ")
         print "substrg: ", subsrtg
         #parte do GLD
@@ -187,7 +187,7 @@ class SincosCudaTuner(MeasurementInterface):
         substring1 = substring.replace("%",'')
         metric_value = float(substring1)
         #metric_value = float(subsrtg[3])
-        print "sm_eficiency: ", metric_value
+        print "inst_executed: ", metric_value
     return (100.0 - metric_value)
     #return metric_value
 
