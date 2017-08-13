@@ -46,10 +46,15 @@ BLOCO_PARAMETROS = [
 BLOCO_PARAMETROS_CONFIGS = [ 'config' ]
 
 def read_file_configs():
+<<<<<<< HEAD
   #file_sincos_projetocuda = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_sincos-96-96.txt','r')
   file_sincos_titanx = open('/home/joao/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_sincos-96-96.txt','r')
+=======
+  file_sincos_projetocuda = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_sincos-320-320.txt','r')
+  #file_sincos_titanx = open('/home/joao/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_sincos-64-64.txt','r')
+>>>>>>> e7fc41fc17761eeb59bbf159f79e84c7e53711d7
   list_configs = []
-  for linha in file_sincos_titanx:
+  for linha in file_sincos_projetocuda:
     list_configs.append(linha)
   #print list_configs
   return list_configs
@@ -183,6 +188,7 @@ class SincosCudaTuner(MeasurementInterface):
         subsrtg = strg[idx:].split("    ")
         print "substrg: ", subsrtg
         #parte do GLD
+<<<<<<< HEAD
         #substring = subsrtg[3]
         #substring1 = substring.replace("%",'')
         #metric_value = float(substring1)
@@ -190,6 +196,15 @@ class SincosCudaTuner(MeasurementInterface):
         print "inst_executed: ", metric_value
     #return (100.0 - metric_value)
     return metric_value
+=======
+        substring = subsrtg[3]
+        substring1 = substring.replace("%",'')
+        metric_value = float(substring1)
+        #metric_value = float(subsrtg[3])
+        print "inst_executed: ", metric_value
+    return (100.0 - metric_value)
+    #return metric_value
+>>>>>>> e7fc41fc17761eeb59bbf159f79e84c7e53711d7
 
 # --------------------------------------------------------------------
   def save_final_config(self, configuration):
