@@ -20,7 +20,7 @@ from opentuner import Result
 
 BLOCO_PARAMETROS = [
 	('kernel', 0, 0), 
-	('n', 128, 128),
+	('n', 65568, 65568),
 	('gpuId', 0, 0)  
 ]
 
@@ -28,7 +28,7 @@ BLOCO_PARAMETROS_CONFIGS = [ 'config' ]
 
 def read_file_configs():
   #file_sumvector = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_sumvector-65568.txt','r')
-  file_sumvector = open('/home/joao/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_sumvector-128.txt','r')
+  file_sumvector = open('/home/joao/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_sumvector-65568.txt','r')
   list_configs = []
   for linha in file_sumvector:
     list_configs.append(linha)
@@ -90,7 +90,7 @@ class SumVectorTuner(MeasurementInterface):
 			print " OK.\n"
 			global compiled
 			compiled = not compiled
-		run_cmd = 'nvprof --metrics achieved_occupancy ./sumvector-cuda'
+		run_cmd = 'nvprof --metrics inst_executed ./sumvector-cuda'
 
 		#print "TESTE:" + " " + str(cfg['gx']) + " " + str(cfg['gy']) + " " + str(cfg['gz']) + str(cfg['bx']) + " " + str(cfg['by']) + " " + str(cfg['bz'])
 		# confBlock = cfg['bx'] * cfg['by'] * cfg['bz']
@@ -158,12 +158,12 @@ class SumVectorTuner(MeasurementInterface):
 		lines = app_output.split("\n")
 		for current_line in lines:
 			strg = "" + current_line
-			if strg.find("Occupancy") > -1:
-				idx = strg.index("Occupancy")
-				subsrtg = strg[idx:].split("    ")
+			if strg.find("Instructions Executed") > -1:
+				idx = strg.index("Instructions Executed")
+				subsrtg = strg[idx:].split("   ")
 				print "substrg: ", subsrtg
 				metric_value = float(subsrtg[3])
-				print "achieved_occupancy: ", metric_value
+				print "inst_executed: ", metric_value
 		return (1.0 - metric_value)
 
 	def save_final_config(self, configuration):
@@ -176,6 +176,6 @@ class SumVectorTuner(MeasurementInterface):
 if __name__ == '__main__':
 	FAIL_PENALTY = 9999999999
 	compiled = False
-	n = 128
+	n = 65568
 	argparser = opentuner.default_argparser()
 	SumVectorTuner.main(argparser.parse_args())
