@@ -29,7 +29,7 @@ BLOCO_PARAMETROS = [
 BLOCO_PARAMETROS_CONFIGS = [ 'config' ]
 
 def read_file_configs():
-	file_gemm = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_gemm-320.txt','r')
+	file_gemm = open('/home/joao/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_gemm-320.txt','r')
 	list_configs = []
 	for linha in file_gemm:
 		list_configs.append(linha)
@@ -90,7 +90,7 @@ class gemmTuner(MeasurementInterface):
 			print " OK.\n"
 			global compiled
 			compiled = not compiled
-		run_cmd = 'nvprof --metrics sm_efficiency ./gem-cuda.exe'
+		run_cmd = 'nvprof --metrics achieved_occupancy ./gem-cuda.exe'
 
 		print "Antes do IF"
 		if((confBlock <= 1024) and (confBlock % 32 == 0) and (config == n)):
@@ -148,18 +148,18 @@ class gemmTuner(MeasurementInterface):
 		lines = app_output.split("\n")
 		for current_line in lines:
 			strg = "" + current_line
-			if strg.find("Multiprocessor Activity") > -1:
-				idx = strg.index("Multiprocessor Activity")
-				subsrtg = strg[idx:].split("     ")
+			if strg.find("Occupancy") > -1:
+				idx = strg.index("Occupancy")
+				subsrtg = strg[idx:].split("    ")
 				print "substrg: ", subsrtg
-				substring = subsrtg[3]
-				substring1 = substring.replace("%",'')
-				metric_value = float(substring1)
+				#substring = subsrtg[3]
+				#substring1 = substring.replace("%",'')
+				#metric_value = float(substring1)
 				print "substrg: ", subsrtg
-				#metric_value = float(subsrtg[3])
-				print "sm_efficiency: ", metric_value
-		#return (1.0 - metric_value)
-		return (100 - metric_value)
+				metric_value = float(subsrtg[3])
+				print "inst_executed: ", metric_value
+		return (1.0 - metric_value)
+		#return (100 - metric_value)
 
 	def save_final_config(self, configuration):
 		"""called at the end of tuning"""
