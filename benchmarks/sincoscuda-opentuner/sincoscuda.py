@@ -7,6 +7,7 @@
 import adddeps  # fix sys.path
 import math
 import re
+import sys
 
 import opentuner
 from opentuner import ConfigurationManipulator
@@ -35,9 +36,9 @@ from opentuner import Result
 # (name, min, max)
 BLOCO_PARAMETROS = [
   ('kernel', 0, 2),
-  ('nx', 96, 96),
-  ('ny', 96, 96),
-  ('nz', 96, 96),
+  ('nx', int(sys.argv[2]),int(sys.argv[2])),
+  ('ny', int(sys.argv[2]), int(sys.argv[2])),
+  ('nz', int(sys.argv[2]), int(sys.argv[2])),
   ('gpuId', 0, 0)  
 ]
 # Test para 2 1 1 64 1 1 1 64 64 64 0 0 
@@ -46,13 +47,7 @@ BLOCO_PARAMETROS = [
 BLOCO_PARAMETROS_CONFIGS = [ 'config' ]
 
 def read_file_configs():
-<<<<<<< HEAD
-  #file_sincos_projetocuda = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_sincos-96-96.txt','r')
-  file_sincos_titanx = open('/home/joao/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_sincos-96-96.txt','r')
-=======
-  file_sincos_projetocuda = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_sincos-320-320.txt','r')
-  #file_sincos_titanx = open('/home/joao/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_sincos-64-64.txt','r')
->>>>>>> e7fc41fc17761eeb59bbf159f79e84c7e53711d7
+  file_sincos_projetocuda = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/benchmarks/gen-configs/saida_sincos-'+str(sys.argv[2])+'-'+str(sys.argv[2])+'.txt','r')
   list_configs = []
   for linha in file_sincos_projetocuda:
     list_configs.append(linha)
@@ -112,7 +107,7 @@ class SincosCudaTuner(MeasurementInterface):
       print " OK.\n"
       global compiled
       compiled = not compiled
-    run_cmd = 'nvprof --metrics inst_executed ./sincosc-cuda'
+    run_cmd = 'nvprof --metrics achieved_occupancy ./sincosc-cuda'
 
     #print "TESTE:" + " " + str(cfg['gx']) + " " + str(cfg['gy']) + " " + str(cfg['gz']) + str(cfg['bx']) + " " + str(cfg['by']) + " " + str(cfg['bz'])
     # confBlock = cfg['bx'] * cfg['by'] * cfg['bz']
@@ -125,97 +120,87 @@ class SincosCudaTuner(MeasurementInterface):
     # Evict kernel divergence, blocks with multiply warp size.
     #print "Test: ", "True" if((confBlock <= 1024) and (confBlock % 32 == 0)) else "False"
     print "Antes do IF"
-    if((confBlock <= 1024) and (confBlock % 32 == 0) and (config == n)):
-      dimBlock = 0
-      dimGrid = 0
-      # Test of quantity of block dimensions are used.
-      # a if test else b
-      dimBlock += 1 if(int(cfg['bx']) > 1) else 0
-      dimBlock += 1 if(int(cfg['by']) > 1) else 0
-      dimBlock += 1 if(int(cfg['bz']) > 1) else 0
-      if(dimBlock == 0):
-        dimBlock = 1
+    # if((confBlock <= 1024) and (confBlock % 32 == 0) and (config == n)):
+    #   dimBlock = 0
+    #   dimGrid = 0
+    #   # Test of quantity of block dimensions are used.
+    #   # a if test else b
+    #   dimBlock += 1 if(int(cfg['bx']) > 1) else 0
+    #   dimBlock += 1 if(int(cfg['by']) > 1) else 0
+    #   dimBlock += 1 if(int(cfg['bz']) > 1) else 0
+    #   if(dimBlock == 0):
+    #     dimBlock = 1
 
-      # Test of quantity of grid dimensions are used.
-      dimGrid += 1 if(int(cfg["'gx"]) > 1) else 0
-      dimGrid += 1 if(int(cfg['gy']) > 1) else 0
-      dimGrid += 1 if(int(cfg['gz']) > 1) else 0
-      if(dimGrid == 0):
-        dimGrid = 1
+    #   # Test of quantity of grid dimensions are used.
+    #   dimGrid += 1 if(int(cfg["'gx"]) > 1) else 0
+    #   dimGrid += 1 if(int(cfg['gy']) > 1) else 0
+    #   dimGrid += 1 if(int(cfg['gz']) > 1) else 0
+    #   if(dimGrid == 0):
+    #     dimGrid = 1
       
-      if(dimGrid == 1):
-        cfg['funcId'] =  dimGrid + dimBlock - 2
-      if(dimGrid == 2):
-        cfg['funcId'] =  dimGrid + dimBlock + 0
-      if(dimGrid == 3):
-        cfg['funcId'] =  dimGrid + dimBlock + 2
-      
-      run_cmd += ' {0}'.format(configuration['kernel'])
-      run_cmd += ' {0}'.format(cfg["'gx"])
-      run_cmd += ' {0}'.format(cfg['gy'])
-      run_cmd += ' {0}'.format(cfg['gz'])
-      run_cmd += ' {0}'.format(cfg['bx'])
-      run_cmd += ' {0}'.format(cfg['by'])
-      run_cmd += ' {0}'.format(cfg['bz'])
-      run_cmd += ' {0}'.format(configuration['nx'])
-      run_cmd += ' {0}'.format(configuration['ny'])
-      run_cmd += ' {0}'.format(configuration['nz'])
-      run_cmd += ' {0}'.format(configuration['gpuId'])
+    #   if(dimGrid == 1):
+    #     cfg['funcId'] =  dimGrid + dimBlock - 2
+    #   if(dimGrid == 2):
+    #     cfg['funcId'] =  dimGrid + dimBlock + 0
+    #   if(dimGrid == 3):
+    #     cfg['funcId'] =  dimGrid + dimBlock + 2
+    kernel = ' {0}'.format(configuration['kernel'])
+    #print(kernel)
+    run_cmd += ' {0}'.format(configuration['kernel'])
+    run_cmd += ' {0}'.format(cfg["'gx"])
+    run_cmd += ' {0}'.format(cfg['gy'])
+    run_cmd += ' {0}'.format(cfg['gz'])
+    run_cmd += ' {0}'.format(cfg['bx'])
+    run_cmd += ' {0}'.format(cfg['by'])
+    run_cmd += ' {0}'.format(cfg['bz'])
+    run_cmd += ' {0}'.format(configuration['nx'])
+    run_cmd += ' {0}'.format(configuration['ny'])
+    run_cmd += ' {0}'.format(configuration['nz'])
+    run_cmd += ' {0}'.format(configuration['gpuId'])
 
-      print "Running command line: ", run_cmd
-      #print "CFG->funcId: " +  str(cfg['funcId'])
+    print "Running command line: ", run_cmd
+    #print "CFG->funcId: " +  str(cfg['funcId'])
 
-      run_result = self.call_program(run_cmd)
-      if run_result['returncode'] != 0:
-        return Result(time=FAIL_PENALTY)
-      else:
-        val = self.get_metric_from_app_output(run_result['stderr'])
-        return Result(time=val)
-    else:
-      print "Invalid configuration, return penalty."
-      # FAIL_PENALTY = FAIL_PENALTY - 1
+    run_result = self.call_program(run_cmd)
+    if run_result['returncode'] != 0:
       return Result(time=FAIL_PENALTY)
+    else:
+      val = self.get_metric_from_app_output(run_result['stderr'], cfg, kernel)
+      return Result(time=val)
+  
 
 # --------------------------------------------------------------------
-  def get_metric_from_app_output(self, app_output):
+  def get_metric_from_app_output(self, app_output, configuration, kernel):
     """Returns the metric value from output benchmark"""
     metric_value = 0.0
     lines = app_output.split("\n")
     for current_line in lines:
       strg = "" + current_line
-      if strg.find("Instructions Executed") > -1:
-        idx = strg.index("Instructions Executed")
+      if strg.find("Occupancy") > -1:
+        idx = strg.index("Occupancy")
         subsrtg = strg[idx:].split("    ")
         print "substrg: ", subsrtg
-        #parte do GLD
-<<<<<<< HEAD
-        #substring = subsrtg[3]
-        #substring1 = substring.replace("%",'')
-        #metric_value = float(substring1)
         metric_value = float(subsrtg[3])
-        print "inst_executed: ", metric_value
-    #return (100.0 - metric_value)
-    return metric_value
-=======
-        substring = subsrtg[3]
-        substring1 = substring.replace("%",'')
-        metric_value = float(substring1)
-        #metric_value = float(subsrtg[3])
-        print "inst_executed: ", metric_value
-    return (100.0 - metric_value)
-    #return metric_value
->>>>>>> e7fc41fc17761eeb59bbf159f79e84c7e53711d7
+        print "achieved_occupancy: ", metric_value
+    configuration = str(configuration)
+    configuration = configuration.replace("{",str(kernel)+",").replace(":","").replace("}","")
+    configuration = configuration.replace("'gx","").replace("'gy'","").replace("'gz'","").replace("'bx'","").replace("'by'","").replace("'bz'","").replace("'","").replace("\"","")
+    resultado = 1.0 - metric_value
+    arquivo_csv = open("/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/results/gtx780/sincos-occupancy-executed-"+str(sys.argv[2])+".csv","a")
+    arquivo_csv.write("Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,occupancy \n")
+    arquivo_csv.write(str(configuration)+", 0 , "+str(resultado)+"\n")
+    return (1.0 - metric_value)
 
 # --------------------------------------------------------------------
   def save_final_config(self, configuration):
     """called at the end of tuning"""
     print "Optimal block size written to sincoscuda_final_config.json:", configuration.data
-    self.manipulator().save_to_file(configuration.data, 'sincoscuda_final_config.json')
+    self.manipulator().save_to_file(configuration.data, 'sincoscuda_final_config'+str(sys.argv[2])+'.json')
 
 # --------------------------------------------------------------------
 if __name__ == '__main__':
   FAIL_PENALTY = 9999999999
   compiled = False
-  n = 1 * 96 * 96
+  n = 1 * int(sys.argv[2]) * int(sys.argv[2])
   argparser = opentuner.default_argparser()
   SincosCudaTuner.main(argparser.parse_args())

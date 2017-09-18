@@ -21,6 +21,8 @@ log = logging.getLogger(__name__)
 argparser = argparse.ArgumentParser(add_help=False)
 argparser.add_argument('--test-limit', type=int, default=5000,
                        help='stop tuning after given tests count')
+argparser.add_argument('--n', type=int, default=1, 
+                        help='iteracoes')
 argparser.add_argument('--stop-after', type=float,
                        help='stop tuning after given seconds')
 argparser.add_argument('--parallelism', type=int, default=4,

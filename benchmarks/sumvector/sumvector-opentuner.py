@@ -7,6 +7,7 @@
 import adddeps  # fix sys.path
 import math
 import re
+import sys
 
 import opentuner
 from opentuner import ConfigurationManipulator
@@ -20,15 +21,15 @@ from opentuner import Result
 
 BLOCO_PARAMETROS = [
 	('kernel', 0, 0), 
-	('n', 65568, 65568),
+	('n', int(sys.argv[2]), int(sys.argv[2])),
 	('gpuId', 0, 0)  
 ]
 
 BLOCO_PARAMETROS_CONFIGS = [ 'config' ]
 
 def read_file_configs():
-  #file_sumvector = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_sumvector-65568.txt','r')
-  file_sumvector = open('/home/joao/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_sumvector-65568.txt','r')
+  file_sumvector = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/benchmarks/gen-configs/saida_sumvector-'+str(sys.argv[2])+".txt",'r')
+  #file_sumvector = open('/home/joao/tcc_cuda_opentuner_joao/wscad/gen-configs/saida_sumvector-65568.txt','r')
   list_configs = []
   for linha in file_sumvector:
     list_configs.append(linha)
@@ -91,68 +92,30 @@ class SumVectorTuner(MeasurementInterface):
 			global compiled
 			compiled = not compiled
 		run_cmd = 'nvprof --metrics inst_executed ./sumvector-cuda'
-
-		#print "TESTE:" + " " + str(cfg['gx']) + " " + str(cfg['gy']) + " " + str(cfg['gz']) + str(cfg['bx']) + " " + str(cfg['by']) + " " + str(cfg['bz'])
-		# confBlock = cfg['bx'] * cfg['by'] * cfg['bz']
-		# confGrid =  cfg['gx'] * cfg['gy'] * cfg['gz']
-		# config = confBlock * confGrid
-		# print "confBlock: ", confBlock
-		# print "confGrid: ", confGrid
-		#print "config: ", config
-
-		# Evict kernel divergence, blocks with multiply warp size.
-		#print "Test: ", "True" if((confBlock <= 1024) and (confBlock % 32 == 0)) else "False"
 		print "Antes do IF"
-		if((confBlock <= 1024) and (confBlock % 32 == 0) and (config == n)):
-			dimBlock = 0
-			dimGrid = 0
-			# Test of quantity of block dimensions are used.
-			# a if test else b
-			dimBlock += 1 if(int(cfg['bx']) > 1) else 0
-			dimBlock += 1 if(int(cfg['by']) > 1) else 0
-			dimBlock += 1 if(int(cfg['bz']) > 1) else 0
-			if(dimBlock == 0):
-				dimBlock = 1
-
-			# Test of quantity of grid dimensions are used.
-			dimGrid += 1 if(int(cfg["'gx"]) > 1) else 0
-			dimGrid += 1 if(int(cfg['gy']) > 1) else 0
-			dimGrid += 1 if(int(cfg['gz']) > 1) else 0
-			if(dimGrid == 0):
-				dimGrid = 1
 			
-			if(dimGrid == 1):
-				cfg['funcId'] =  dimGrid + dimBlock - 2
-			if(dimGrid == 2):
-				cfg['funcId'] =  dimGrid + dimBlock + 0
-			if(dimGrid == 3):
-				cfg['funcId'] =  dimGrid + dimBlock + 2
-			
-			run_cmd += ' {0}'.format(configuration['kernel'])
-			run_cmd += ' {0}'.format(cfg["'gx"])
-			run_cmd += ' {0}'.format(cfg['gy'])
-			run_cmd += ' {0}'.format(cfg['gz'])
-			run_cmd += ' {0}'.format(cfg['bx'])
-			run_cmd += ' {0}'.format(cfg['by'])
-			run_cmd += ' {0}'.format(cfg['bz'])
-			run_cmd += ' {0}'.format(configuration['n'])
-			run_cmd += ' {0}'.format(configuration['gpuId'])
+		run_cmd += ' {0}'.format(configuration['kernel'])
+		run_cmd += ' {0}'.format(cfg["'gx"])
+		run_cmd += ' {0}'.format(cfg['gy'])
+		run_cmd += ' {0}'.format(cfg['gz'])
+		run_cmd += ' {0}'.format(cfg['bx'])
+		run_cmd += ' {0}'.format(cfg['by'])
+		run_cmd += ' {0}'.format(cfg['bz'])
+		run_cmd += ' {0}'.format(configuration['n'])
+		run_cmd += ' {0}'.format(configuration['gpuId'])
 
-			print "Running command line: ", run_cmd
-			#print "CFG->funcId: " +  str(cfg['funcId'])
+		print "Running command line: ", run_cmd
+		#print "CFG->funcId: " +  str(cfg['funcId'])
 
-			run_result = self.call_program(run_cmd)
-			if run_result['returncode'] != 0:
-				return Result(time=FAIL_PENALTY)
-			else:
-				val = self.get_metric_from_app_output(run_result['stderr'])
-				return Result(time=val)
-		else:
-			print "Invalid configuration, return penalty."
-			# FAIL_PENALTY = FAIL_PENALTY - 1
+		run_result = self.call_program(run_cmd)
+		if run_result['returncode'] != 0:
 			return Result(time=FAIL_PENALTY)
+		else:
+			val = self.get_metric_from_app_output(run_result['stderr'], cfg)
+			#print("valr "+str(val))
+			return Result(time=val)
 
-	def get_metric_from_app_output(self, app_output):
+	def get_metric_from_app_output(self, app_output, configuration):
 		"""Returns the metric value from output benchmark"""
 		metric_value = 0.0
 		lines = app_output.split("\n")
@@ -160,15 +123,21 @@ class SumVectorTuner(MeasurementInterface):
 			strg = "" + current_line
 			if strg.find("Instructions Executed") > -1:
 				idx = strg.index("Instructions Executed")
-				subsrtg = strg[idx:].split("   ")
+				subsrtg = strg[idx:].split("    ")
 				print "substrg: ", subsrtg
 				metric_value = float(subsrtg[3])
 				print "inst_executed: ", metric_value
-		return (1.0 - metric_value)
+		configuration = str(configuration)
+		configuration = configuration.replace("{","0,").replace(":","").replace("}","")
+		configuration = configuration.replace("'gx","").replace("'gy'","").replace("'gz'","").replace("'bx'","").replace("'by'","").replace("'bz'","").replace("'","").replace("\"","")
+		resultado = metric_value
+		arquivo_csv = open("/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/results/gtx780/sumvector-inst-executed"+str(n)+".csv","a")
+		arquivo_csv.write("Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,inst_executed \n")
+		arquivo_csv.write(str(configuration)+", 0 , "+str(resultado)+"\n")
+		return (metric_value)
 
 	def save_final_config(self, configuration):
 		""" called at the end of tuning """
-		""" Colocar todas as configurações testadas bem como o resultado """
 		print "Optimal block size written to sumvectorcuda_final_config.json:", configuration.data
 		self.manipulator().save_to_file(configuration.data, 'sumvectorcuda_final_config.json')
 		
@@ -177,6 +146,6 @@ class SumVectorTuner(MeasurementInterface):
 if __name__ == '__main__':
 	FAIL_PENALTY = 9999999999
 	compiled = False
-	n = 65568
+	n = int(sys.argv[2])
 	argparser = opentuner.default_argparser()
 	SumVectorTuner.main(argparser.parse_args())
