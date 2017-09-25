@@ -18,6 +18,8 @@ Diretórios.
 
 **[opentuner](opentuner/):** pasta com o código-fonte da ferramenta de *auto-tuning* [Opentuner](http://opentuner.org/)
 
-**[results](results/):** contém os resultados obtidos dos *benchmarks* em formato *.csv*
+**[pattern_IA](pattern_IA/):** contém gráficos, scripts para gerar resultados e detectar padrões de configuração.
+
+**[results](results/):** contém os resultados obtidos dos *benchmarks* em formato *.csv* e a melhor configuração em *.json*
 
 **[wscad_tests](wscad_tests/):** contém os algoritmos, gráficos bem como resultados dos experimentos para o evento *WSCAD*. 
