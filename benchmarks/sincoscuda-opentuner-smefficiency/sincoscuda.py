@@ -47,7 +47,7 @@ BLOCO_PARAMETROS = [
 BLOCO_PARAMETROS_CONFIGS = [ 'config' ]
 
 def read_file_configs():
-  file_sincos_projetocuda = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/benchmarks/gen-configs/saida_sincos-'+str(sys.argv[2])+'-'+str(sys.argv[2])+'.txt','r')
+  file_sincos_projetocuda = open('/home/joao/tcc_cuda_opentuner_joao/benchmarks/gen-configs/saida_sincos-'+str(sys.argv[2])+'-'+str(sys.argv[2])+'.txt','r')
   list_configs = []
   for linha in file_sincos_projetocuda:
     list_configs.append(linha)
@@ -188,7 +188,7 @@ class SincosCudaTuner(MeasurementInterface):
     configuration = configuration.replace("{",str(kernel)+",").replace(":","").replace("}","")
     configuration = configuration.replace("'gx","").replace("'gy'","").replace("'gz'","").replace("'bx'","").replace("'by'","").replace("'bz'","").replace("'","").replace("\"","")
     resultado = 100.0 - metric_value
-    arquivo_csv = open("/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/results/gtx780/sincos-smefficiency-executed-"+str(sys.argv[2])+".csv","a")
+    arquivo_csv = open("/home/joao/tcc_cuda_opentuner_joao/results/titanx/sincos-smefficiency-executed-"+str(sys.argv[2])+".csv","a")
     arquivo_csv.write("Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,occupancy \n")
     arquivo_csv.write(str(configuration)+", 0 , "+str(resultado)+"\n")
     return (100.0 - metric_value)
