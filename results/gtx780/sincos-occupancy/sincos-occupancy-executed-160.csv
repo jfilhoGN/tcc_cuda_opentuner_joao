@@ -1,4 +1,4 @@
-Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,occupancy
+Kernel,gx,gy,gz,bx,by,bz,gpuId,occupancy
 0,1,2,20,20,8,4,0,0.152328
 1,2,5,40,2,8,4,0,0.512713
 1,20,4,5,2,2,16,0,0.513251
