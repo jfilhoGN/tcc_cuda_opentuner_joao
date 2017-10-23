@@ -30,7 +30,7 @@ BLOCO_PARAMETROS = [
 BLOCO_PARAMETROS_CONFIGS = [ 'config' ]
 
 def read_file_configs():
-	file_gemm = open('/home/joao/tcc_cuda_opentuner_joao/benchmarks/gen-configs/saida_gemm-'+str(sys.argv[2])+'.txt','r')
+	file_gemm = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/benchmarks/gen-configs/saida_gemm-'+str(sys.argv[2])+'.txt','r')
 	list_configs = []
 	for linha in file_gemm:
 		list_configs.append(linha)
@@ -85,13 +85,13 @@ class gemmTuner(MeasurementInterface):
 		print "compiled: ", 'true' if compiled else 'false'
 		if not compiled:
 			print "Compiling the program..."
-			gcc_cmd = 'nvcc -I /usr/local/cuda/include -L /usr/local/cuda/lib64 -ccbin=g++-4.9 gemm.cu -lcuda -lm -o gem-cuda.exe'
+			gcc_cmd = 'nvcc -I /usr/local/cuda/include -L /usr/local/cuda/lib64 -ccbin=g++-4.9 gemm.cu -lcuda -lm -o gemm-cuda.exe'
 			compile_result = self.call_program(gcc_cmd)
 			assert compile_result['returncode'] == 0
 			print " OK.\n"
 			global compiled
 			compiled = not compiled
-		run_cmd = 'nvprof --metrics achieved_occupancy ./gem-cuda.exe'
+		run_cmd = 'nvprof --metrics achieved_occupancy ./gemm-cuda.exe'
 
 		# print "Antes do IF"
 		# if((confBlock <= 1024) and (confBlock % 32 == 0) and (config == n)):
@@ -118,7 +118,7 @@ class gemmTuner(MeasurementInterface):
 		# 		cfg['funcId'] =  dimGrid + dimBlock + 0
 		# 	if(dimGrid == 3):
 		# 		cfg['funcId'] =  dimGrid + dimBlock + 2
-			
+		kernel = ' {0}'.format(configuration['kernel'])	
 		run_cmd += ' {0}'.format(configuration['kernel'])
 		run_cmd += ' {0}'.format(cfg["'gx"])
 		run_cmd += ' {0}'.format(cfg['gy'])
@@ -137,13 +137,13 @@ class gemmTuner(MeasurementInterface):
 		if run_result['returncode'] != 0:
 			return Result(time=FAIL_PENALTY)
 		else:
-			val = self.get_metric_from_app_output(run_result['stderr'])
+			val = self.get_metric_from_app_output(run_result['stderr'], cfg, kernel)
 			return Result(time=val)
 		# else:
 		# 	print "Invalid configuration, return penalty."
 		# 	return Result(time=FAIL_PENALTY)
 
-	def get_metric_from_app_output(self, app_output):
+	def get_metric_from_app_output(self, app_output, configuration, kernel):
 		"""Returns the metric value from output benchmark"""
 		metric_value = 0.0
 		lines = app_output.split("\n")
@@ -153,20 +153,16 @@ class gemmTuner(MeasurementInterface):
 				idx = strg.index("Occupancy")
 				subsrtg = strg[idx:].split("    ")
 				print "substrg: ", subsrtg
-				#substring = subsrtg[3]
-				#substring1 = substring.replace("%",'')
-				#metric_value = float(substring1)
-				print "substrg: ", subsrtg
 				metric_value = float(subsrtg[3])
 				print "achieved_occupancy: ", metric_value
 		configuration = str(configuration)
-   		configuration = configuration.replace("{",str(kernel)+",").replace(":","").replace("}","")
-    		configuration = configuration.replace("'gx","").replace("'gy'","").replace("'gz'","").replace("'bx'","").replace("'by'","").replace("'bz'","").replace("'","").replace("\"","")
-    		resultado = 1.0 - metric_value
-    		arquivo_csv = open("/home/joao/tcc_cuda_opentuner_joao/results/titanx/gemm-occupancy-"+str(sys.argv[2])+".csv","a")
-    		arquivo_csv.write("Kernel,gx,gy,gz,bx,by,bz,gpuId,occupancy \n")
-    		arquivo_csv.write(str(configuration)+", 0 , "+str(resultado)+"\n")
-    		return (1.0 - metric_value)
+		configuration = configuration.replace("{",str(kernel)+",").replace(":","").replace("}","")
+		configuration = configuration.replace("'gx","").replace("'gy'","").replace("'gz'","").replace("'bx'","").replace("'by'","").replace("'bz'","").replace("'","").replace("\"","")
+		resultado = 1.0 - metric_value
+		arquivo_csv = open("/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/results/gtx780/gemm-occupancy-"+str(sys.argv[2])+".csv","a")
+		arquivo_csv.write("Kernel,gx,gy,gz,bx,by,bz,gpuId,occupancy \n")
+		arquivo_csv.write(str(configuration)+", 0 , "+str(resultado)+"\n")
+		return (1.0 - metric_value)
 
 	def save_final_config(self, configuration):
 		"""called at the end of tuning"""
