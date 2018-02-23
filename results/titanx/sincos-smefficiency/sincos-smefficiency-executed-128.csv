@@ -1,4 +1,4 @@
-Kernel,gx,gy,gz,bx,by,bz,gpuId,occupancy
+Kernel,gx,gy,gz,bx,by,bz,gpuId,smefficiency
 0,2,8,16,8,8,1,0,47.27
 1,2,8,16,8,8,1,0,1.31
 1,8,1,16,2,4,16,0,3.5
