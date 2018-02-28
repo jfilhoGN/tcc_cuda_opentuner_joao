@@ -1,0 +1,266 @@
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 242,  4,  2,  32,  1,  2, 0 , 84.43
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 4,  4,  22,  1,  16,  22, 0 , 81.26
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 242,  8,  2,  2,  8,  2, 0 , 89.52
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 22,  4,  2,  11,  1,  64, 0 , 95.12
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 44,  11,  1,  2,  2,  64, 0 , 80.82
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 1,  44,  8,  1,  176,  2, 0 , 81.51
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 8,  484,  1,  1,  16,  2, 0 , 99.16
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 8,  1,  484,  1,  8,  4, 0 , 98.63
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 88,  1,  2,  8,  88,  1, 0 , 96.81
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 44,  22,  2,  4,  8,  2, 0 , 84.64
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 2,  968,  2,  4,  1,  8, 0 , 89.59
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 11,  44,  1,  1,  256,  1, 0 , 80.41
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 4,  11,  44,  2,  8,  4, 0 , 84.83
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 22,  22,  2,  2,  64,  1, 0 , 98.17
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 44,  4,  1,  32,  22,  1, 0 , 81.54
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 1,  1,  484,  2,  4,  32, 0 , 80.33
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 2,  88,  1,  2,  8,  44, 0 , 80.65
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 4,  1,  121,  16,  2,  8, 0 , 79.69
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 1,  484,  1,  16,  1,  16, 0 , 79.7
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 22,  4,  2,  1,  32,  22, 0 , 82.2
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 22,  22,  4,  64,  1,  1, 0 , 84.52
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 242,  1,  2,  1,  16,  16, 0 , 80.6
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 1,  2,  1936,  4,  8,  1, 0 , 89.52
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 1,  11,  44,  8,  1,  32, 0 , 79.69
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 1,  44,  88,  4,  4,  2, 0 , 99.87
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 242,  4,  1,  32,  4,  1, 0 , 80.34
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 11,  4,  22,  32,  4,  1, 0 , 80.79
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 1,  22,  8,  64,  1,  11, 0 , 93.98
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 2,  4,  242,  32,  1,  2, 0 , 84.41
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 22,  2,  88,  2,  2,  8, 0 , 89.62
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 22,  1,  44,  8,  8,  2, 0 , 80.33
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 484,  1,  8,  1,  16,  2, 0 , 98.55
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 2,  1,  484,  2,  1,  64, 0 , 79.87
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 484,  1,  1,  64,  2,  2, 0 , 80.3
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 2,  2,  484,  1,  64,  1, 0 , 98.2
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 8,  4,  11,  2,  44,  4, 0 , 97.82
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 2,  1,  176,  2,  44,  4, 0 , 97.8
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 2,  8,  121,  16,  1,  4, 0 , 84.41
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 352,  1,  1,  22,  1,  16, 0 , 81.1
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 4,  121,  4,  64,  1,  1, 0 , 84.45
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 1,  968,  2,  4,  1,  16, 0 , 97.72
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 2,  4,  242,  64,  1,  1, 0 , 84.23
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 1,  11,  22,  32,  16,  1, 0 , 79.75
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 8,  1,  121,  4,  32,  1, 0 , 80.14
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 2,  1,  88,  4,  11,  16, 0 , 97.15
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 11,  2,  176,  8,  4,  1, 0 , 89.58
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 16,  1,  121,  2,  16,  2, 0 , 84.61
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 2,  242,  4,  32,  1,  2, 0 , 98.37
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 88,  1,  2,  4,  8,  22, 0 , 80.39
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 3872,  1,  1,  2,  4,  4, 0 , 89.51
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 2,  88,  2,  1,  176,  2, 0 , 81.17
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 484,  1,  2,  1,  2,  64, 0 , 80.11
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 2,  4,  44,  4,  44,  2, 0 , 97.56
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 242,  4,  1,  1,  8,  16, 0 , 96.68
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 1,  176,  1,  4,  8,  22, 0 , 97.26
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 1,  1,  484,  16,  1,  16, 0 , 97.74
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 2,  22,  22,  2,  4,  16, 0 , 80.54
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 44,  2,  2,  1,  64,  11, 0 , 97.2
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 11,  1,  44,  32,  2,  4, 0 , 97.6
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 2,  968,  1,  16,  4,  1, 0 , 98.33
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 1,  22,  8,  1,  11,  64, 0 , 97.1
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 968,  1,  2,  1,  4,  16, 0 , 84.73
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 2,  8,  11,  16,  2,  22, 0 , 82.11
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 121,  1,  2,  64,  2,  4, 0 , 97.14
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 4,  11,  4,  4,  44,  4, 0 , 80.49
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 22,  4,  22,  8,  4,  2, 0 , 97.47
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 8,  121,  4,  1,  8,  4, 0 , 98.27
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 121,  1,  2,  4,  64,  2, 0 , 96.43
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 968,  1,  2,  2,  16,  2, 0 , 84.27
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 11,  1,  44,  4,  32,  2, 0 , 97.79
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 1,  4,  121,  32,  1,  8, 0 , 97.24
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 11,  32,  11,  2,  8,  2, 0 , 98.97
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 11,  4,  4,  2,  11,  32, 0 , 96.75
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 4,  1,  88,  2,  4,  44, 0 , 97.42
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 11,  8,  2,  176,  1,  4, 0 , 81.56
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 8,  22,  1,  4,  44,  4, 0 , 82.09
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 1,  88,  2,  44,  4,  4, 0 , 81.85
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 4,  2,  44,  2,  88,  2, 0 , 97.21
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 121,  4,  2,  8,  4,  4, 0 , 80.83
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 11,  8,  11,  4,  32,  1, 0 , 99.01
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 44,  1,  8,  1,  44,  8, 0 , 81.26
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 16,  11,  1,  8,  44,  2, 0 , 97.05
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 2,  176,  1,  2,  22,  8, 0 , 97.81
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 88,  11,  2,  8,  1,  8, 0 , 98.49
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 484,  4,  2,  4,  8,  1, 0 , 89.61
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 22,  2,  8,  4,  4,  22, 0 , 81.35
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 2,  121,  4,  1,  4,  32, 0 , 80.53
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 16,  11,  2,  1,  16,  22, 0 , 97.91
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 484,  4,  1,  2,  16,  2, 0 , 84.84
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 11,  44,  2,  128,  1,  1, 0 , 80.39
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 121,  1,  4,  64,  4,  1, 0 , 79.95
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 4,  2,  22,  4,  22,  8, 0 , 96.9
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 2,  4,  44,  44,  4,  2, 0 , 97.62
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 4,  1,  242,  4,  2,  16, 0 , 97.84
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 16,  1,  11,  8,  8,  11, 0 , 97.14
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 2,  88,  22,  1,  16,  2, 0 , 89.68
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 2,  88,  1,  176,  1,  4, 0 , 81.93
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 44,  1,  4,  22,  1,  32, 0 , 81.45
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 484,  8,  1,  2,  8,  2, 0 , 98.82
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 8,  2,  11,  1,  44,  16, 0 , 81.73
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 176,  11,  2,  1,  4,  8, 0 , 89.58
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 22,  11,  2,  4,  32,  2, 0 , 79.75
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 2,  8,  121,  1,  32,  2, 0 , 98.53
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 121,  32,  1,  4,  1,  8, 0 , 89.5
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 2,  176,  1,  2,  44,  4, 0 , 81.65
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 44,  4,  11,  2,  2,  16, 0 , 84.32
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 1,  1,  352,  4,  2,  44, 0 , 80.96
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 121,  1,  4,  16,  1,  16, 0 , 97.6
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 4,  4,  242,  8,  1,  4, 0 , 99.8
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 3872,  1,  1,  32,  1,  1, 0 , 99.89
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 2,  121,  1,  64,  8,  1, 0 , 95.89
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 88,  11,  1,  8,  2,  8, 0 , 80.75
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 242,  2,  1,  2,  2,  64, 0 , 97.88
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 121,  4,  2,  32,  4,  1, 0 , 80.47
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 44,  2,  4,  4,  2,  44, 0 , 81.06
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 1,  176,  2,  88,  2,  2, 0 , 81.12
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 4,  22,  2,  64,  11,  1, 0 , 81.24
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 4,  22,  2,  1,  22,  32, 0 , 97.32
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 1,  2,  176,  11,  1,  32, 0 , 97.47
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 121,  2,  2,  8,  1,  32, 0 , 97.62
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 8,  1,  242,  4,  1,  16, 0 , 95.65
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 22,  4,  4,  22,  1,  16, 0 , 97.91
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 22,  8,  2,  2,  44,  4, 0 , 81.38
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 484,  1,  1,  8,  1,  32, 0 , 80.04
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 1,  22,  16,  16,  22,  1, 0 , 97.43
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 1,  32,  11,  4,  44,  2, 0 , 81.68
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 11,  2,  11,  1,  8,  64, 0 , 80.64
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 11,  22,  4,  2,  32,  2, 0 , 97.98
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 11,  4,  4,  44,  8,  2, 0 , 81.21
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 22,  1,  88,  1,  2,  32, 0 , 84.56
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 2,  2,  44,  11,  2,  32, 0 , 81.85
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 1, 22,  1,  22,  1,  16,  16, 0 , 97.84
+Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,smefficiency 
+ 0, 1,  8,  121,  1,  64,  2, 0 , 80.62

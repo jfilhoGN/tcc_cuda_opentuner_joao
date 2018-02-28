@@ -190,12 +190,12 @@ class SincosCudaTuner(MeasurementInterface):
     configuration = str(configuration)
     configuration = configuration.replace("{",str(kernel)+",").replace(":","").replace("}","")
     configuration = configuration.replace("'gx","").replace("'gy'","").replace("'gz'","").replace("'bx'","").replace("'by'","").replace("'bz'","").replace("'","").replace("\"","")
-    resultado = 100.0 - metric_value
+    resultado = metric_value
     # MUDAR AQUI-----------
     arquivo_csv = open("/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/results/gtx780/sincos-warp-execution-"+str(sys.argv[2])+".csv","a")
     arquivo_csv.write("Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,efficiency-warp-execution \n")
     arquivo_csv.write(str(configuration)+", 0 , "+str(resultado)+"\n")
-    return (100.0 - metric_value)
+    return metric_value
 
 # --------------------------------------------------------------------
   def save_final_config(self, configuration):
