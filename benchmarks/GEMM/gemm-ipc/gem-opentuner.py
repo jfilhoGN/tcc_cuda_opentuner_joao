@@ -160,11 +160,11 @@ class gemmTuner(MeasurementInterface):
 		configuration = str(configuration)
 		configuration = configuration.replace("{",str(kernel)+",").replace(":","").replace("}","")
 		configuration = configuration.replace("'gx","").replace("'gy'","").replace("'gz'","").replace("'bx'","").replace("'by'","").replace("'bz'","").replace("'","").replace("\"","")
-		resultado = 100 - metric_value
-		arquivo_csv = open("/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/results/gtx780/gemm-smefficiency-"+str(sys.argv[2])+".csv","a")
+		resultado = 1.0 - metric_value
+		arquivo_csv = open("/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/results/gtx780/gemm-ipc-"+str(sys.argv[2])+".csv","a")
 		arquivo_csv.write("Kernel,gx,gy,gz,bx,by,bz,gpuId,ipc \n")
 		arquivo_csv.write(str(configuration)+", 0 , "+str(resultado)+"\n")
-		return (100 - metric_value)
+		return (1.0 - metric_value)
 
 	def save_final_config(self, configuration):
 		"""called at the end of tuning"""

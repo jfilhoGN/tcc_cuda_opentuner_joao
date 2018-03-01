@@ -151,7 +151,7 @@ class gemmTuner(MeasurementInterface):
 			strg = "" + current_line
 			if strg.find("Instructions per warp") > -1:
 				idx = strg.index("Instructions per warp")
-				subsrtg = strg[idx:].split("    ")
+				subsrtg = strg[idx:].split("  ")
 				print "substrg: ", subsrtg
 				substring = subsrtg[3]
 				substring1 = substring.replace("%",'')
@@ -160,11 +160,11 @@ class gemmTuner(MeasurementInterface):
 		configuration = str(configuration)
 		configuration = configuration.replace("{",str(kernel)+",").replace(":","").replace("}","")
 		configuration = configuration.replace("'gx","").replace("'gy'","").replace("'gz'","").replace("'bx'","").replace("'by'","").replace("'bz'","").replace("'","").replace("\"","")
-		resultado = 100 - metric_value
+		resultado = metric_value
 		arquivo_csv = open("/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/results/gtx780/gemm-instperwarp-"+str(sys.argv[2])+".csv","a")
 		arquivo_csv.write("Kernel,gx,gy,gz,bx,by,bz,gpuId,inst_per_warp \n")
 		arquivo_csv.write(str(configuration)+", 0 , "+str(resultado)+"\n")
-		return (100 - metric_value)
+		return metric_value
 
 	def save_final_config(self, configuration):
 		"""called at the end of tuning"""
