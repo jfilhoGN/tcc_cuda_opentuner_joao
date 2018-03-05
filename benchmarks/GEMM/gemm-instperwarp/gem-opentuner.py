@@ -24,13 +24,13 @@ BLOCO_PARAMETROS = [
 	('ni', int(sys.argv[2]),int(sys.argv[2])),
 	('nj', int(sys.argv[2]),int(sys.argv[2])),
 	('nk', int(sys.argv[2]),int(sys.argv[2])),
-	('gpuId', 0, 0)  
+	('gpuId', 0, 1)  
 ]
 
 BLOCO_PARAMETROS_CONFIGS = [ 'config' ]
 
 def read_file_configs():
-	file_gemm = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/benchmarks/gen-configs/saida_gemm-'+str(sys.argv[2])+'.txt','r')
+	file_gemm = open('/home/joao/Documentos/tcc_cuda_opentuner_joao/benchmarks/gen-configs/saida_gemm-'+str(sys.argv[2])+'.txt','r')
 	list_configs = []
 	for linha in file_gemm:
 		list_configs.append(linha)
@@ -85,7 +85,7 @@ class gemmTuner(MeasurementInterface):
 		print "compiled: ", 'true' if compiled else 'false'
 		if not compiled:
 			print "Compiling the program..."
-			gcc_cmd = 'nvcc -I /usr/local/cuda/include -L /usr/local/cuda/lib64 -ccbin=g++-4.9 gemm.cu -lcuda -lm -o gemm-cuda.exe'
+			gcc_cmd = 'nvcc -I /usr/local/cuda/include -L /usr/local/cuda/lib64 -ccbin=g++-6 gemm.cu -lcuda -lm -o gemm-cuda.exe'
 			compile_result = self.call_program(gcc_cmd)
 			assert compile_result['returncode'] == 0
 			print " OK.\n"
@@ -161,7 +161,7 @@ class gemmTuner(MeasurementInterface):
 		configuration = configuration.replace("{",str(kernel)+",").replace(":","").replace("}","")
 		configuration = configuration.replace("'gx","").replace("'gy'","").replace("'gz'","").replace("'bx'","").replace("'by'","").replace("'bz'","").replace("'","").replace("\"","")
 		resultado = metric_value
-		arquivo_csv = open("/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/results/gtx780/gemm-instperwarp-"+str(sys.argv[2])+".csv","a")
+		arquivo_csv = open("/home/joao/Documentos/tcc_cuda_opentuner_joao/results/titanx/gemm-instperwarp-"+str(sys.argv[2])+".csv","a")
 		arquivo_csv.write("Kernel,gx,gy,gz,bx,by,bz,gpuId,inst_per_warp \n")
 		arquivo_csv.write(str(configuration)+", 0 , "+str(resultado)+"\n")
 		return metric_value
