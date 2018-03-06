@@ -14619,3 +14619,9 @@
 [2018-03-05 14:37:54,074] WARNING opentuner.search.driver: duplicate configuration request #1206 NormalGreedyMutation/NormalGreedyMutation OLD @driver.py:181
 [2018-03-05 14:37:58,977] WARNING opentuner.search.driver: duplicate configuration request #1218 UniformGreedyMutation/UniformGreedyMutation OLD @driver.py:181
 [2018-03-05 14:38:02,379] WARNING opentuner.search.driver: duplicate configuration request #1227 NormalGreedyMutation/RandomNelderMead OLD @driver.py:181
+[2018-03-06 13:47:53,458] WARNING opentuner.search.driver: duplicate configuration request #7 UniformGreedyMutation/UniformGreedyMutation PENDING @driver.py:181
+[2018-03-06 13:47:57,521] WARNING opentuner.search.driver: duplicate configuration request #30 UniformGreedyMutation/UniformGreedyMutation OLD @driver.py:181
+[2018-03-06 13:47:58,082] WARNING opentuner.search.driver: duplicate configuration request #34 UniformGreedyMutation/UniformGreedyMutation OLD @driver.py:181
+[2018-03-06 13:49:31,014] WARNING opentuner.search.driver: duplicate configuration request #16 UniformGreedyMutation/UniformGreedyMutation OLD @driver.py:181
+[2018-03-06 13:49:31,025] WARNING opentuner.search.driver: duplicate configuration request #19 UniformGreedyMutation/UniformGreedyMutation OLD @driver.py:181
+[2018-03-06 13:55:37,416] WARNING opentuner.search.driver: duplicate configuration request #5 UniformGreedyMutation/UniformGreedyMutation PENDING @driver.py:181

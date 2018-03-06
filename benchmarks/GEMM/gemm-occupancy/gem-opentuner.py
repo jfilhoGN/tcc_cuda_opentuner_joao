@@ -119,6 +119,7 @@ class gemmTuner(MeasurementInterface):
 		# 	if(dimGrid == 3):
 		# 		cfg['funcId'] =  dimGrid + dimBlock + 2
 		kernel = ' {0}'.format(configuration['kernel'])	
+		gpuId =  ' {0}'.format(configuration['gpuId'])
 		run_cmd += ' {0}'.format(configuration['kernel'])
 		run_cmd += ' {0}'.format(cfg["'gx"])
 		run_cmd += ' {0}'.format(cfg['gy'])
@@ -138,13 +139,13 @@ class gemmTuner(MeasurementInterface):
 		if run_result['returncode'] != 0:
 			return Result(time=FAIL_PENALTY)
 		else:
-			val = self.get_metric_from_app_output(run_result['stderr'], cfg, kernel)
+			val = self.get_metric_from_app_output(run_result['stderr'], cfg, kernel,gpuId)
 			return Result(time=val)
 		# else:
 		# 	print "Invalid configuration, return penalty."
 		# 	return Result(time=FAIL_PENALTY)
 
-	def get_metric_from_app_output(self, app_output, configuration, kernel):
+	def get_metric_from_app_output(self, app_output, configuration, kernel, gpuId):
 		"""Returns the metric value from output benchmark"""
 		metric_value = 0.0
 		lines = app_output.split("\n")
@@ -162,7 +163,7 @@ class gemmTuner(MeasurementInterface):
 		resultado = 1.0 - metric_value
 		arquivo_csv = open("/home/joao/Documentos/tcc_cuda_opentuner_joao/results/titanx/gemm-occupancy-"+str(sys.argv[2])+".csv","a")
 		arquivo_csv.write("Kernel,gx,gy,gz,bx,by,bz,gpuId,occupancy \n")
-		arquivo_csv.write(str(configuration)+", 0 , "+str(resultado)+"\n")
+		arquivo_csv.write(str(configuration)+","+str(gpuId)+","+str(resultado)+"\n")
 		return (1.0 - metric_value)
 
 	def save_final_config(self, configuration):

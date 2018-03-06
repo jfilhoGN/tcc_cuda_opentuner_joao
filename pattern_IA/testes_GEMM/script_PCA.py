@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import numpy as np
 #import seaborn.apionly as seaborn
 import matplotlib.pyplot as plt
@@ -5,7 +6,7 @@ from pandas import read_csv
 from sklearn.decomposition import PCA
 from pandas import DataFrame
 
-df = read_csv('/home/jfilhogn/Documentos/Git/tcc_cuda_opentuner_joao/pattern_IA/testes_GEMM/gemm-smefficiency/gemm-smefficiency-512.csv', index_col='smefficiency')
+df = read_csv('./gemm-smefficiency/gemm-smefficiency-512.csv', index_col='smefficiency')
 
 def z_score(x):
     """Remove a média e normaliza os pelo desvio padrão"""

@@ -21,8 +21,8 @@
 #include "../../common/polybenchUtilFuncts.h"
 #include "../../common/polybench.c"
 
-
-#define GPU_DEVICE 0
+int GPU_DEVICE;
+//int GPU_DEVICE = atoi(argv[11]);
 
 //define the error threshold for the results "not matching"
 #define PERCENT_DIFF_ERROR_THRESHOLD 0.05
@@ -142,8 +142,9 @@ int main(int argc, char *argv[])
     int kernel = 0;
     int funcId = 0;
     int i = 0;
-    if (argc != 11) {
-        printf("Uso: %s <kernel> <g.x> <g.y> <g.z> <b.x> <b.y> <b.z> <ni> <nj> <nk> \n", argv[0]);
+    GPU_DEVICE = 0;
+    if (argc != 12) {
+        printf("Uso: %s <kernel> <g.x> <g.y> <g.z> <b.x> <b.y> <b.z> <ni> <nj> <nk> <gpuId> \n", argv[0]);
         /*printf("     funcId:\n");
         printf("     0: 1D_1D, 1: 1D_2D, 2: 1D_3D\n");
         printf("     3: 2D_1D, 4: 2D_2D, 5: 2D_3D\n");
@@ -160,6 +161,9 @@ int main(int argc, char *argv[])
         NI = atoi(argv[8]);
         NJ = atoi(argv[9]);
         NK = atoi(argv[10]);
+        GPU_DEVICE = atoi(argv[11]);
+
+
         //funcId = atoi(argv[11]);
         //printf("Executando: %s gemm_kernel_%d grid(%d, %d, %d) block(%d, %d, %d) %d\n", argv[0], kernel, atoi(argv[2]), atoi(argv[3]), atoi(argv[4]), atoi(argv[5]), atoi(argv[6]), atoi(argv[7]));
     }
