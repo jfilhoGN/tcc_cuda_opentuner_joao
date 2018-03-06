@@ -118,6 +118,7 @@ class gemmTuner(MeasurementInterface):
 		# 		cfg['funcId'] =  dimGrid + dimBlock + 0
 		# 	if(dimGrid == 3):
 		# 		cfg['funcId'] =  dimGrid + dimBlock + 2
+		kernel = ' {0}'.format(configuration['kernel'])
 		kernel = ' {0}'.format(configuration['kernel'])	
 		run_cmd += ' {0}'.format(configuration['kernel'])
 		run_cmd += ' {0}'.format(cfg["'gx"])
