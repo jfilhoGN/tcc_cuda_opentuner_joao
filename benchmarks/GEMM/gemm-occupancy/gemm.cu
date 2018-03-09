@@ -142,7 +142,7 @@ int main(int argc, char *argv[])
     int kernel = 0;
     int funcId = 0;
     int i = 0;
-    GPU_DEVICE = 0;
+    //GPU_DEVICE = 0;
     if (argc != 12) {
         printf("Uso: %s <kernel> <g.x> <g.y> <g.z> <b.x> <b.y> <b.z> <ni> <nj> <nk> <gpuId> \n", argv[0]);
         /*printf("     funcId:\n");
