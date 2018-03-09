@@ -39,7 +39,7 @@ BLOCO_PARAMETROS = [
   ('nx', int(sys.argv[2]),int(sys.argv[2])),
   ('ny', int(sys.argv[2]), int(sys.argv[2])),
   ('nz', int(sys.argv[2]), int(sys.argv[2])),
-  ('gpuId', 0, 0)  
+  ('gpuId', 0, 1)  
 ]
 # Test para 2 1 1 64 1 1 1 64 64 64 0 0 
 
@@ -48,7 +48,7 @@ BLOCO_PARAMETROS_CONFIGS = [ 'config' ]
 
 def read_file_configs():
   # MUDAR AQUI-----------
-  file_sincos_projetocuda = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/benchmarks/gen-configs/saida_sincos-'+str(sys.argv[2])+'-'+str(sys.argv[2])+'.txt','r')
+  file_sincos_projetocuda = open('/home/joao/Documentos/tcc_cuda_opentuner_joao/benchmarks/gen-configs/saida_sincos-'+str(sys.argv[2])+'-'+str(sys.argv[2])+'.txt','r')
   list_configs = []
   for linha in file_sincos_projetocuda:
     list_configs.append(linha)
@@ -102,7 +102,7 @@ class SincosCudaTuner(MeasurementInterface):
     print "compiled: ", 'true' if compiled else 'false'
     if not compiled:
       print "Compiling the program..."
-      gcc_cmd = 'nvcc -I /usr/local/cuda/include -L /usr/local/cuda/lib64 -ccbin=g++-4.9 src/sincosc.cu -lcuda -lm -o sincosc-cuda'
+      gcc_cmd = 'nvcc -I /usr/local/cuda/include -L /usr/local/cuda/lib64 -ccbin=g++-6 src/sincosc.cu -lcuda -lm -o sincosc-cuda'
       compile_result = self.call_program(gcc_cmd)
       assert compile_result['returncode'] == 0
       print " OK.\n"
@@ -147,6 +147,7 @@ class SincosCudaTuner(MeasurementInterface):
     #   if(dimGrid == 3):
     #     cfg['funcId'] =  dimGrid + dimBlock + 2
     kernel = ' {0}'.format(configuration['kernel'])
+    gpuId = ' {0}'.format(configuration['gpuId'])
     #print(kernel)
     run_cmd += ' {0}'.format(configuration['kernel'])
     run_cmd += ' {0}'.format(cfg["'gx"])
@@ -167,12 +168,12 @@ class SincosCudaTuner(MeasurementInterface):
     if run_result['returncode'] != 0:
       return Result(time=FAIL_PENALTY)
     else:
-      val = self.get_metric_from_app_output(run_result['stderr'], cfg, kernel)
+      val = self.get_metric_from_app_output(run_result['stderr'], cfg, kernel, gpuId)
       return Result(time=val)
   
 
 # --------------------------------------------------------------------
-  def get_metric_from_app_output(self, app_output, configuration, kernel):
+  def get_metric_from_app_output(self, app_output, configuration, kernel, gpuId):
     """Returns the metric value from output benchmark"""
     metric_value = 0.0
     lines = app_output.split("\n")
@@ -192,9 +193,9 @@ class SincosCudaTuner(MeasurementInterface):
     configuration = configuration.replace("'gx","").replace("'gy'","").replace("'gz'","").replace("'bx'","").replace("'by'","").replace("'bz'","").replace("'","").replace("\"","")
     resultado = metric_value
     # MUDAR AQUI-----------
-    arquivo_csv = open("/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/results/gtx780/sincos-warp-execution-"+str(sys.argv[2])+".csv","a")
-    arquivo_csv.write("Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,efficiency-warp-execution \n")
-    arquivo_csv.write(str(configuration)+", 0 , "+str(resultado)+"\n")
+    arquivo_csv = open("/home/joao/Documentos/tcc_cuda_opentuner_joao/results/titanx/sincos-warp-execution-"+str(sys.argv[2])+".csv","a")
+    arquivo_csv.write("Kernel,gx,gy,gz,bx,by,gpuId,efficiency-warp-execution \n")
+    arquivo_csv.write(str(configuration)+","+str(gpuId)+","+str(resultado)+"\n")
     return metric_value
 
 # --------------------------------------------------------------------
