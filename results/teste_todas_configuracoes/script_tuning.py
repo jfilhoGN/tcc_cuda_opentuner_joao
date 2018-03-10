@@ -35,7 +35,7 @@ def manipulador():
 				metric_value = float(substring1)
 				print "sm_efficiency: ", metric_value
 		valor = valor.replace(" ",",").replace(",512,512,512","")
-		arquivo_csv = open("gemm-smefficiency-512-todas-conf.csv","a")
+		arquivo_csv = open("gemm-smefficiency-512-todas-conf-gtx780.csv","a")
 		arquivo_csv.write("gx,gy,gz,bx,by,bz,gpuId,smefficiency \n")
 		arquivo_csv.write(str(valor)+",0,"+str(metric_value)+"\n")
 		count += 1
