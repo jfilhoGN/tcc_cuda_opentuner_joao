@@ -5,7 +5,7 @@ import re
 
 def read_file_configs():
 	#testar tambem com 512
-	file_gemm = open('./configuracoes/saida-gemm-512.txt','r')
+	file_gemm = open('./configuracoes/saida-gemm-1024.txt','r')
 	list_configs = []
 	list_configs_correct = []
 	for linha in file_gemm:
@@ -20,7 +20,7 @@ def manipulador():
 	list_configs = read_file_configs()
 	count = 1
 	for valor in list_configs:
-		print str(count) + " de 15470"
+		print str(count) + " de 21231"
 		p = subprocess.Popen('nvprof --metrics sm_efficiency ./gemm-cuda.exe 0 '+str(valor), shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 		for line in p.stdout.readlines():
 			resultado = line,
@@ -34,8 +34,8 @@ def manipulador():
 				substring1 = substring.replace("%",'')
 				metric_value = float(substring1)
 				print "sm_efficiency: ", metric_value
-		valor = valor.replace(" ",",").replace(",512,512,512","")
-		arquivo_csv = open("gemm-smefficiency-512-todas-conf-gtx780.csv","a")
+		valor = valor.replace(" ",",").replace(",1024,1024,1024","")
+		arquivo_csv = open("gemm-smefficiency-1024-todas-conf-titanx.csv","a")
 		arquivo_csv.write("gx,gy,gz,bx,by,bz,gpuId,smefficiency \n")
 		arquivo_csv.write(str(valor)+",0,"+str(metric_value)+"\n")
 		count += 1

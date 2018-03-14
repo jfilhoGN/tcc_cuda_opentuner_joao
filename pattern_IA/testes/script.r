@@ -1,4 +1,4 @@
-mypath <- "/home/jfilhogn/Documentos/Git/tcc_cuda_opentuner_joao/pattern_IA/testes/gemm-smefficiency-512-todas-conf-gtx780.csv"
+mypath <- "/home/joao/Documentos/tcc_cuda_opentuner_joao/pattern_IA/testes/gemm-smefficiency-512-todas-conf-gtx780.csv"
 
 dados <- read.csv(mypath, header = T, sep = ",")
 is.data.frame(dados)
@@ -85,11 +85,39 @@ xyplot(smefficiency ~ b|g, data = dados.80.100,
        # layout = c(22,20) 
 )
 
-## -----------------------------------------------------------------------------
+## -------------------------Regressao linear-----------------------------------
+
+plot(dados.80.100$g,dados.80.100$smefficiency)
+
+## -------------------------Dendograma-----------------------------------------
+install.packages("vegan")
+library(vegan)
+
+# calcula a matriz de distância, as ligações, 
+# plota o dendrograma e identifica os grupos
+dis <- vegdist(dados) 
+cluc <- hclust(dis, "complete")
+plot(cluc)
+rect.hclust(cluc, 3) 
+
+# verifica que objetos foram classificados em cada grupo
+grp<-cutree(cluc, 3)
+grp
+
+# substitui no dendrograma o nome do objeto pelo número do grupo
+plot(cluc, labels = as.character(grp))
+
+# desenha no dendrograma os retângulos de cada grupo e os numera
+plot(cluc)
+r <- rect.hclust(cluc, 3)
+text(cumsum(sapply(r,length)),
+     rep(mean(tail(unique(cluc$hei),2)), length(r)),
+     paste(unique(grp[cluc$ord])))
 
 
 
 
+## ----------------------------------------------------------------------------
 ## Pensando ...
 teste <- as.data.frame(with(dados, table(g)))
 temp <- subset(teste, Freq == 0 )
