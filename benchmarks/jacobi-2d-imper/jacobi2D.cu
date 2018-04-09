@@ -48,7 +48,7 @@ void runJacobi2DCpu(int tsteps, int n, DATA_TYPE POLYBENCH_2D(A,N,N,n,n), DATA_T
 {
 	for (int t = 0; t < _PB_TSTEPS; t++)
 	{
-    		for (int i = 1; i < _PB_N - 1; i++)
+    for (int i = 1; i < _PB_N - 1; i++)
 		{
 			for (int j = 1; j < _PB_N - 1; j++)
 			{
@@ -56,7 +56,7 @@ void runJacobi2DCpu(int tsteps, int n, DATA_TYPE POLYBENCH_2D(A,N,N,n,n), DATA_T
 			}
 		}
 		
-    		for (int i = 1; i < _PB_N-1; i++)
+    for (int i = 1; i < _PB_N-1; i++)
 		{
 			for (int j = 1; j < _PB_N-1; j++)
 			{
@@ -66,8 +66,58 @@ void runJacobi2DCpu(int tsteps, int n, DATA_TYPE POLYBENCH_2D(A,N,N,n,n), DATA_T
 	}
 }
 
+__global__ void runJacobiCUDA_kernel1_2(int n, DATA_TYPE* A, DATA_TYPE* B)
+{
+	// Steps foram para fora, na chamada.
+	/*for (int t = 0; t < _PB_TSTEPS; t++)
+	{*/
+    for (int i = 1; i < _PB_N - 1; i++)
+		{
+			for (int j = 1; j < _PB_N - 1; j++)
+			{
+	  			B[i][j] = 0.2f * (A[i][j] + A[i][(j-1)] + A[i][(1+j)] + A[(1+i)][j] + A[(i-1)][j]);
+			}
+		}
+	// }
+}
 
-__global__ void runJacobiCUDA_kernel1(int n, DATA_TYPE* A, DATA_TYPE* B)
+__global__ void runJacobiCUDA_kernel2_2(int n, DATA_TYPE* A, DATA_TYPE* B)
+{
+    for (int i = 1; i < _PB_N-1; i++)
+		{
+			for (int j = 1; j < _PB_N-1; j++)
+			{
+	  			A[i][j] = B[i][j];
+			}
+		}
+}
+
+
+
+
+__global__ void runJacobiCUDA_kernel1_1(int n, DATA_TYPE* A, DATA_TYPE* B)
+{
+  int i, j;
+  i = getGlobalIdFunc[funcId]();
+ 	for (int j = 1; j < _PB_N - 1; j++)
+	{
+ 			B[i][j] = 0.2f * (A[i][j] + A[i][(j-1)] + A[i][(1+j)] + A[(1+i)][j] + A[(i-1)][j]);
+	}
+}
+
+
+__global__ void runJacobiCUDA_kernel2_1(int n, DATA_TYPE* A, DATA_TYPE* B)
+{
+  int i, j;
+  i = getGlobalIdFunc[funcId]();
+ 	for (int j = 1; j < _PB_N-1; j++)
+	{
+ 			A[i][j] = B[i][j];
+	}
+}
+
+
+__global__ void runJacobiCUDA_kernel1_0(int n, DATA_TYPE* A, DATA_TYPE* B)
 {
 	int i = blockIdx.y * blockDim.y + threadIdx.y;
 	int j = blockIdx.x * blockDim.x + threadIdx.x;
@@ -79,7 +129,7 @@ __global__ void runJacobiCUDA_kernel1(int n, DATA_TYPE* A, DATA_TYPE* B)
 }
 
 
-__global__ void runJacobiCUDA_kernel2(int n, DATA_TYPE* A, DATA_TYPE* B)
+__global__ void runJacobiCUDA_kernel2_0(int n, DATA_TYPE* A, DATA_TYPE* B)
 {
 	int i = blockIdx.y * blockDim.y + threadIdx.y;
 	int j = blockIdx.x * blockDim.x + threadIdx.x;
@@ -89,7 +139,6 @@ __global__ void runJacobiCUDA_kernel2(int n, DATA_TYPE* A, DATA_TYPE* B)
 		A[i*N + j] = B[i*N + j];
 	}
 }
-
 
 void compareResults(int n, DATA_TYPE POLYBENCH_2D(a,N,N,n,n), DATA_TYPE POLYBENCH_2D(a_outputFromGpu,N,N,n,n), DATA_TYPE POLYBENCH_2D(b,N,N,n,n), DATA_TYPE POLYBENCH_2D(b_outputFromGpu,N,N,n,n))
 {
