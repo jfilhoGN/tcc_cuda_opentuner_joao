@@ -5,7 +5,7 @@ import re
 
 def read_file_configs():
 	#testar tambem com 512
-	file_gemm = open('./configuracoes/saida-gemm-1024.txt','r')
+	file_gemm = open('./configuracoes/saida-gemm-512-funcid.txt','r')
 	list_configs = []
 	list_configs_correct = []
 	for linha in file_gemm:
@@ -34,10 +34,10 @@ def manipulador():
 				substring1 = substring.replace("%",'')
 				metric_value = float(substring1)
 				print "sm_efficiency: ", metric_value
-		valor = valor.replace(" ",",").replace(",1024,1024,1024","")
-		arquivo_csv = open("gemm-smefficiency-1024-todas-conf-titanx.csv","a")
-		arquivo_csv.write("gx,gy,gz,bx,by,bz,gpuId,smefficiency \n")
-		arquivo_csv.write(str(valor)+",0,"+str(metric_value)+"\n")
+		valor = valor.replace(" ",",").replace(",512,512,512","")
+		arquivo_csv = open("gemm-smefficiency-512-todas-conf-funcid-titanx.csv","a")
+		arquivo_csv.write("gx,gy,gz,bx,by,bz,funcId,smefficiency \n")
+		arquivo_csv.write(str(valor)+","+str(metric_value)+"\n")
 		count += 1
 
 if __name__ == '__main__':

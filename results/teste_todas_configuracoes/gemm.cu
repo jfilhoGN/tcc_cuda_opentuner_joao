@@ -142,7 +142,7 @@ int main(int argc, char *argv[])
     int kernel = 0;
     int funcId = 0;
     int i = 0;
-    if (argc != 11) {
+    if (argc != 12) {
         printf("Uso: %s <kernel> <g.x> <g.y> <g.z> <b.x> <b.y> <b.z> <ni> <nj> <nk> \n", argv[0]);
         /*printf("     funcId:\n");
         printf("     0: 1D_1D, 1: 1D_2D, 2: 1D_3D\n");

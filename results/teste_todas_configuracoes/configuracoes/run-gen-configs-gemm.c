@@ -14,6 +14,19 @@
 #define max(x,y)    ((x) > (y) ? (x) : (y))
 #define min(x,y)    ((x) < (y) ? (x) : (y))
 
+int calculateFunctionId(int gx, int gy, int gz, int bx, int by, int bz){
+  int funcId = 0;
+
+  funcId += (gx > 1) ? 32 : 0;
+  funcId += (gy > 1) ? 16 : 0;
+  funcId += (gz > 1) ? 8 : 0;
+  funcId += (bx > 1) ? 4 : 0;
+  funcId += (by > 1) ? 2 : 0;
+  funcId += (bz > 1) ? 1 : 0;
+
+  return funcId;
+}
+
 void calcDimensions(unsigned long long int iterations, int ni){
 	//printf("Running for %d iterations.\n", iterations);
 	
@@ -35,7 +48,7 @@ void calcDimensions(unsigned long long int iterations, int ni){
 	
 	int dimGrid = 1;
 	int dimBlock = 1;
-	unsigned long long int funcId = 0;
+	int funcId = 0;
 
 	for(bz = 1; bz <= min(iterations,MAX_BLOCK_Z); bz++) {
 		for(by = 1; by <= min((iterations / bz),MAX_BLOCK_Y); by++) {
@@ -48,8 +61,9 @@ void calcDimensions(unsigned long long int iterations, int ni){
 							config = confBlock * confGrid ;
 							// Evict kernel divergence, blocks with multiply warp size.
 							if((confBlock <= 1024) && (config == iterations) && (confBlock % 32 == 0)){
+								funcId = calculateFunctionId(gx, gy, gz, bx, by, bz);
 								//printf("'gx:%d, gy:%d, gz:%d, bx:%d, by:%d, bz:%d, ' \n", gx, gy, gz, bx, by, bz);
-								printf("'%d, %d, %d, %d, %d, %d, %d, %d, %d'\n", gx, gy, gz, bx, by, bz, ni, ni, ni);								
+								printf("'%d, %d, %d, %d, %d, %d, %d, %d, %d, %d'\n", gx, gy, gz, bx, by, bz, ni, ni, ni, funcId);								
 								countConfig++;								
 							}
 						}
@@ -70,7 +84,7 @@ int main(int argc, char **argv) {
 		return 0;
 	}
 	else{
-		printf("# argumentos (argc): %d\n", argc);
+		//printf("# argumentos (argc): %d\n", argc);
 		for (i = 0; i < argc; ++i) {
 			//printf("# argv[%d]: %s\n", i, argv[i]);
 		}
