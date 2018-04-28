@@ -143,14 +143,16 @@ __global__ void sincos_kernel_2(DATA_TYPE* x, DATA_TYPE* y, DATA_TYPE* xy, int n
   int i, j, k, indice;
   // i = getGlobalIdx_3D_3D();
   i = getGlobalIdFunc[funcId]();
-  // for (i = 0; i < nx; ++i) {
+  if(i < nx) {
+    // for (i = 0; i < nx; ++i) {
     for (j = 0; j < ny; ++j) {
       for (k = 0; k < nz; ++k) {
         indice = (i * ny * nz) + (j * nz) + k;
         xy[indice] = sin(x[indice]) + cos(y[indice]);
       }
     }
-  //}
+  //}  
+  }
 }
 
 /* (nx * ny) iterações. Cada thread do arranjo irá executar o laço mais interno somente, o que resulta em 
@@ -161,15 +163,17 @@ __global__ void sincos_kernel_1(DATA_TYPE* x, DATA_TYPE* y, DATA_TYPE* xy, int n
   int i, k, indice;
   // i = getGlobalIdx_3D_3D();
   i = getGlobalIdFunc[funcId]();
-  // for (i = 0; i < nx; ++i) {
-  //  for (j = 0; j < ny; ++j) {
-  for (k = 0; k < nz; k++) {
-  // indice = (i * ny * nz) + (j * nz) + k;
-		indice = (i * nz) + k;
-		xy[indice] = sin(x[indice]) + cos(y[indice]);
-  }
+  if(i > nx*ny){
+    // for (i = 0; i < nx; ++i) {
+    //  for (j = 0; j < ny; ++j) {
+    for (k = 0; k < nz; k++) {
+    // indice = (i * ny * nz) + (j * nz) + k;
+  		indice = (i * nz) + k;
+  		xy[indice] = sin(x[indice]) + cos(y[indice]);
+    }
   //  }
   //}
+  }
 }
 
 __global__ void sincos_kernel_1_unroll_8(DATA_TYPE* x, DATA_TYPE* y, DATA_TYPE* xy, int nx, int ny, int nz, int funcId) {

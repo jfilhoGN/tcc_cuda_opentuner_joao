@@ -48,7 +48,7 @@ BLOCO_PARAMETROS_CONFIGS = [ 'config' ]
 
 def read_file_configs():
   # MUDAR AQUI-----------
-  file_sincos_projetocuda = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/benchmarks/gen-configs/saida_sincos-'+str(sys.argv[2])+'-'+str(sys.argv[2])+'.txt','r')
+  file_sincos_projetocuda = open('/home/joao/Documentos/tcc_cuda_opentuner_joao/benchmarks/gen-configs/saida_sincos-'+str(sys.argv[2])+'-'+str(sys.argv[2])+'.txt','r')
   list_configs = []
   for linha in file_sincos_projetocuda:
     list_configs.append(linha)
@@ -102,7 +102,7 @@ class SincosCudaTuner(MeasurementInterface):
     print "compiled: ", 'true' if compiled else 'false'
     if not compiled:
       print "Compiling the program..."
-      gcc_cmd = 'nvcc -I /usr/local/cuda/include -L /usr/local/cuda/lib64 -ccbin=g++-4.9 src/sincosc.cu -lcuda -lm -o sincosc-cuda'
+      gcc_cmd = 'nvcc -I /usr/local/cuda/include -L /usr/local/cuda/lib64 -ccbin=g++-6 src/sincosc.cu -lcuda -lm -o sincosc-cuda'
       compile_result = self.call_program(gcc_cmd)
       assert compile_result['returncode'] == 0
       print " OK.\n"
@@ -190,12 +190,12 @@ class SincosCudaTuner(MeasurementInterface):
     configuration = str(configuration)
     configuration = configuration.replace("{",str(kernel)+",").replace(":","").replace("}","")
     configuration = configuration.replace("'gx","").replace("'gy'","").replace("'gz'","").replace("'bx'","").replace("'by'","").replace("'bz'","").replace("'","").replace("\"","")
-    resultado = 1.0 - metric_value
+    resultado = metric_value
     # MUDAR AQUI-----------
-    arquivo_csv = open("/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/results/gtx780/sincos-ipc-"+str(sys.argv[2])+".csv","a")
+    arquivo_csv = open("/home/joao/Documentos/tcc_cuda_opentuner_joao/results/titanx/sincos-ipc-"+str(sys.argv[2])+".csv","a")
     arquivo_csv.write("Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,ipc \n")
     arquivo_csv.write(str(configuration)+", 0 , "+str(resultado)+"\n")
-    return 1.0 - metric_value
+    return metric_value
 
 # --------------------------------------------------------------------
   def save_final_config(self, configuration):

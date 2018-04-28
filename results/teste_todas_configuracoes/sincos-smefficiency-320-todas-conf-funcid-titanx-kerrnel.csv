@@ -1,0 +1,6 @@
+kernel,gx,gy,gz,bx,by,bz,funcId,smefficiency 
+0,1,1,3200,32,1,1,12,68.24
+1,1,1,3200,32,1,1,12,51.69
+kernel,gx,gy,gz,bx,by,bz,funcId,smefficiency 
+0,1,2,1600,32,1,1,28,69.44
+1,1,2,1600,32,1,1,28,51.09

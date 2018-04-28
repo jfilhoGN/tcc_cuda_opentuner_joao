@@ -48,7 +48,7 @@ BLOCO_PARAMETROS_CONFIGS = [ 'config' ]
 
 def read_file_configs():
   # MUDAR AQUI-----------
-  file_sincos_projetocuda = open('/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/benchmarks/gen-configs/saida_sincos-'+str(sys.argv[2])+'-'+str(sys.argv[2])+'.txt','r')
+  file_sincos_projetocuda = open('/home/joao/Documentos/tcc_cuda_opentuner_joao/benchmarks/gen-configs/saida_sincos-'+str(sys.argv[2])+'-'+str(sys.argv[2])+'.txt','r')
   list_configs = []
   for linha in file_sincos_projetocuda:
     list_configs.append(linha)
@@ -102,7 +102,7 @@ class SincosCudaTuner(MeasurementInterface):
     print "compiled: ", 'true' if compiled else 'false'
     if not compiled:
       print "Compiling the program..."
-      gcc_cmd = 'nvcc -I /usr/local/cuda/include -L /usr/local/cuda/lib64 -ccbin=g++-4.9 src/sincosc.cu -lcuda -lm -o sincosc-cuda'
+      gcc_cmd = 'nvcc -I /usr/local/cuda/include -L /usr/local/cuda/lib64 -ccbin=g++-6 src/sincosc.cu -lcuda -lm -o sincosc-cuda'
       compile_result = self.call_program(gcc_cmd)
       assert compile_result['returncode'] == 0
       print " OK.\n"
@@ -181,7 +181,7 @@ class SincosCudaTuner(MeasurementInterface):
       # MUDAR AQUI-----------
       if strg.find("Instructions per warp") > -1:
         idx = strg.index("Instructions per warp")
-        subsrtg = strg[idx:].split("    ")
+        subsrtg = strg[idx:].split("  ")
         print "substrg: ", subsrtg
         substring = subsrtg[3]
         substring1 = substring.replace("%",'')
@@ -192,7 +192,7 @@ class SincosCudaTuner(MeasurementInterface):
     configuration = configuration.replace("'gx","").replace("'gy'","").replace("'gz'","").replace("'bx'","").replace("'by'","").replace("'bz'","").replace("'","").replace("\"","")
     resultado = metric_value
     # MUDAR AQUI-----------
-    arquivo_csv = open("/home/projetocuda/Documentos/tcc_cuda_opentuner_joao/results/gtx780/sincos-inst_per_warp-"+str(sys.argv[2])+".csv","a")
+    arquivo_csv = open("/home/joao/Documentos/tcc_cuda_opentuner_joao/results/titanx/sincos-inst_per_warp-"+str(sys.argv[2])+".csv","a")
     arquivo_csv.write("Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,inst_per_warp \n")
     arquivo_csv.write(str(configuration)+", 0 , "+str(resultado)+"\n")
     return metric_value

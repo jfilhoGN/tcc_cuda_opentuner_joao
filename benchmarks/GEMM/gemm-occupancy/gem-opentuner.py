@@ -24,7 +24,7 @@ BLOCO_PARAMETROS = [
 	('ni', int(sys.argv[2]),int(sys.argv[2])),
 	('nj', int(sys.argv[2]),int(sys.argv[2])),
 	('nk', int(sys.argv[2]),int(sys.argv[2])),
-	('gpuId', 0, 1)  
+	('gpuId', 1, 1)  
 ]
 
 BLOCO_PARAMETROS_CONFIGS = [ 'config' ]
@@ -160,11 +160,11 @@ class gemmTuner(MeasurementInterface):
 		configuration = str(configuration)
 		configuration = configuration.replace("{",str(kernel)+",").replace(":","").replace("}","")
 		configuration = configuration.replace("'gx","").replace("'gy'","").replace("'gz'","").replace("'bx'","").replace("'by'","").replace("'bz'","").replace("'","").replace("\"","")
-		resultado = 1.0 - metric_value
-		arquivo_csv = open("/home/joao/Documentos/tcc_cuda_opentuner_joao/results/titanx/gemm-occupancy-"+str(sys.argv[2])+".csv","a")
+		resultado = metric_value
+		arquivo_csv = open("/home/joao/Documentos/tcc_cuda_opentuner_joao/results/gtx1070/gemm-occupancy-"+str(sys.argv[2])+".csv","a")
 		arquivo_csv.write("Kernel,gx,gy,gz,bx,by,bz,gpuId,occupancy \n")
 		arquivo_csv.write(str(configuration)+","+str(gpuId)+","+str(resultado)+"\n")
-		return (1.0 - metric_value)
+		return metric_value
 
 	def save_final_config(self, configuration):
 		"""called at the end of tuning"""
