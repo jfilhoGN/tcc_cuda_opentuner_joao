@@ -39,7 +39,7 @@ BLOCO_PARAMETROS = [
   ('nx', int(sys.argv[2]),int(sys.argv[2])),
   ('ny', int(sys.argv[2]), int(sys.argv[2])),
   ('nz', int(sys.argv[2]), int(sys.argv[2])),
-  ('gpuId', 0, 0)  
+  ('gpuId', 1, 1)  
 ]
 # Test para 2 1 1 64 1 1 1 64 64 64 0 0 
 
@@ -194,7 +194,7 @@ class SincosCudaTuner(MeasurementInterface):
     # MUDAR AQUI-----------
     arquivo_csv = open("/home/joao/Documentos/tcc_cuda_opentuner_joao/results/titanx/sincos-ipc-"+str(sys.argv[2])+".csv","a")
     arquivo_csv.write("Kernel,gx,gy,gz,bx,by,bz,nx,ny,nz,gpuId,ipc \n")
-    arquivo_csv.write(str(configuration)+", 0 , "+str(resultado)+"\n")
+    arquivo_csv.write(str(configuration)+", 1 , "+str(resultado)+"\n")
     return metric_value
 
 # --------------------------------------------------------------------

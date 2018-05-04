@@ -39,7 +39,7 @@ BLOCO_PARAMETROS = [
   ('nx', int(sys.argv[2]),int(sys.argv[2])),
   ('ny', int(sys.argv[2]), int(sys.argv[2])),
   ('nz', int(sys.argv[2]), int(sys.argv[2])),
-  ('gpuId', 0, 0)  
+  ('gpuId', 1, 1)  
 ]
 # Test para 2 1 1 64 1 1 1 64 64 64 0 0 
 
@@ -189,7 +189,7 @@ class SincosCudaTuner(MeasurementInterface):
     configuration = configuration.replace("{",str(kernel)+",").replace(":","").replace("}","")
     configuration = configuration.replace("'gx","").replace("'gy'","").replace("'gz'","").replace("'bx'","").replace("'by'","").replace("'bz'","").replace("'","").replace("\"","")
     resultado = metric_value
-    arquivo_csv = open("/home/joao/Documentos/tcc_cuda_opentuner_joao/results/titanx/sincos-gstefficiency-executed-"+str(sys.argv[2])+".csv","a")
+    arquivo_csv = open("/home/joao/Documentos/tcc_cuda_opentuner_joao/results/gtx1070/sincos-gstefficiency-executed-"+str(sys.argv[2])+".csv","a")
     arquivo_csv.write("Kernel,gx,gy,gz,bx,by,bz,gpuId,gst_efficiency \n")
     arquivo_csv.write(str(configuration)+","+str(gpuId)+","+str(resultado)+"\n")
     return metric_value
