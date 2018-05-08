@@ -24,7 +24,7 @@ BLOCO_PARAMETROS = [
 	('ni', int(sys.argv[2]),int(sys.argv[2])),
 	('nj', int(sys.argv[2]),int(sys.argv[2])),
 	('nk', int(sys.argv[2]),int(sys.argv[2])),
-	('gpuId', 0, 1)  
+	('gpuId', 0, 0)  
 ]
 
 BLOCO_PARAMETROS_CONFIGS = [ 'config' ]
