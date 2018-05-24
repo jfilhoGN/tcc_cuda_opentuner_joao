@@ -1,5 +1,2 @@
-<<<<<<< HEAD:benchmarks/sincos/sincoscuda-opentuner-warpexecution/sincoscuda_final_config_warp-execution64.json
 {"kernel": 1, "nx": 64, "ny": 64, "nz": 64, "gpuId": 0, "config": "'gx:8, gy:1, gz:1, bx:32, by:2, bz:8, ' \n"}
-=======
-{"kernel": 0, "nx": 64, "ny": 64, "nz": 64, "gpuId": 0, "config": "'gx:2, gy:1, gz:2, bx:8, by:128, bz:1, ' \n"}
->>>>>>> 2b83d134fc7503b1253b17cfbd01de58d534b4e9:results/titanx/sincos-smefficiency/json/sincoscuda_final_config_smeff64.json
+
