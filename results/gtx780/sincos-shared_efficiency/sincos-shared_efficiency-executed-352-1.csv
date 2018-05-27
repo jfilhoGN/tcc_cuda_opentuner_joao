@@ -1,0 +1,230 @@
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 1,  44,  11,  16,  4,  4, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 1,  176,  11,  1,  8,  8, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 2,  8,  22,  1,  16,  22, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 16,  1,  11,  44,  8,  2, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 4,  4,  11,  1,  64,  11, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 8,  1,  22,  64,  1,  11, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 2,  242,  4,  8,  1,  8, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 32,  11,  11,  1,  4,  8, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 16,  2,  11,  4,  11,  8, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 1,  8,  242,  16,  1,  4, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 11,  32,  1,  2,  11,  16, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 32,  1,  121,  2,  16,  1, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 4,  242,  1,  64,  2,  1, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 44,  4,  2,  4,  2,  44, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 8,  4,  121,  1,  4,  8, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 2,  8,  11,  1,  176,  4, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 2,  88,  11,  1,  32,  2, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 2,  22,  22,  64,  1,  2, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 88,  2,  11,  4,  16,  1, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 11,  4,  8,  11,  32,  1, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 1,  8,  22,  4,  88,  2, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 2,  484,  1,  1,  64,  2, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 88,  2,  2,  2,  8,  22, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 4,  44,  2,  16,  11,  2, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 22,  16,  11,  8,  2,  2, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 11,  22,  2,  4,  16,  4, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 44,  11,  4,  8,  8,  1, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 8,  121,  2,  4,  4,  4, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 2,  121,  1,  4,  2,  64, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 1,  44,  4,  16,  4,  11, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 1,  242,  1,  32,  4,  4, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 1,  11,  352,  4,  2,  4, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 1,  32,  11,  8,  44,  1, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 2,  1,  88,  44,  16,  1, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 1,  8,  22,  4,  176,  1, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 44,  1,  8,  176,  2,  1, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 22,  44,  4,  32,  1,  1, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 22,  1,  16,  11,  16,  2, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 11,  11,  1,  512,  2,  1, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 22,  4,  4,  1,  44,  8, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 16,  11,  22,  2,  8,  2, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 88,  11,  4,  2,  1,  16, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 2,  88,  1,  2,  32,  11, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 121,  4,  2,  4,  2,  16, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 11,  1,  11,  2,  32,  16, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 1,  121,  2,  128,  1,  4, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 1,  2,  176,  4,  4,  22, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 2,  1,  968,  64,  1,  1, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 4,  1,  88,  2,  4,  44, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 2,  2,  44,  2,  88,  4, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 1,  2,  242,  128,  1,  2, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 8,  22,  1,  22,  32,  1, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 4,  44,  2,  32,  1,  11, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 44,  11,  1,  2,  4,  32, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 2,  2,  88,  22,  4,  4, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 11,  352,  1,  1,  32,  1, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 88,  11,  4,  4,  4,  2, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 22,  4,  11,  4,  2,  16, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 4,  4,  11,  704,  1,  1, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 1,  4,  44,  1,  64,  11, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 121,  2,  8,  8,  1,  8, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 16,  1,  22,  2,  4,  44, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 8,  11,  22,  32,  1,  2, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 44,  1,  44,  1,  64,  1, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 2,  242,  2,  128,  1,  1, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 2,  1,  176,  1,  32,  11, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 44,  2,  4,  176,  1,  2, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 1,  176,  11,  8,  4,  2, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 8,  242,  2,  4,  2,  4, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 8,  1,  121,  1,  4,  32, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 242,  1,  8,  4,  1,  16, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 44,  2,  2,  16,  4,  11, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 1,  88,  11,  1,  64,  2, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 4,  4,  22,  22,  1,  16, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 32,  121,  1,  32,  1,  1, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 4,  1,  242,  1,  4,  32, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 4,  121,  8,  1,  2,  16, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 44,  1,  88,  8,  1,  4, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 22,  4,  2,  11,  32,  2, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 1,  8,  22,  11,  4,  16, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 121,  2,  1,  8,  64,  1, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 44,  4,  2,  11,  8,  4, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 22,  2,  4,  44,  2,  8, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 242,  16,  1,  1,  8,  4, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 1,  1,  121,  8,  64,  2, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 11,  4,  44,  2,  4,  8, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 16,  11,  1,  1,  44,  16, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 242,  1,  4,  16,  1,  8, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 2,  1,  121,  16,  8,  4, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 88,  2,  1,  2,  352,  1, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 8,  1,  121,  16,  2,  4, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 8,  11,  22,  4,  16,  1, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 4,  44,  11,  1,  1,  64, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 22,  2,  8,  22,  1,  16, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 1,  242,  1,  4,  2,  64, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 22,  4,  22,  1,  1,  64, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 484,  1,  4,  4,  8,  2, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 484,  1,  4,  4,  8,  2, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 2,  8,  121,  1,  64,  1, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 1,  484,  2,  1,  64,  2, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 1,  22,  88,  1,  2,  32, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 8,  121,  1,  8,  2,  8, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 2,  11,  176,  4,  8,  1, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 22,  88,  1,  2,  4,  8, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 11,  22,  16,  4,  2,  4, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 121,  1,  4,  32,  1,  8, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 242,  16,  1,  16,  2,  1, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 2,  4,  44,  11,  16,  2, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 4,  44,  2,  16,  1,  22, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 8,  2,  121,  1,  32,  2, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 176,  2,  1,  44,  4,  2, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 2,  16,  11,  176,  2,  1, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 0, 44,  4,  1,  1,  64,  11, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 2,  1,  88,  2,  352,  1, 0,0.0
+Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency 
+ 1, 11,  16,  1,  1,  16,  44, 0,0.0
