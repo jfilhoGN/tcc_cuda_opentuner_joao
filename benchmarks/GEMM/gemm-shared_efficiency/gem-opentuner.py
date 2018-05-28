@@ -25,7 +25,7 @@ BLOCO_PARAMETROS = [
 	('ni', int(sys.argv[2]),int(sys.argv[2])),
 	('nj', int(sys.argv[2]),int(sys.argv[2])),
 	('nk', int(sys.argv[2]),int(sys.argv[2])),
-	('gpuId', 0, 0)  
+	('gpuId', 1, 1)  
 ]
 
 BLOCO_PARAMETROS_CONFIGS = [ 'config' ]
@@ -162,7 +162,7 @@ class gemmTuner(MeasurementInterface):
 		configuration = configuration.replace("{",str(kernel)+",").replace(":","").replace("}","")
 		configuration = configuration.replace("'gx","").replace("'gy'","").replace("'gz'","").replace("'bx'","").replace("'by'","").replace("'bz'","").replace("'","").replace("\"","")
 		resultado = metric_value
-		arquivo_csv = open("/home/joao/Documentos/tcc_cuda_opentuner_joao/results/titanx/gemm-shared_efficiency-"+str(sys.argv[2])+".csv","a")
+		arquivo_csv = open("/home/joao/Documentos/tcc_cuda_opentuner_joao/results/gtx1070/gemm-shared_efficiency-"+str(sys.argv[2])+".csv","a")
 		arquivo_csv.write("Kernel,gx,gy,gz,bx,by,bz,gpuId,shared_efficiency \n")
 		arquivo_csv.write(str(configuration)+", 0 , "+str(resultado)+"\n")
 		return metric_value
