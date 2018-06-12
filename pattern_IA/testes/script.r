@@ -1,4 +1,4 @@
-mypath <- "/home/jfilhogn/Documentos/Git/tcc_cuda_opentuner_joao/pattern_IA/testes/gemm-smefficiency-512-todas-conf-gtx780.csv"
+mypath <- "/home/jfilho/Documentos/Git/tcc_cuda_opentuner_joao/pattern_IA/testes/gemm-smefficiency-512-todas-conf-gtx780.csv"
 
 dados <- read.csv(mypath, header = T, sep = ",")
 is.data.frame(dados)
