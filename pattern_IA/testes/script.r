@@ -44,14 +44,18 @@ tabb <- tabb[order(tabb[,2]),]
 ## usando funcoes da biblioteca lattice
 library(lattice)
 
-x11()
-xyplot(smefficiency ~ g, data = dados, 
-       as.table = TRUE,
+# x11()
+png(filename = "~/Documentos/Git/tcc_cuda_opentuner_joao/pattern_IA/smeffic.png", 
+    width = 1600, height = 600)
+xyplot(smefficiency ~ b, data = dados, 
+       xlab = "Configurações de Blocos",
+       ylab = "Porcentagem de Warps Ativos (smefficiency)",
+       as.table = TRUE, jitter.x = TRUE, jitter.y = TRUE,
        scales = list(y = list(cex = 1),
-                     x = list(cex = 0.5, rot = 45))
+                     x = list(cex = 0.7, rot = 90))
        # layout = c(22,20) 
        )
-
+dev.off()
 
 
 dados$cut.efic <- with(dados, cut(smefficiency, 
@@ -67,9 +71,19 @@ dados.0.18 <- subset(dados, cut.efic == "(0,18]")
 
 str(dados.60.80)
 
-with(dados.80.100, plot(density(smefficiency), 
+# segundo gráfico
+
+png(filename = "~/Documentos/Git/tcc_cuda_opentuner_joao/pattern_IA/dens_smeffic.png", 
+    width =800, height = 600)
+par(mar = c(5,4,1,1))
+with(dados.80.100, plot(density(smefficiency),
+                        xlab = "Proporção de configurações acima de 80%",
+                        ylab = "Densidade",
+                        main = ""
                         # ylim = c(0, 0.1)
                         ))
+dev.off()
+
 with(dados.80.100, hist(smefficiency, add = TRUE, freq = FALSE))
 
 ## escala log
@@ -78,12 +92,19 @@ with(dados.80.100, plot(density(log(smefficiency)),
                         ))
 with(dados.80.100, hist(log(smefficiency), add = TRUE, freq = FALSE))
 
-xyplot(smefficiency ~ b|g, data = dados.80.100, 
-       as.table = TRUE, 
+# terceiro gráfico
+
+png(filename = "~/Documentos/Git/tcc_cuda_opentuner_joao/pattern_IA/todas_smeffic.png", 
+    width = 2500, height = 1200)
+xyplot(smefficiency ~ b|g, data = dados.80.100,
+       xlab = list(label = "Todas as configurações \nacima de 80%", cex = 1.5),
+       ylab = list(label ="Porcentagem de Warps Ativos (smefficiency)",cex = 1.5),
+       as.table = TRUE, jitter.x = TRUE, jitter.y = TRUE,
        scales = list(y = list(cex = 1),
-                     x = list(cex = 0.5, rot = 90))
-       # layout = c(22,20) 
+                     x = list(cex = 0.9, rot = 90)),
+       layout = c(12,9) 
 )
+dev.off()
 
 ## -------------------------Regressao linear-----------------------------------
 

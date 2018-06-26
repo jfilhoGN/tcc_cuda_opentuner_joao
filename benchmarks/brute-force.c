@@ -47,8 +47,6 @@ void calcDimensions(unsigned long long int iterations){
 							config = confBlock * confGrid ;
 							// Evict kernel divergence, blocks with multiply warp size.
 							if((confBlock <= 1024) && (config == iterations) && (confBlock % 32 == 0)){
-							// if((confBlock <= 1024) && (config == iterations)){
-								// printf("(%4d,%4d,%4d,%4d,%4d,%4d)\n", gx, gy, gz, bx, by, bz);
 								dimBlock = 0;
 								dimGrid = 0;
 								// Test of quantity of block dimensions are used.
@@ -57,7 +55,6 @@ void calcDimensions(unsigned long long int iterations){
 								dimBlock += (bz > 1) ? 1 : 0;
 								if (dimBlock == 0 )
 									dimBlock = 1;
-								
 								// Test of quantity of grid dimensions are used.
 								dimGrid += (gx > 1) ? 1 : 0;
 								dimGrid += (gy > 1) ? 1 : 0;
@@ -67,37 +64,7 @@ void calcDimensions(unsigned long long int iterations){
 								
 								countConfig++;							
 								
-								//./sincosc-cuda <kernel> <g.x> <g.y> <g.z> <b.x> <b.y> <b.z> <nx> <ny> <nz> <funcId>
-								// printf("./sincosc-cuda <kernel> %d %d %d %d %d %d <nx> <ny> <nz> %dD_%dD\n", gx, gy, gz, bx, by, bz, dimGrid, dimBlock);
-								
-								// nvprof ./sincosc-cuda 2 1 1 23 32 1 1 736 736 736 0 > nvprof-sincosc-cuda-2-1-1-23-32-1-1-736-736-736-0-std.txt 2> nvprof-sincosc-cuda-2-1-1-23-32-1-1-736-736-736-0-err.txt
-								
 								printf("\necho 'Execution %d of <totalexecution>.'\n", countConfig);
-								/*printf("exec=0\n");
-								printf("FILE=nvprof-sincosc-cuda-<kernel>-%d-%d-%d-%d-%d-%d-<nx>-<ny>-<nz>-%dD_%dD-std.txt\n", gx, gy, gz, bx, by, bz, dimGrid, dimBlock);
-								printf("if [ -f $FILE ];\n");
-								printf("then\n");
-  							printf("  echo \"File $FILE exists, verifying...\"\n");
-  							printf("  check=`grep 'Done.' $FILE | wc -w`\n");
-								printf("  if [ $check -eq 1 ];\n");
-								printf("  then\n");
-								printf("    echo ' Configuration was executed. [OK].'\n");
-								printf("  else\n");
-								printf("    echo ' Configuration was not executed until the end. [Reexecute].'\n");
-								printf("    exec=$((exec+1))\n");
-								printf("  fi\n");
-								printf("else\n");
-  							printf("  echo \" File $FILE does not exists. [Execute].\"\n");
-								printf("  exec=$((exec+1))\n");
-								printf("fi\n");
-								
-								printf("if [ $exec -ge 1 ];\n");
-								printf("then\n");
-								// printf("  nvprof ./sincosc-cuda <kernel> %d %d %d %d %d %d <nx> <ny> <nz> %dD_%dD $gpuId > nvprof-sincosc-cuda-<kernel>-%d-%d-%d-%d-%d-%d-<nx>-<ny>-<nz>-%dD_%dD-std.txt 2> nvprof-sincosc-cuda-<kernel>-%d-%d-%d-%d-%d-%d-<nx>-<ny>-<nz>-%dD_%dD-err.txt \n", gx, gy, gz, bx, by, bz, dimGrid, dimBlock, gx, gy, gz, bx, by, bz, dimGrid, dimBlock, gx, gy, gz, bx, by, bz, dimGrid, dimBlock);
-								// nvprof --print-gpu-trace --print-api-trace  --metrics all --events all --csv ./sincosc-cuda 2 1 2 16 1 1 1 32 32 32 3 2
-								printf("  nvprof --print-gpu-trace --print-api-trace --metrics all --events all --csv ./sincosc-cuda <kernel> %d %d %d %d %d %d <nx> <ny> <nz> %dD_%dD $gpuId > nvprof-sincosc-cuda-<kernel>-%d-%d-%d-%d-%d-%d-<nx>-<ny>-<nz>-%dD_%dD-std.txt 2> nvprof-sincosc-cuda-<kernel>-%d-%d-%d-%d-%d-%d-<nx>-<ny>-<nz>-%dD_%dD-err.txt \n", gx, gy, gz, bx, by, bz, dimGrid, dimBlock, gx, gy, gz, bx, by, bz, dimGrid, dimBlock, gx, gy, gz, bx, by, bz, dimGrid, dimBlock);
-								printf("else\n");
-								printf("  echo '  No more work. [OK].'\n");*/
 								
 								printf("check_file_status nvprof-sincosc-cuda-<kernel>-%d-%d-%d-%d-%d-%d-<nx>-<ny>-<nz>-%dD_%dD-std.txt\n", gx, gy, gz, bx, by, bz, dimGrid, dimBlock);
 								printf("return_val=$?\n");
